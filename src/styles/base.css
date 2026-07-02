@@ -1,0 +1,419 @@
+/* ─────────────────────────────────────────────
+   Cello: design tokens & primitives
+   Merkstijl: zie merkstijl.md
+───────────────────────────────────────────── */
+
+:root {
+  /* Kleuren */
+  --groen: #4e9a82;
+  --blauw: #5e8fb8;
+  --donker: #1e3730;
+  --donker-2: #16302a;
+  --donker-3: #25453c;
+  --grijsgroen: #5b6b64;
+  --mint: #e4efe9;
+  --creme: #f4f2ea;
+  --grijs: #eaeae6;
+  --wit: #fdfdfb;
+
+  /* Typografie */
+  --font: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Vorm & diepte */
+  --r-l: 2rem;
+  --r-m: 1.25rem;
+  --r-s: 0.75rem;
+  --shell-pad: 0.5rem;
+  --shadow-soft:
+    0 30px 70px -30px rgba(30, 55, 48, 0.22),
+    0 10px 28px -14px rgba(30, 55, 48, 0.1);
+  --shadow-tiny: 0 6px 18px -8px rgba(30, 55, 48, 0.22);
+
+  /* Beweging */
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --t-fast: 0.45s var(--ease);
+  --t-slow: 0.8s var(--ease);
+
+  /* Layout */
+  --container: min(1200px, 92vw);
+  --sec-pad: clamp(6rem, 12vw, 11rem);
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--donker);
+  background: var(--grijs);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--groen);
+  color: var(--creme);
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blauw);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 200;
+  padding: 0.6rem 1rem;
+  background: var(--donker);
+  color: var(--creme);
+  border-radius: 999px;
+  font-weight: 600;
+  transform: translateY(-300%);
+}
+
+.skip:focus-visible {
+  transform: none;
+}
+
+/* ── Typografie ── */
+h1,
+h2,
+h3 {
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: clamp(2.3rem, 4.6vw, 3.9rem);
+}
+
+h2 em,
+h1 em {
+  font-style: italic;
+  color: var(--groen);
+}
+
+h3 {
+  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+  letter-spacing: -0.015em;
+}
+
+p {
+  color: var(--grijsgroen);
+}
+
+.container {
+  width: var(--container);
+  margin-inline: auto;
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+.sec-head {
+  max-width: 780px;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.sec-head h2 {
+  margin-top: 1.1rem;
+}
+
+.sec-sub {
+  margin-top: 1.1rem;
+  font-size: 1.125rem;
+  max-width: 46ch;
+}
+
+/* ── Eyebrow ── */
+.eyebrow {
+  display: inline-block;
+  color: var(--groen);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.eyebrow-dark {
+  color: #8fd0ba;
+}
+
+/* ── Knoppen (island-architectuur) ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.55rem 0.6rem 0.55rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1;
+  white-space: nowrap;
+  transition: transform var(--t-fast), background-color var(--t-fast), box-shadow var(--t-fast);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-orb {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  background: rgba(244, 242, 234, 0.14);
+  transition: transform var(--t-fast), background-color var(--t-fast);
+}
+
+.btn-orb svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.btn:hover .btn-orb {
+  transform: translate(2px, -2px) scale(1.06);
+}
+
+.btn-primary {
+  background: var(--donker);
+  color: var(--creme);
+  box-shadow: var(--shadow-tiny);
+}
+
+.btn-primary:hover {
+  background: var(--donker-3);
+}
+
+.btn-ghost {
+  background: rgba(253, 253, 251, 0.6);
+  color: var(--donker);
+  box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.14);
+}
+
+.btn-ghost:hover {
+  background: var(--wit);
+}
+
+.btn-orb-soft {
+  background: var(--mint);
+  color: var(--donker);
+}
+
+.btn:hover .btn-orb-soft {
+  transform: translate(0, 2px) scale(1.06);
+}
+
+.btn-light {
+  background: var(--creme);
+  color: var(--donker);
+  box-shadow: 0 18px 44px -18px rgba(0, 0, 0, 0.45);
+}
+
+.btn-light:hover {
+  background: #fff;
+}
+
+.btn-orb-donker {
+  background: var(--donker);
+  color: var(--creme);
+}
+
+.btn-s {
+  font-size: 0.92rem;
+  padding: 0.42rem 0.46rem 0.42rem 1.15rem;
+}
+
+.btn-s .btn-orb {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+/* ── Double-bezel shells ── */
+.shell {
+  padding: var(--shell-pad);
+  border-radius: var(--r-l);
+  background: rgba(253, 253, 251, 0.55);
+  box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.08), var(--shadow-soft);
+}
+
+.core {
+  border-radius: calc(var(--r-l) - var(--shell-pad));
+  background: var(--wit);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), inset 0 0 0 1px rgba(30, 55, 48, 0.05);
+  overflow: hidden;
+}
+
+/* ── Chips & atomen ── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--donker);
+}
+
+.chip svg {
+  width: 0.92rem;
+  height: 0.92rem;
+  flex: none;
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 999px;
+  background: var(--groen);
+  color: var(--creme);
+  font-weight: 700;
+  font-size: 1.05rem;
+  flex: none;
+}
+
+.avatar-xs {
+  width: 1.35rem;
+  height: 1.35rem;
+  font-size: 0.7rem;
+}
+
+.pulse {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--groen);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(78, 154, 130, 0.5);
+  }
+  60% {
+    box-shadow: 0 0 0 7px rgba(78, 154, 130, 0);
+  }
+}
+
+/* ── Golfvorm-balkjes (statisch) ── */
+.eq {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  height: 1.4rem;
+}
+
+.eq i {
+  width: 4px;
+  border-radius: 4px;
+  background: var(--groen);
+}
+
+.eq i:nth-child(1) { height: 38%; }
+.eq i:nth-child(2) { height: 72%; }
+.eq i:nth-child(3) { height: 100%; }
+.eq i:nth-child(4) { height: 52%; }
+.eq i:nth-child(5) { height: 84%; }
+.eq i:nth-child(6) { height: 44%; }
+.eq i:nth-child(7) { height: 64%; }
+
+/* ── JS reveal-states (alleen mét JS, met failsafe) ── */
+html.js .hero-reveal {
+  opacity: 0;
+  visibility: hidden;
+}
+
+html.js .line-inner {
+  transform: translateY(112%);
+}
+
+html.force-visible .hero-reveal {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html.js .hero-reveal,
+  html.js .line-inner {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+}

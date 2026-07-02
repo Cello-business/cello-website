@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(npm run *)",
+      "Bash(npm i *)",
+      "Bash(awk '{print $2, $11, $12, $13}')"
+    ]
+  }
+}
