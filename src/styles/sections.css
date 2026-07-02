@@ -110,6 +110,8 @@
   width: 0.065em;
   border-radius: 999px;
   background: var(--groen);
+  transform-origin: center;
+  transition: transform 0.45s var(--ease);
 }
 
 .wave-pill i:nth-child(1) { height: 38%; }
@@ -117,6 +119,30 @@
 .wave-pill i:nth-child(3) { height: 100%; }
 .wave-pill i:nth-child(4) { height: 58%; }
 .wave-pill i:nth-child(5) { height: 40%; }
+
+/* hover: de golf "praat" zolang de cursor erop staat, daarna rustig terug */
+@keyframes wave-talk {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  28% {
+    transform: scaleY(var(--wave-up, 1.6));
+  }
+  64% {
+    transform: scaleY(var(--wave-down, 0.7));
+  }
+}
+
+.wave-pill:hover i {
+  animation: wave-talk 0.65s ease-in-out infinite;
+}
+
+.wave-pill:hover i:nth-child(1) { --wave-up: 2; --wave-down: 0.7; animation-duration: 0.68s; animation-delay: -0.05s; }
+.wave-pill:hover i:nth-child(2) { --wave-up: 1.35; --wave-down: 0.6; animation-duration: 0.6s; animation-delay: -0.22s; }
+.wave-pill:hover i:nth-child(3) { --wave-up: 1.18; --wave-down: 0.52; animation-duration: 0.72s; animation-delay: -0.38s; }
+.wave-pill:hover i:nth-child(4) { --wave-up: 1.5; --wave-down: 0.64; animation-duration: 0.58s; animation-delay: -0.12s; }
+.wave-pill:hover i:nth-child(5) { --wave-up: 1.9; --wave-down: 0.72; animation-duration: 0.66s; animation-delay: -0.3s; }
 
 .hero-sub {
   margin-top: 1.7rem;
@@ -296,6 +322,43 @@ html.no-js .sim-stage {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+/* mobiele stapindicator: alleen zichtbaar in de gepinde mobiele versie */
+.sim-mobile-ind {
+  display: none;
+  margin-bottom: 1.3rem;
+}
+
+.smi-labels {
+  position: relative;
+  height: 1.35em;
+  margin-bottom: 0.6rem;
+}
+
+.smi-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgba(244, 242, 234, 0.85);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.smi-track {
+  display: block;
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(244, 242, 234, 0.12);
+}
+
+.smi-track i {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--groen), #8fd0ba);
+  transform: scaleX(0);
+  transform-origin: left center;
 }
 
 /* ── Feedback / bento ── */
@@ -647,6 +710,57 @@ html.no-js .sim-stage {
     stroke-dashoffset: 45.6;
   }
 
+  /* sim: gepinde stappenvertelling zodra JS de sectie overneemt */
+  .sim-mobile-pin .sim-pin {
+    min-height: 100dvh;
+    padding-block: clamp(1.2rem, 3vh, 2.2rem);
+  }
+
+  .sim-mobile-pin .sim-pin > .container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .sim-mobile-pin .sim-head {
+    margin-bottom: 1.2rem;
+  }
+
+  .sim-mobile-pin .sim-head h2 {
+    font-size: clamp(1.85rem, 6.6vw, 2.3rem);
+  }
+
+  .sim-mobile-pin .sim-mobile-ind {
+    display: block;
+  }
+
+  .sim-mobile-pin .sim-grid {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    gap: 0;
+  }
+
+  .sim-mobile-pin .sim-stagewrap {
+    position: relative;
+    flex: 1;
+    min-height: 340px;
+    display: block;
+  }
+
+  .sim-mobile-pin .sim-stage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .sim-mobile-pin .stage-cap {
+    display: none;
+  }
+
   /* bento */
   .bento {
     grid-template-columns: 1fr;
@@ -744,5 +858,30 @@ html.no-js .sim-stage {
 
   .person-bio {
     font-size: 0.88rem;
+  }
+}
+
+/* lage schermen: gepinde sim compacter zodat alles in beeld past */
+@media (max-width: 899px) and (max-height: 720px) {
+  .sim-mobile-pin .sim-head h2 {
+    font-size: 1.65rem;
+  }
+
+  .sim-mobile-pin .bubble {
+    padding: 0.55rem 0.85rem;
+    font-size: 0.85rem;
+  }
+
+  .sim-mobile-pin .callwin {
+    gap: 0.8rem;
+  }
+
+  .sim-mobile-pin .report {
+    gap: 0.9rem;
+    padding: 1rem;
+  }
+
+  .sim-mobile-pin .picker {
+    gap: 0.6rem;
   }
 }

@@ -20,7 +20,7 @@ npm run preview  # bekijk de productie-build lokaal
 
 ## Goed om te weten
 
-- **E-mailadres**: alle CTA's verwijzen naar `hallo@cello.be` (placeholder). Zoek-en-vervang in `index.html` zodra het echte adres bestaat.
+- **E-mailadres**: alle CTA's verwijzen naar `contact@cellobusiness.com`.
 - **Copy**: alle teksten staan in `index.html`; kleuren en tokens in `src/styles/base.css` (afgeleid van `merkstijl.md`).
 - **Animaties**: respecteren `prefers-reduced-motion` en werken ook zonder JavaScript (statische eindtoestanden).
 - **Simulatie-sectie**: de gepinde scroll-ervaring zit in `src/js/sim.js`; op mobiel wordt die automatisch een gestapelde versie.

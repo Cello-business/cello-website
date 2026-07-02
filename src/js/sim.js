@@ -89,43 +89,93 @@ export function initSim(reduced) {
     tl.to('[data-progress]', { scaleY: 1, ease: 'none', duration: tl.duration() }, 0);
   });
 
-  /* ── Mobiel: gestapelde kaarten, eindtoestanden via CSS ── */
+  /* ── Mobiel: dezelfde gepinde stappenvertelling, verticaal en compact.
+        Reduced motion houdt de gestapelde, statische fallback. ── */
   mm.add('(max-width: 899px)', () => {
     if (reduced) {
       if (scoreEl) scoreEl.textContent = String(SCORE);
       return;
     }
 
-    gsap.utils.toArray('.sim-stage').forEach((stageEl) => {
-      gsap.fromTo(
-        stageEl,
-        { autoAlpha: 0, y: 44 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.9,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: stageEl, start: 'top 86%', once: true },
-        }
+    sim.classList.add('sim-mobile-pin');
+
+    const labels = gsap.utils.toArray('.smi-label');
+    gsap.set(labels.slice(1), { autoAlpha: 0 });
+    gsap.set(['.stage-call', '.stage-report'], { autoAlpha: 0 });
+    gsap.set('.rbar-fill', { scaleX: 0, transformOrigin: 'left center' });
+    if (ring) gsap.set(ring, { strokeDashoffset: RING });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sim,
+        start: 'top top',
+        end: '+=2400',
+        pin: true,
+        scrub: 0.7,
+        anticipatePin: 1,
+      },
+    });
+
+    // fase 1: scenario wordt gekozen
+    tl.to('.pick-1', { scale: 1.03, boxShadow: 'inset 0 0 0 2px rgba(78, 154, 130, 0.95)', duration: 0.4 }, 0.25)
+      .to(['.pick-2', '.pick-3'], { opacity: 0.38, scale: 0.985, duration: 0.4 }, 0.3)
+
+      // overgang fase 1 -> 2
+      .to('.stage-picker', { autoAlpha: 0, y: -40, duration: 0.5 }, 1.0)
+      .to(labels[0], { autoAlpha: 0, duration: 0.25 }, 1.0)
+      .fromTo('.stage-call', { autoAlpha: 0, y: 52 }, { autoAlpha: 1, y: 0, duration: 0.6 }, 1.2)
+      .to(labels[1], { autoAlpha: 1, duration: 0.25 }, 1.3);
+
+    // het gesprek verschijnt zin per zin
+    gsap.utils.toArray('[data-bubble]').forEach((b, i) => {
+      tl.fromTo(
+        b,
+        { autoAlpha: 0, y: 22, scale: 0.97 },
+        { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: 'power2.out' },
+        1.65 + i * 0.45
       );
     });
 
-    if (scoreEl) {
-      ScrollTrigger.create({
-        trigger: '.stage-report',
-        start: 'top 82%',
-        once: true,
-        onEnter: () => {
-          const counter = { v: 0 };
-          gsap.to(counter, {
-            v: SCORE,
-            duration: 1.2,
-            ease: 'power2.out',
-            onUpdate: () => (scoreEl.textContent = Math.round(counter.v)),
-          });
+    // overgang fase 2 -> 3
+    tl.to('.stage-call', { autoAlpha: 0, y: -40, scale: 0.97, duration: 0.5 }, 4.0)
+      .to(labels[1], { autoAlpha: 0, duration: 0.25 }, 4.0)
+      .fromTo('.stage-report', { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.6 }, 4.25)
+      .to(labels[2], { autoAlpha: 1, duration: 0.25 }, 4.35);
+
+    // het rapport vult zich
+    if (ring && scoreEl) {
+      const counter = { v: 0 };
+      tl.to(ring, { strokeDashoffset: RING * (1 - SCORE / 100), duration: 1.0, ease: 'power2.out' }, 4.7).to(
+        counter,
+        {
+          v: SCORE,
+          duration: 1.0,
+          ease: 'power2.out',
+          onUpdate: () => (scoreEl.textContent = Math.round(counter.v)),
         },
-      });
+        4.7
+      );
     }
+
+    gsap.utils.toArray('.rbar-fill').forEach((bar, i) => {
+      tl.to(bar, { scaleX: parseFloat(bar.dataset.bar) / 100, duration: 0.6, ease: 'power3.out' }, 4.8 + i * 0.1);
+    });
+
+    tl.fromTo(
+      '[data-chip]',
+      { autoAlpha: 0, y: 14, scale: 0.92 },
+      { autoAlpha: 1, y: 0, scale: 1, stagger: 0.1, duration: 0.35, ease: 'back.out(1.8)' },
+      5.3
+    )
+      // rustpunt op het einde van de pin
+      .to({}, { duration: 0.5 });
+
+    // voortgangslijn over de volledige tijdlijn
+    tl.to('[data-mprogress]', { scaleX: 1, ease: 'none', duration: tl.duration() }, 0);
+
+    return () => {
+      sim.classList.remove('sim-mobile-pin');
+    };
   });
 }
 

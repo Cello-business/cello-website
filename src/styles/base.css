@@ -332,6 +332,14 @@ section[id] {
   font-weight: 700;
   font-size: 1.05rem;
   flex: none;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
 }
 
 .avatar-xs {

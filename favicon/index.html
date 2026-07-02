@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cello · Favicon-studio</title>
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,600;0,700;0,800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --groen: #4e9a82;
+        --donker: #1e3730;
+        --grijsgroen: #5b6b64;
+        --creme: #f4f2ea;
+        --grijs: #eaeae6;
+        --wit: #fdfdfb;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Figtree', system-ui, sans-serif;
+        background: var(--grijs);
+        color: var(--donker);
+        line-height: 1.6;
+        padding: clamp(1.5rem, 4vw, 4rem);
+      }
+
+      .wrap {
+        max-width: 1100px;
+        margin-inline: auto;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.05;
+      }
+
+      h1 em {
+        font-style: italic;
+        color: var(--groen);
+      }
+
+      .intro {
+        margin-top: 0.7rem;
+        max-width: 62ch;
+        color: var(--grijsgroen);
+      }
+
+      .intro code {
+        font-size: 0.85em;
+        background: var(--wit);
+        padding: 0.1em 0.4em;
+        border-radius: 0.35em;
+        box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.1);
+      }
+
+      .label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--groen);
+      }
+
+      section {
+        margin-top: clamp(2rem, 4vw, 3.5rem);
+      }
+
+      .duo {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+        margin-top: 0.8rem;
+      }
+
+      .card {
+        background: var(--wit);
+        border-radius: 1.25rem;
+        padding: clamp(1.2rem, 2.5vw, 1.8rem);
+        box-shadow: 0 14px 34px -22px rgba(30, 55, 48, 0.2), inset 0 0 0 1px rgba(30, 55, 48, 0.06);
+        display: grid;
+        gap: 1rem;
+        align-content: start;
+      }
+
+      .card h2 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      /* dambord toont de transparante hoeken */
+      .checker {
+        display: grid;
+        place-items: center;
+        padding: 1.6rem;
+        border-radius: 0.9rem;
+        background-image: repeating-conic-gradient(#fff 0% 25%, #e7e7e2 0% 50%);
+        background-size: 26px 26px;
+        box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.08);
+      }
+
+      .checker img {
+        display: block;
+        width: min(300px, 100%);
+        height: auto;
+      }
+
+      .alt .checker img {
+        width: min(210px, 100%);
+      }
+
+      .caption {
+        font-size: 0.88rem;
+        color: var(--grijsgroen);
+      }
+
+      .caption b {
+        color: var(--donker);
+      }
+
+      .caption code {
+        font-size: 0.82em;
+        background: var(--grijs);
+        padding: 0.1em 0.4em;
+        border-radius: 0.35em;
+      }
+
+      /* nep-browsertabs */
+      .tabbar {
+        border-radius: 0.7rem;
+        padding: 0.55rem 0.7rem 0;
+        overflow: hidden;
+      }
+
+      .tabbar-licht {
+        background: #dee1e6;
+      }
+
+      .tabbar-donker {
+        background: #202124;
+      }
+
+      .tab {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        max-width: 100%;
+        padding: 0.5rem 1.1rem;
+        border-radius: 0.7rem 0.7rem 0 0;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .tabbar-licht .tab {
+        background: #fff;
+        color: #3c4043;
+      }
+
+      .tabbar-donker .tab {
+        background: #35363a;
+        color: #e8eaed;
+      }
+
+      .tab img {
+        width: 16px;
+        height: 16px;
+        flex: none;
+      }
+
+      .tab span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      footer {
+        margin-top: clamp(2rem, 4vw, 3.5rem);
+        font-size: 0.85rem;
+        color: var(--grijsgroen);
+        max-width: 72ch;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <p class="label">Cello · intern</p>
+        <h1>Favicon-<em>studio.</em></h1>
+        <p class="intro">Dit zijn echte PNG-bestanden (512 × 512, transparante hoeken), geen mockups. Ze staan in de map <code>favicon/</code> van het project; rechtsklik → afbeelding opslaan werkt ook. Het dambord eronder is er alleen om de transparantie te tonen.</p>
+      </header>
+
+      <!-- ══ crème, jouw keuze ══ -->
+      <section>
+        <p class="label">Crème · jouw keuze</p>
+        <div class="duo">
+          <div class="card">
+            <h2>Rond</h2>
+            <div class="checker">
+              <img src="./cello-favicon-creme-rond-512.png" alt="Rond crème favicon met donkergroen merkteken" />
+            </div>
+            <p class="caption"><code>cello-favicon-creme-rond-512.png</code><br />Vlak <b>#F4F2EA</b> · merkteken <b>#1E3730</b></p>
+            <div class="tabbar tabbar-licht">
+              <div class="tab">
+                <img src="./cello-favicon-creme-rond-512.png" alt="" />
+                <span>Cello · Beter bellen begint met oefenen</span>
+              </div>
+            </div>
+            <div class="tabbar tabbar-donker">
+              <div class="tab">
+                <img src="./cello-favicon-creme-rond-512.png" alt="" />
+                <span>Cello · Beter bellen begint met oefenen</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Afgerond vierkant</h2>
+            <div class="checker">
+              <img src="./cello-favicon-creme-afgerond-512.png" alt="Afgerond vierkant crème favicon met donkergroen merkteken" />
+            </div>
+            <p class="caption"><code>cello-favicon-creme-afgerond-512.png</code><br />Vlak <b>#F4F2EA</b> · merkteken <b>#1E3730</b> · hoekradius 23%</p>
+            <div class="tabbar tabbar-licht">
+              <div class="tab">
+                <img src="./cello-favicon-creme-afgerond-512.png" alt="" />
+                <span>Cello · Beter bellen begint met oefenen</span>
+              </div>
+            </div>
+            <div class="tabbar tabbar-donker">
+              <div class="tab">
+                <img src="./cello-favicon-creme-afgerond-512.png" alt="" />
+                <span>Cello · Beter bellen begint met oefenen</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ actief op de site ══ -->
+      <section>
+        <p class="label">Donkergroen · nu de favicon van de site</p>
+        <div class="duo">
+          <div class="card alt">
+            <h2>Afgerond vierkant, donker <span aria-hidden="true">·</span> actief</h2>
+            <div class="checker">
+              <img src="./cello-favicon-donker-afgerond-512.png" alt="Afgerond vierkant donkergroen favicon met creme merkteken" />
+            </div>
+            <p class="caption"><code>favicon-512.png / -180 / -32 in public/</code><br />Vlak <b>#1E3730</b> · merkteken <b>#F4F2EA</b>. Dit staat nu in de <code>&lt;head&gt;</code> van de site.</p>
+            <div class="tabbar tabbar-licht">
+              <div class="tab">
+                <img src="./cello-favicon-donker-afgerond-512.png" alt="" />
+                <span>Cello · Beter bellen begint met oefenen</span>
+              </div>
+            </div>
+            <div class="tabbar tabbar-donker">
+              <div class="tab">
+                <img src="./cello-favicon-donker-afgerond-512.png" alt="" />
+                <span>Cello · Beter bellen begint met oefenen</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card alt">
+            <h2>Rond, donker</h2>
+            <div class="checker">
+              <img src="./cello-favicon-donker-rond-512.png" alt="Rond donkergroen favicon met creme merkteken" />
+            </div>
+            <p class="caption"><code>cello-favicon-donker-rond-512.png</code><br />Zelfde kleuren, maar volledig rond in plaats van afgerond vierkant.</p>
+            <div class="tabbar tabbar-licht">
+              <div class="tab">
+                <img src="./cello-favicon-donker-rond-512.png" alt="" />
+                <span>Cello · Beter bellen begint met oefenen</span>
+              </div>
+            </div>
+            <div class="tabbar tabbar-donker">
+              <div class="tab">
+                <img src="./cello-favicon-donker-rond-512.png" alt="" />
+                <span>Cello · Beter bellen begint met oefenen</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>Goed om te weten: browsers tonen een favicon precies zoals het bestand is, er wordt niets automatisch afgerond. De ronde vorm zit dus in de PNG zelf (transparante hoeken). Let op: de crème versie versmelt een beetje met een witte tabbalk; check de voorbeelden hierboven voor je kiest.</p>
+      </footer>
+    </div>
+  </body>
+</html>
