@@ -2,6 +2,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 import Lenis from 'lenis';
+import { inject } from '@vercel/analytics';
 
 import { initNav } from './js/nav.js';
 import { initHero } from './js/hero.js';
@@ -10,6 +11,8 @@ import { initReveals } from './js/reveals.js';
 import { initAccordion } from './js/accordion.js';
 import { initTeam } from './js/team.js';
 import { Waveform } from './js/waveform.js';
+
+inject(); // Vercel Web Analytics (bezoekers & paginaweergaven)
 
 gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
 ScrollTrigger.config({ ignoreMobileResize: true });
