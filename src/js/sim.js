@@ -34,11 +34,8 @@ export function initSim(reduced) {
       },
     });
 
-    // scroll-hint tonen, en meteen wegvagen zodra het scrollen begint
-    if (hint) {
-      hint.style.display = 'inline-flex';
-      tl.to(hint, { autoAlpha: 0, duration: 0.3, ease: 'power1.out' }, 0.12);
-    }
+    // scroll-hint blijft staan tijdens de hele animatie
+    if (hint) hint.style.display = 'inline-flex';
 
     // fase 1: scenario wordt gekozen (groene rand + rest dimt)
     tl.to('.pick-1', { scale: 1.03, boxShadow: 'inset 0 0 0 2px rgba(78, 154, 130, 0.95)', duration: 0.4 }, 0.3)
@@ -92,6 +89,9 @@ export function initSim(reduced) {
       // rustpunt op het einde van de pin
       .to({}, { duration: 0.6 });
 
+    // scroll-hint pas op het einde van de animatie laten vervagen
+    if (hint) tl.to(hint, { autoAlpha: 0, duration: 0.45, ease: 'power1.out' }, 6.9);
+
     // voortgangslijn over de volledige tijdlijn
     tl.to('[data-progress]', { scaleY: 1, ease: 'none', duration: tl.duration() }, 0);
   });
@@ -123,11 +123,8 @@ export function initSim(reduced) {
       },
     });
 
-    // scroll-hint tonen, en meteen wegvagen zodra het scrollen begint
-    if (hint) {
-      hint.style.display = 'inline-flex';
-      tl.to(hint, { autoAlpha: 0, duration: 0.28, ease: 'power1.out' }, 0.1);
-    }
+    // scroll-hint blijft staan tijdens de hele animatie
+    if (hint) hint.style.display = 'inline-flex';
 
     // fase 1: scenario wordt gekozen
     tl.to('.pick-1', { scale: 1.03, boxShadow: 'inset 0 0 0 2px rgba(78, 154, 130, 0.95)', duration: 0.4 }, 0.25)
@@ -182,6 +179,9 @@ export function initSim(reduced) {
     )
       // rustpunt op het einde van de pin
       .to({}, { duration: 0.5 });
+
+    // scroll-hint pas op het einde van de animatie laten vervagen
+    if (hint) tl.to(hint, { autoAlpha: 0, duration: 0.4, ease: 'power1.out' }, 5.85);
 
     // voortgangslijn over de volledige tijdlijn
     tl.to('[data-mprogress]', { scaleX: 1, ease: 'none', duration: tl.duration() }, 0);
