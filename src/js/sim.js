@@ -10,6 +10,7 @@ export function initSim(reduced) {
 
   const scoreEl = sim.querySelector('[data-count-to]');
   const ring = sim.querySelector('[data-ring]');
+  const hint = sim.querySelector('.sim-hint');
   const mm = gsap.matchMedia();
 
   /* ── Desktop: gepinde, gescrubde simulatie ── */
@@ -32,6 +33,12 @@ export function initSim(reduced) {
         anticipatePin: 1,
       },
     });
+
+    // scroll-hint tonen, en meteen wegvagen zodra het scrollen begint
+    if (hint) {
+      hint.style.display = 'inline-flex';
+      tl.to(hint, { autoAlpha: 0, duration: 0.3, ease: 'power1.out' }, 0.12);
+    }
 
     // fase 1: scenario wordt gekozen (groene rand + rest dimt)
     tl.to('.pick-1', { scale: 1.03, boxShadow: 'inset 0 0 0 2px rgba(78, 154, 130, 0.95)', duration: 0.4 }, 0.3)
@@ -115,6 +122,12 @@ export function initSim(reduced) {
         anticipatePin: 1,
       },
     });
+
+    // scroll-hint tonen, en meteen wegvagen zodra het scrollen begint
+    if (hint) {
+      hint.style.display = 'inline-flex';
+      tl.to(hint, { autoAlpha: 0, duration: 0.28, ease: 'power1.out' }, 0.1);
+    }
 
     // fase 1: scenario wordt gekozen
     tl.to('.pick-1', { scale: 1.03, boxShadow: 'inset 0 0 0 2px rgba(78, 154, 130, 0.95)', duration: 0.4 }, 0.25)

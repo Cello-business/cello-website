@@ -231,6 +231,23 @@
   color: #8fd0ba;
 }
 
+/* scroll-hint: alleen zichtbaar wanneer JS de gepinde versie draait */
+.sim-hint {
+  display: none;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.5rem;
+  color: rgba(244, 242, 234, 0.55);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.sim-hint svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: #8fd0ba;
+}
+
 .sim-grid {
   display: grid;
   grid-template-columns: minmax(300px, 0.85fr) 1.15fr;
