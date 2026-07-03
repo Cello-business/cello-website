@@ -651,7 +651,8 @@ html.no-js .sim-stage {
 
 @media (max-width: 899px) {
   .nav-links,
-  .nav-cta {
+  .nav-cta,
+  .nav-lang {
     display: none;
   }
 

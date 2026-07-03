@@ -10,7 +10,11 @@ import { initSim } from './js/sim.js';
 import { initReveals } from './js/reveals.js';
 import { initAccordion } from './js/accordion.js';
 import { initTeam } from './js/team.js';
+import { initI18n } from './js/i18n.js';
 import { Waveform } from './js/waveform.js';
+
+// taal eerst toepassen, zodat animaties/gesplitste tekst de juiste taal opbouwen
+initI18n();
 
 inject(); // Vercel Web Analytics (bezoekers & paginaweergaven)
 

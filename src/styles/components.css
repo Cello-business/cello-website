@@ -183,6 +183,65 @@
   font-size: 0.9rem;
 }
 
+/* ── Taalschakelaar ── */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  flex: none;
+}
+
+.lang-opt {
+  padding: 0.32rem 0.62rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  transition: color var(--t-fast), background-color var(--t-fast);
+}
+
+/* in de lichte nav-pill */
+.nav-lang {
+  background: rgba(30, 55, 48, 0.06);
+}
+
+.nav-lang .lang-opt {
+  color: var(--grijsgroen);
+}
+
+.nav-lang .lang-opt:hover {
+  color: var(--donker);
+}
+
+.nav-lang .lang-opt.is-active {
+  background: var(--donker);
+  color: var(--creme);
+}
+
+/* in de donkere mobiele menu-overlay */
+.menu-lang {
+  align-self: flex-start;
+  background: rgba(244, 242, 234, 0.1);
+}
+
+.menu-lang .lang-opt {
+  color: rgba(244, 242, 234, 0.7);
+  font-size: 0.95rem;
+  padding: 0.4rem 0.9rem;
+}
+
+.menu-lang .lang-opt:hover {
+  color: var(--creme);
+}
+
+.menu-lang .lang-opt.is-active {
+  background: var(--creme);
+  color: var(--donker);
+}
+
 /* ── Hero: call-kaart ── */
 .call-shell {
   position: relative;
