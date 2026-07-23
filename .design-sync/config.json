@@ -1,0 +1,10 @@
+{
+  "projectId": "90ee3977-2943-4fb9-9247-7e04b9c4e183",
+  "shape": "package",
+  "pkg": "cello-website",
+  "globalName": "Cello",
+  "cssEntry": "src/styles/base.css",
+  "extraFonts": [".design-sync/brand/fonts.css"],
+  "guidelinesGlob": ["merkstijl.md", "logo.md"],
+  "readmeHeader": ".design-sync/conventions.md"
+}

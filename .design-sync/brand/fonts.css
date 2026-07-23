@@ -1,0 +1,50 @@
+/* Figtree — lokaal geleverd (zelfde bestanden als de huisstijl-map). */
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/Figtree-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Figtree';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/Figtree-Italic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/Figtree-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./fonts/Figtree-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./fonts/Figtree-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Figtree';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./fonts/Figtree-BoldItalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('./fonts/Figtree-ExtraBold.ttf') format('truetype');
+}

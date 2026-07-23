@@ -5,3 +5,10 @@ dist
 
 # Claude Code lokale config (niet publiek)
 .claude/
+
+# design-sync
+.ds-sync/
+ds-bundle/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules
