@@ -6,7 +6,11 @@
    - blog/index.html: het nieuwste artikel groot, met beeld, en de oudere
      artikels eronder;
    - elk artikel: de meta/og/JSON-LD-tags, de kop (onderwerp, datum,
-     leestijd), het beeld en "Lees ook".
+     leestijd), het beeld en "Lees ook";
+   - de Engelse versie: staat er een en.html naast het artikel, dan komt die
+     als onzichtbaar <template> in de pagina, en krijgen alle blogpagina's een
+     woordenlijst met de Engelse titels en samenvattingen. src/js/i18n.js
+     wisselt ze om wanneer iemand EN kiest.
 
    Een artikel publiceren is dus: map kopiëren, meta invullen, tekst schrijven. */
 
@@ -14,6 +18,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { basename, dirname, resolve } from 'node:path';
 import { ONDERWERPEN, ONDERWERP, icoon } from './onderwerpen.js';
 import { AUTEURS } from './auteurs.js';
+import { normalize } from '../../src/js/i18n.js';
 
 const SITE = 'https://cellobusiness.com';
 const WOORDEN_PER_MINUUT = 200;
@@ -55,6 +60,26 @@ function leesArtikel(dir, slug) {
     beeld: meta(html, 'name', 'cello:beeld'),
     onderwerp: ONDERWERP[onderwerp] ? onderwerp : ONDERWERPEN[0].slug,
     minuten: leestijd(html),
+    en: leesEngels(dir, slug),
+  };
+}
+
+/* De Engelse versie naast een artikel (en.html), als die er is: titel en
+   description voor browser en overzicht, en de kop, intro en tekst zelf. */
+function leesEngels(dir, slug) {
+  const file = resolve(dir, slug, 'en.html');
+  if (!existsSync(file)) return null;
+  const html = readFileSync(file, 'utf-8');
+  const start = html.indexOf('<h1');
+  if (start < 0) {
+    console.warn(`[blog] ${slug}/en.html heeft geen <h1>; de Engelse versie wordt overgeslagen.`);
+    return null;
+  }
+  return {
+    titel: zonderTags(html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] ?? ''),
+    paginatitel: html.match(/<title>([^<]*)<\/title>/)?.[1] ?? '',
+    beschrijving: meta(html, 'name', 'description'),
+    inhoud: html.slice(start).trim(),
   };
 }
 
@@ -73,7 +98,14 @@ export function leesArtikels(dir) {
 // maar een " moet nog ontsnapt worden in een attribuut, en JSON wil platte tekst
 const attr = (s) => s.replace(/"/g, '&quot;');
 const plat = (s) =>
-  s.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+  s
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, '\u00a0')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&');
+const zonderTags = (s) => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 
 const minuten = (a) => `<span>${a.minuten} <span>min lezen</span></span>`;
 const kort = (iso) => (iso ? datumKort.format(new Date(iso)) : '');
@@ -98,7 +130,7 @@ function uitgelicht(a) {
             <a href="${a.url}">
               <div class="post-beeld">${beeld(a, 'eager')}</div>
               <div class="post-featured-text">
-                <time datetime="${a.datum}">${lang(a.datum)}</time>
+                <time datetime="${a.datum}" data-fmt="lang">${lang(a.datum)}</time>
                 <h2>${a.titel}</h2>
                 <p>${a.beschrijving}</p>
                 <p class="post-meta">${onderwerpRegel(a)}</p>
@@ -113,7 +145,7 @@ function kaarten(artikels) {
             <article class="post-card">
               <a href="${a.url}">
                 <div class="post-beeld">${beeld(a)}</div>
-                <time datetime="${a.datum}">${kort(a.datum)}</time>
+                <time datetime="${a.datum}" data-fmt="kort">${kort(a.datum)}</time>
                 <h3>${a.titel}</h3>
                 <p class="post-meta">${onderwerpRegel(a)}</p>
               </a>
@@ -177,7 +209,7 @@ function artikelKop(a) {
   return `<div class="post-kicker">
             <span class="post-topic">${o.label}</span>
             ${auteur}
-            <span><time datetime="${a.datum}">${lang(a.datum)}</time> · ${minuten(a)}</span>
+            <span><time datetime="${a.datum}" data-fmt="lang">${lang(a.datum)}</time> · ${minuten(a)}</span>
           </div>`;
 }
 
@@ -191,6 +223,26 @@ function leesOok(a, artikels) {
           <h2 id="lees-ook">Lees ook</h2>${kaarten(keuze)}
         </div>
       </section>`;
+}
+
+/* Engels: de titels en samenvattingen van alle artikels (voor het overzicht
+   en "Lees ook"), als woordenlijst die i18n.js over de pagina legt. De
+   sleutels zijn de Nederlandse teksten, genormaliseerd zoals i18n.js dat doet. */
+function woordenlijst(artikels) {
+  const lijst = {};
+  for (const a of artikels) {
+    if (!a.en) continue;
+    lijst[normalize(plat(a.titel))] = plat(a.en.titel);
+    if (a.beschrijving && a.en.beschrijving) lijst[normalize(plat(a.beschrijving))] = plat(a.en.beschrijving);
+  }
+  if (!Object.keys(lijst).length) return '';
+  return `<script type="application/json" id="i18n-en">${JSON.stringify(lijst).replace(/</g, '\\u003c')}</script>`;
+}
+
+// het hele Engelse artikel, onzichtbaar tot iemand EN kiest
+function engelsArtikel(a) {
+  if (!a.en) return '';
+  return `<template id="artikel-en" data-titel="${attr(a.en.paginatitel)}">${a.en.inhoud}</template>`;
 }
 
 /* ── De plugin ── */
@@ -220,7 +272,10 @@ export function blogPlugin(root) {
         const artikels = leesArtikels(dir);
 
         if (file === resolve(dir, 'index.html')) {
-          return html.replace('<!-- cello:overzicht -->', overzicht(artikels));
+          return html
+            .replace('<!-- cello:overzicht -->', overzicht(artikels))
+            .replace('</main>', `${woordenlijst(artikels)}
+    </main>`);
         }
 
         const slug = basename(dirname(file));
@@ -229,7 +284,9 @@ export function blogPlugin(root) {
           .replace('<!-- cello:meta -->', artikelMeta(a))
           .replace('<!-- cello:kop -->', artikelKop(a))
           .replace('<!-- cello:beeld -->', `<figure class="post-hero">${beeld(a, 'eager')}</figure>`)
-          .replace('<!-- cello:lees-ook -->', leesOok(a, artikels));
+          .replace('<!-- cello:lees-ook -->', leesOok(a, artikels))
+          .replace('</main>', `${engelsArtikel(a)}${woordenlijst(artikels)}
+    </main>`);
       },
     },
   };

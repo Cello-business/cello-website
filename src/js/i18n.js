@@ -210,18 +210,61 @@ export const EN = {
 
 const TRANSLATABLE_ATTRS = ['aria-label', 'alt', 'title', 'placeholder'];
 
-function translateNode(node) {
+function translateNode(node, dict) {
   const raw = node.nodeValue;
   const key = normalize(raw);
   if (!key) return;
-  const en = EN[key];
+  const en = dict[key];
   if (en === undefined) return;
   const lead = raw.match(/^\s*/)[0];
   const trail = raw.match(/\s*$/)[0];
   node.nodeValue = lead + en + trail;
 }
 
+/* Blogpagina's dragen een eigen woordenlijst mee (titels en samenvattingen
+   van de artikels), die de build erin zet als <script id="i18n-en">. */
+function pageDictionary() {
+  const el = document.getElementById('i18n-en');
+  if (!el) return {};
+  try {
+    return JSON.parse(el.textContent);
+  } catch {
+    return {};
+  }
+}
+
+/* Een artikel met een Engelse versie heeft die als <template id="artikel-en">
+   in de pagina: kop, intro en tekst wisselen we in één keer om. */
+function swapArticle() {
+  const tpl = document.getElementById('artikel-en');
+  const post = document.querySelector('.post');
+  if (!tpl || !post) return;
+  ['h1', '.post-lead', '.post-body'].forEach((sel) => {
+    const nl = post.querySelector(sel);
+    const en = tpl.content.querySelector(sel);
+    if (nl && en) nl.replaceWith(en.cloneNode(true));
+  });
+  if (tpl.dataset.titel) document.title = tpl.dataset.titel;
+}
+
+// datums die de build in het Nederlands schreef, in Engelse notatie
+function formatDates() {
+  const fmt = {
+    lang: new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
+    kort: new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
+  };
+  document.querySelectorAll('time[datetime][data-fmt]').forEach((el) => {
+    const date = new Date(el.getAttribute('datetime'));
+    const f = fmt[el.dataset.fmt];
+    if (f && !Number.isNaN(date.getTime())) el.textContent = f.format(date);
+  });
+}
+
 function applyEnglish() {
+  const dict = { ...EN, ...pageDictionary() };
+  swapArticle();
+  formatDates();
+
   // 1. zichtbare tekst (tekstknopen), scripts/styles overslaan
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
     acceptNode(node) {
@@ -234,18 +277,18 @@ function applyEnglish() {
   });
   const nodes = [];
   while (walker.nextNode()) nodes.push(walker.currentNode);
-  nodes.forEach(translateNode);
+  nodes.forEach((node) => translateNode(node, dict));
 
   // 2. attributen (aria-label, alt, title, placeholder)
   TRANSLATABLE_ATTRS.forEach((attr) => {
     document.querySelectorAll('[' + attr + ']').forEach((el) => {
-      const en = EN[normalize(el.getAttribute(attr))];
+      const en = dict[normalize(el.getAttribute(attr))];
       if (en !== undefined) el.setAttribute(attr, en);
     });
   });
 
   // 3. documenttitel
-  const t = EN[normalize(document.title)];
+  const t = dict[normalize(document.title)];
   if (t !== undefined) document.title = t;
 }
 
