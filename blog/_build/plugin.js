@@ -20,7 +20,8 @@ import { ONDERWERPEN, ONDERWERP, icoon } from './onderwerpen.js';
 import { AUTEURS } from './auteurs.js';
 import { normalize } from '../../src/js/i18n.js';
 
-const SITE = 'https://cellobusiness.com';
+// het echte adres: zonder www stuurt Vercel door, dus canonical en sitemap wijzen naar www
+const SITE = 'https://www.cellobusiness.com';
 const WOORDEN_PER_MINUUT = 200;
 
 const datumKort = new Intl.DateTimeFormat('nl-BE', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -262,6 +263,23 @@ export function blogPlugin(root) {
       server.watcher.on('add', herlaad);
       server.watcher.on('unlink', herlaad);
       server.watcher.on('change', herlaad);
+    },
+
+    // sitemap.xml voor Google: homepage, blog en elk artikel met zijn datum
+    generateBundle() {
+      const artikels = leesArtikels(dir);
+      const url = (loc, lastmod) =>
+        `  <url>\n    <loc>${loc}</loc>${lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : ''}\n  </url>`;
+      const xml = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        url(`${SITE}/`),
+        url(`${SITE}/blog/`, artikels[0]?.datum),
+        ...artikels.map((a) => url(`${SITE}${a.url}`, a.datum)),
+        '</urlset>',
+        '',
+      ].join('\n');
+      this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: xml });
     },
 
     transformIndexHtml: {

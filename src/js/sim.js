@@ -39,7 +39,7 @@ export function initSim(reduced) {
 
     // fase 1: scenario wordt gekozen (groene rand + rest dimt)
     tl.to('.pick-1', { scale: 1.03, boxShadow: 'inset 0 0 0 2px rgba(78, 154, 130, 0.95)', duration: 0.4 }, 0.3)
-      .to(['.pick-2', '.pick-3'], { opacity: 0.38, scale: 0.985, duration: 0.4 }, 0.35)
+      .to('.pick-2', { opacity: 0.38, scale: 0.985, duration: 0.4 }, 0.35)
 
       // overgang fase 1 -> 2
       .to('.stage-picker', { autoAlpha: 0, y: -46, duration: 0.5 }, 1.1)
@@ -76,7 +76,7 @@ export function initSim(reduced) {
       5.6
     );
 
-    gsap.utils.toArray('.rbar-fill').forEach((bar, i) => {
+    gsap.utils.toArray('.rbar-fill', sim).forEach((bar, i) => {
       tl.to(bar, { scaleX: parseFloat(bar.dataset.bar) / 100, duration: 0.7, ease: 'power3.out' }, 5.7 + i * 0.12);
     });
 
@@ -109,7 +109,7 @@ export function initSim(reduced) {
     const labels = gsap.utils.toArray('.smi-label');
     gsap.set(labels.slice(1), { autoAlpha: 0 });
     gsap.set(['.stage-call', '.stage-report'], { autoAlpha: 0 });
-    gsap.set('.rbar-fill', { scaleX: 0, transformOrigin: 'left center' });
+    gsap.set(sim.querySelectorAll('.rbar-fill'), { scaleX: 0, transformOrigin: 'left center' });
     if (ring) gsap.set(ring, { strokeDashoffset: RING });
 
     const tl = gsap.timeline({
@@ -128,7 +128,7 @@ export function initSim(reduced) {
 
     // fase 1: scenario wordt gekozen
     tl.to('.pick-1', { scale: 1.03, boxShadow: 'inset 0 0 0 2px rgba(78, 154, 130, 0.95)', duration: 0.4 }, 0.25)
-      .to(['.pick-2', '.pick-3'], { opacity: 0.38, scale: 0.985, duration: 0.4 }, 0.3)
+      .to('.pick-2', { opacity: 0.38, scale: 0.985, duration: 0.4 }, 0.3)
 
       // overgang fase 1 -> 2
       .to('.stage-picker', { autoAlpha: 0, y: -40, duration: 0.5 }, 1.0)
@@ -167,7 +167,7 @@ export function initSim(reduced) {
       );
     }
 
-    gsap.utils.toArray('.rbar-fill').forEach((bar, i) => {
+    gsap.utils.toArray('.rbar-fill', sim).forEach((bar, i) => {
       tl.to(bar, { scaleX: parseFloat(bar.dataset.bar) / 100, duration: 0.6, ease: 'power3.out' }, 4.8 + i * 0.1);
     });
 
@@ -200,7 +200,7 @@ function showStatic(sim, scoreEl, ring) {
   gsap.set('.pick-1', { boxShadow: 'inset 0 0 0 2px rgba(78, 154, 130, 0.95)' });
   if (ring) gsap.set(ring, { strokeDashoffset: RING * (1 - SCORE / 100) });
   if (scoreEl) scoreEl.textContent = String(SCORE);
-  gsap.utils.toArray('.rbar-fill').forEach((bar) => {
+  gsap.utils.toArray('.rbar-fill', sim).forEach((bar) => {
     gsap.set(bar, { scaleX: parseFloat(bar.dataset.bar) / 100 });
   });
 }

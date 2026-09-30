@@ -38,16 +38,16 @@ export const EN = {
   // ── Hero ──
   'Bellen leer je': 'You learn to call',
   'door te bellen.': 'by calling.',
-  'Je team oefent échte gesprekken met AI die terugpraat. Meteen daarna volgt feedback op tempo, taal en zelfvertrouwen.':
-    'Your team practises real conversations with AI that talks back. Right after, you get feedback on pace, language and confidence.',
+  'Laat nieuwe medewerkers hun moeilijkste gesprekken eerst oefenen met Vlaamse AI-klanten, in het Nederlands en Frans. Na elk gesprek krijgen ze concrete feedback. Jij ziet wie klaar is voor de lijn.':
+    'Let new team members practise their hardest conversations first with Flemish AI customers, in Dutch and French. After every call, they get concrete feedback. You see who’s ready to take real calls.',
   'Voorbeeld van een oefengesprek in Cello': 'Example of a practice call in Cello',
   'Inkoper · TechNova': 'Buyer · TechNova',
   'In gesprek': 'In call',
   'Scenario · Cold call · demo inboeken': 'Scenario · Cold call · book a demo',
   'Live feedback van Cello tijdens het gesprek': "Cello's live feedback during the call",
   'Sterke opening': 'Strong opening',
-  '172 wpm, iets trager': '172 wpm, a touch slower',
-  '0x "euhm"': '0× “um”',
+  'Bezwaar opgevangen': 'Objection handled',
+  'Verzorgde taal': 'Polished language',
   'Bekijk hoe het werkt': 'See how it works',
 
   // ── Manifest ──
@@ -68,14 +68,11 @@ export const EN = {
   'Voer het gesprek': 'Have the conversation',
   'Sofie praat terug, twijfelt en onderbreekt. Net echt.': 'Sofie talks back, hesitates and interrupts. Just like real life.',
   'Krijg je belrapport': 'Get your call report',
-  'Tempo, stopwoorden en structuur, met tips voor de volgende keer.':
-    'Pace, filler words and structure, with tips for next time.',
+  'Structuur, bezwaren en taal, met tips voor de volgende keer.':
+    'Structure, objections and language, with tips for next time.',
   'Sofie · Inkoper · kritisch': 'Sofie · Buyer · critical',
   Klachtgesprek: 'Complaint call',
   'Tom · Klant · geïrriteerd': 'Tom · Customer · irritated',
-  Sollicitatie: 'Job interview',
-  'Anna · HR-manager · vriendelijk': 'Anna · HR manager · friendly',
-  'Moeilijkheid: 1 van 3': 'Difficulty: 1 of 3',
   'Moeilijkheid: 2 van 3': 'Difficulty: 2 of 3',
   'Moeilijkheid: 3 van 3': 'Difficulty: 3 of 3',
   'Goeiemiddag, met Sofie De Wolf van TechNova.': 'Good afternoon, this is Sofie De Wolf from TechNova.',
@@ -86,10 +83,11 @@ export const EN = {
     "Good question. We let teams safely practise difficult conversations. I'd be glad to show you in ten minutes.",
   Belrapport: 'Call report',
   'Totaalscore 78 op 100': 'Total score 78 out of 100',
-  Tempo: 'Pace',
   Structuur: 'Structure',
-  Duidelijkheid: 'Clarity',
-  Stopwoorden: 'Filler words',
+  'Bezwaren opvangen': 'Handling objections',
+  Taalvaardigheid: 'Language skills',
+  'Tempo 148 wpm': 'Pace 148 wpm',
+  '1 stopwoord': '1 filler word',
   'Rustige, zelfverzekerde opening': 'Calm, confident opening',
   'Sneller to-the-point in minuut één': 'Get to the point faster in minute one',
 
@@ -104,10 +102,9 @@ export const EN = {
     'Chart: call score rises from 52 to 86 over eight sessions',
   'Sessie 1 · 52': 'Session 1 · 52',
   'Sessie 8 ·': 'Session 8 ·',
-  'Stopwoorden-teller': 'Filler-word counter',
-  'Gemiddeld aantal "euhms" na vijf sessies.': 'Average number of “ums” after five sessions.',
-  'Tempo & stiltes': 'Pace & pauses',
-  'Cello hoort wanneer je raast én wanneer je stilvalt.': 'Cello hears when you race and when you fall silent.',
+  'Lukte het gesprek?': 'Did the call land?',
+  'Na elk gesprek scoort Cello wat telt: de structuur, hoe je bezwaren opvangt en je taalvaardigheid.':
+    'After every call, Cello scores what matters: the structure, how you handle objections and your language skills.',
   'Taal & grammatica': 'Language & grammar',
   'groter als': 'bigger then',
   'groter dan': 'bigger than',
@@ -134,16 +131,6 @@ export const EN = {
   Retenties: 'Retention',
   Escalaties: 'Escalations',
   Terugbetalingen: 'Refunds',
-  'Elk kandidaat- en medewerkersgesprek, veilig geoefend.':
-    'Every candidate and employee conversation, safely practised.',
-  Sollicitaties: 'Job interviews',
-  Feedbackgesprekken: 'Feedback talks',
-  Exitgesprekken: 'Exit interviews',
-  'De moeilijkste gesprekken voer je best niet voor het eerst in het echt.':
-    "You'd better not have the hardest conversations for the first time for real.",
-  'Slecht nieuws': 'Bad news',
-  Evaluaties: 'Reviews',
-  Conflicten: 'Conflicts',
 
   // ── Voor teams ──
   "Jullie scenario's.": 'Your scenarios.',
@@ -162,11 +149,11 @@ export const EN = {
   kritisch: 'critical',
   'Scenario gepubliceerd': 'Scenario published',
   'Of laat het aan ons over': 'Or leave it to us',
-  'Vertel ons je sector en doelen. Wij leveren een volledige scenariobibliotheek, klaar op dag één.':
-    'Tell us your sector and goals. We deliver a full scenario library, ready on day one.',
+  "Vertel ons je sector en doelen. We bouwen je eerste scenario's samen met jou.":
+    'Tell us your sector and goals. We build your first scenarios together with you.',
   "Scenario's op maat van jullie sector": 'Scenarios tailored to your sector',
   "Stemmen en persona's die kloppen": 'Voices and personas that ring true',
-  'Meertalig: NL · FR · EN · DE': 'Multilingual: NL · FR · EN · DE',
+  'Meertalig: NL · FR · EN': 'Multilingual: NL · FR · EN',
   'Onboarding van je hele team inbegrepen': 'Onboarding for your whole team included',
   'Bespreek het met ons': 'Talk it through with us',
 
@@ -176,12 +163,12 @@ export const EN = {
   'Foto van Wout Severens': 'Photo of Wout Severens',
   'Foto van Alexander Vanvinckenroye': 'Photo of Alexander Vanvinckenroye',
   'Foto van Sophia': 'Photo of Sophia',
-  'Onze software-man. Zet ideeën om in een platform dat gewoon werkt. Als het werkt, was het Wout. Als het niet werkt, ook.':
-    "Our software guy. Turns ideas into a platform that just works. If it works, it was Wout. If it doesn't, also Wout.",
+  'Onze software-man. Zet ideeën om in een platform dat gewoon werkt.':
+    'Our software guy. Turns ideas into a platform that just works.',
   'De CEO. Houdt het hele team georganiseerd, en huurt zichzelf steeds opnieuw in als developer.':
     'The CEO. Keeps the whole team organised, and keeps re-hiring himself as a developer.',
-  'Houdt alle contracten en documenten op orde, en zorgt dat we niet in de gevangenis belanden. Tegelijk de creatieve stem van het team.':
-    'Keeps all contracts and documents in order, and makes sure we stay out of jail. Also the creative voice of the team.',
+  'Houdt alle contracten en documenten op orde. Tegelijk de creatieve stem van het team.':
+    'Keeps all contracts and documents in order. Also the creative voice of the team.',
 
   // ── CTA ──
   'Klaar om': 'Ready to',
@@ -192,6 +179,53 @@ export const EN = {
   // ── Footer ──
   'AI-belsimulaties die van elk team zelfverzekerde bellers maken.':
     'AI call simulations that turn any team into confident callers.',
+
+  // ── AI-klant ──
+  'AI-klant': 'AI customer',
+
+  // ── Voor de teamleider ──
+  'Voor de teamleider': 'For the team leader',
+  'Zie wie': 'See who',
+  'klaar is voor de lijn.': 'is ready for real calls.',
+  'Eén dashboard met per nieuwe medewerker hoe de oefengesprekken gaan, wie zelfstandig mag bellen en hoe lang het duurde om daar te komen.':
+    'One dashboard showing, for every new team member, how their practice calls are going, who can take calls on their own and how long it took to get there.',
+  'Het dashboard': 'The dashboard',
+  'Scores per medewerker en per scenario, week na week. Je ziet meteen waar je team op vastloopt.':
+    'Scores per team member and per scenario, week after week. You see straight away where your team gets stuck.',
+  'Wie klaar is voor de lijn': 'Who is ready for real calls',
+  'Haalt iemand de lat op structuur, bezwaren en taal, dan zie je dat. Op basis van scores, niet op gevoel.':
+    'When someone clears the bar on structure, objections and language, you see it. Based on scores, not gut feeling.',
+  'Hoe lang tot zelfstandig bellen': 'How long until they call on their own',
+  'Per nieuwe medewerker het aantal dagen tot die zelfstandig belt. Het cijfer dat je wil zien dalen.':
+    'For every new team member, the number of days until they take calls on their own. The number you want to see go down.',
+  'Voorbeeld van het dashboard voor de teamleider': 'Example of the team leader dashboard',
+  'Nieuwe medewerkers': 'New team members',
+  'Deze maand': 'This month',
+  'Klaar voor de lijn': 'Ready for real calls',
+  'van 4': 'of 4',
+  Oefengesprekken: 'Practice calls',
+  'Zelfstandig na': 'On their own after',
+  dagen: 'days',
+  Medewerker: 'Team member',
+  Zelfstandig: 'On their own',
+  'Oefent nog': 'Still practising',
+  'na 9 dagen': 'after 9 days',
+  'na 13 dagen': 'after 13 days',
+  'dag 6': 'day 6',
+  'dag 3': 'day 3',
+  'Voorbeeld van het dashboard, met fictieve medewerkers.': 'Example of the dashboard, with fictional team members.',
+
+  // ── Pilot ──
+  'Start met een pilot van': 'Start with a pilot of',
+  '6 weken.': '6 weeks.',
+  "We bouwen je eerste scenario's samen met jou. Je nieuwe medewerkers oefenen, en jij ziet wie klaar is voor de lijn.":
+    'We build your first scenarios together with you. Your new team members practise, and you see who is ready for real calls.',
+  "Je eerste scenario's, samen gebouwd": 'Your first scenarios, built together',
+  'Oefenen in het Nederlands, Frans en Engels': 'Practice in Dutch, French and English',
+  'Het dashboard voor de teamleider': 'The team leader dashboard',
+  'Na de pilot': 'After the pilot',
+  vanaf: 'from',
+  'per maand per team, alles inbegrepen': 'per month per team, all-inclusive',
 
   // ── Documenttitel ──
   'Cello · Beter bellen begint met oefenen': 'Cello · Better calling starts with practice',

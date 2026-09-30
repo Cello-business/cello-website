@@ -181,6 +181,7 @@
 .menu.is-open .menu-links a:nth-child(5) { transition-delay: 0.32s; }
 .menu.is-open .menu-links a:nth-child(6) { transition-delay: 0.38s; }
 .menu.is-open .menu-links a:nth-child(7) { transition-delay: 0.44s; }
+.menu.is-open .menu-links a:nth-child(8) { transition-delay: 0.5s; }
 
 .menu-foot {
   color: rgba(244, 242, 234, 0.55);
@@ -282,6 +283,22 @@
   display: block;
   font-size: 0.84rem;
   color: var(--cello-muted);
+}
+
+/* "AI-klant": zodat niemand denkt aan een echte klant of een getuigenis */
+.ai-tag {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.35rem;
+  padding: 0.14rem 0.5rem;
+  border-radius: 999px;
+  background: var(--cello-mint);
+  color: var(--cello-primary-hover);
+  font-size: 0.66rem;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0.04em;
+  vertical-align: 0.15em;
 }
 
 .call-status {
@@ -611,7 +628,7 @@ html.no-js .score-fg {
 
 .rbar {
   display: grid;
-  grid-template-columns: 7.2rem 1fr 2rem;
+  grid-template-columns: 9.4rem 1fr 2rem;
   align-items: center;
   gap: 0.9rem;
   font-size: 0.88rem;
@@ -643,10 +660,6 @@ html.no-js .rbar-fill {
   transform: none;
 }
 
-.rbar-fill-blauw {
-  background: var(--cello-blue);
-}
-
 .rbar-val {
   text-align: right;
   font-variant-numeric: tabular-nums;
@@ -655,6 +668,33 @@ html.no-js .rbar-fill {
 .report-chips {
   display: grid;
   gap: 0.5rem;
+}
+
+/* tempo en stopwoorden: een detail onder de scores die tellen */
+.report-detail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--cello-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.report-detail b {
+  margin-right: 0.2rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.report-detail span {
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  background: var(--cello-cream);
+  box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.06);
+  font-variant-numeric: tabular-nums;
 }
 
 .chip-plus svg {
@@ -760,66 +800,37 @@ html.no-js .rbar-fill {
   color: var(--cello-cream);
 }
 
-.uhm {
-  display: flex;
-  align-items: baseline;
+/* scorekaart: de scores die tonen of het gesprek lukte */
+.scores {
+  display: grid;
   gap: 1rem;
-  margin-block: auto;
-  padding-block: 0.5rem;
+  margin-top: auto;
+  padding-top: 1.4rem;
 }
 
-.uhm-from {
-  font-size: clamp(2.6rem, 4vw, 3.4rem);
+.scores .rbar {
+  grid-template-columns: 10.5rem 1fr 2.4rem;
+  font-size: 0.95rem;
+}
+
+.scores .rbar-label {
+  color: var(--cello-ink);
+}
+
+.scores .rbar-track {
+  height: 0.7rem;
+}
+
+.scores .rbar-val {
+  color: var(--cello-ink);
+  font-size: 1.15rem;
   font-weight: 800;
-  letter-spacing: -0.03em;
-  color: rgba(30, 55, 48, 0.3);
-  text-decoration: line-through;
-  text-decoration-thickness: 3px;
-  text-decoration-color: color-mix(in srgb, var(--cello-danger) 55%, transparent);
 }
 
-.uhm-arrow {
-  width: 1.6rem;
-  height: 1.6rem;
-  color: var(--cello-muted);
-  align-self: center;
-}
-
-.uhm-to {
-  font-size: clamp(3.4rem, 5.4vw, 4.6rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--cello-primary);
-  font-variant-numeric: tabular-nums;
-}
-
-.tempo-row {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  margin-block: auto;
-  padding-block: 0.6rem;
-}
-
-.eq-l {
-  height: 2.6rem;
-  gap: 5px;
-}
-
-.eq-l i {
-  width: 7px;
-}
-
-.tempo-val {
-  font-size: clamp(2rem, 3vw, 2.6rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-}
-
-.tempo-val small {
-  font-size: 0.5em;
-  font-weight: 600;
-  color: var(--cello-muted);
+.b-scores .report-detail {
+  margin-top: 1.3rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(30, 55, 48, 0.08);
 }
 
 .taal-fix {
@@ -944,14 +955,6 @@ html.no-js .rbar-fill {
   background: var(--cello-mint);
 }
 
-.acc-hr {
-  background: var(--blue-tint);
-}
-
-.acc-lead {
-  background: var(--cello-cream);
-  box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.07);
-}
 
 .acc-head {
   position: absolute;
