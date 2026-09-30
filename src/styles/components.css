@@ -35,7 +35,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  color: var(--donker);
+  color: var(--cello-ink);
 }
 
 .logo-mark {
@@ -57,9 +57,10 @@
 
 .nav-links a {
   position: relative;
+  white-space: nowrap;
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
   transition: color var(--t-fast);
 }
 
@@ -71,15 +72,17 @@
   bottom: -4px;
   height: 2px;
   border-radius: 2px;
-  background: var(--groen);
+  background: var(--cello-primary);
   transition: right var(--t-fast);
 }
 
-.nav-links a:hover {
-  color: var(--donker);
+.nav-links a:hover,
+.nav-links a[aria-current] {
+  color: var(--cello-ink);
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a[aria-current]::after {
   right: 0;
 }
 
@@ -89,7 +92,7 @@
   width: 2.6rem;
   height: 2.6rem;
   border-radius: 999px;
-  background: var(--donker);
+  background: var(--cello-ink);
   flex: none;
 }
 
@@ -100,7 +103,7 @@
   width: 1.1rem;
   height: 2px;
   border-radius: 2px;
-  background: var(--creme);
+  background: var(--cello-cream);
   transition: transform var(--t-fast);
   transform: translate(-50%, calc(-50% - 3.5px));
 }
@@ -130,7 +133,7 @@
   justify-content: center;
   gap: 3rem;
   padding: 6rem 8vw 3rem;
-  background: rgba(22, 48, 42, 0);
+  background: transparent;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -138,7 +141,7 @@
 }
 
 .menu.is-open {
-  background: rgba(22, 48, 42, 0.98);
+  background: color-mix(in srgb, var(--ink-deep) 98%, transparent);
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -152,7 +155,7 @@
 
 .menu-links a {
   display: inline-block;
-  color: var(--creme);
+  color: var(--cello-cream);
   font-size: clamp(2.2rem, 9vw, 3.4rem);
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -163,7 +166,7 @@
 }
 
 .menu-links .menu-demo {
-  color: var(--groen);
+  color: var(--cello-primary);
 }
 
 .menu.is-open .menu-links a {
@@ -177,6 +180,7 @@
 .menu.is-open .menu-links a:nth-child(4) { transition-delay: 0.26s; }
 .menu.is-open .menu-links a:nth-child(5) { transition-delay: 0.32s; }
 .menu.is-open .menu-links a:nth-child(6) { transition-delay: 0.38s; }
+.menu.is-open .menu-links a:nth-child(7) { transition-delay: 0.44s; }
 
 .menu-foot {
   color: rgba(244, 242, 234, 0.55);
@@ -209,16 +213,16 @@
 }
 
 .nav-lang .lang-opt {
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
 }
 
 .nav-lang .lang-opt:hover {
-  color: var(--donker);
+  color: var(--cello-ink);
 }
 
 .nav-lang .lang-opt.is-active {
-  background: var(--donker);
-  color: var(--creme);
+  background: var(--cello-ink);
+  color: var(--cello-cream);
 }
 
 /* in de donkere mobiele menu-overlay */
@@ -234,12 +238,12 @@
 }
 
 .menu-lang .lang-opt:hover {
-  color: var(--creme);
+  color: var(--cello-cream);
 }
 
 .menu-lang .lang-opt.is-active {
-  background: var(--creme);
-  color: var(--donker);
+  background: var(--cello-cream);
+  color: var(--cello-ink);
 }
 
 /* ── Hero: call-kaart ── */
@@ -277,7 +281,7 @@
 .call-who span {
   display: block;
   font-size: 0.84rem;
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
 }
 
 .call-status {
@@ -290,7 +294,7 @@
 
 .call-timer {
   font-variant-numeric: tabular-nums;
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
 }
 
 .call-scenario {
@@ -298,7 +302,7 @@
   align-items: center;
   gap: 0.55rem;
   justify-self: start;
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
   font-size: 0.85rem;
   font-weight: 600;
 }
@@ -306,13 +310,13 @@
 .call-scenario svg {
   width: 0.95rem;
   height: 0.95rem;
-  color: var(--blauw);
+  color: var(--cello-blue);
 }
 
 .wave {
   width: 100%;
   height: clamp(90px, 14vw, 130px);
-  border-radius: var(--r-m);
+  border-radius: var(--radius-panel);
   background: linear-gradient(180deg, rgba(228, 239, 233, 0.55), rgba(228, 239, 233, 0.2));
 }
 
@@ -329,8 +333,8 @@
   width: 2.7rem;
   height: 2.7rem;
   border-radius: 999px;
-  background: var(--creme);
-  color: var(--donker);
+  background: var(--cello-cream);
+  color: var(--cello-ink);
   box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.08);
 }
 
@@ -340,8 +344,8 @@
 }
 
 .call-btn-end {
-  background: #c4574e;
-  color: #fff;
+  background: var(--cello-danger);
+  color: var(--cello-white);
   box-shadow: none;
   width: 3.4rem;
 }
@@ -371,13 +375,13 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
 }
 
 .fp-logo {
   height: 1rem;
   width: auto;
-  color: var(--groen);
+  color: var(--cello-primary);
   flex: none;
 }
 
@@ -393,7 +397,7 @@
   gap: 0.6rem;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--donker);
+  color: var(--cello-ink);
   white-space: nowrap;
 }
 
@@ -404,11 +408,11 @@
 }
 
 .ic-groen {
-  color: var(--groen);
+  color: var(--cello-primary);
 }
 
 .ic-blauw {
-  color: var(--blauw);
+  color: var(--cello-blue);
 }
 
 /* ── Simulatie: picker ── */
@@ -427,8 +431,8 @@
   column-gap: 1rem;
   align-items: center;
   padding: 1.05rem 1.3rem;
-  border-radius: var(--r-m);
-  background: var(--wit);
+  border-radius: var(--radius-panel);
+  background: var(--cello-white);
   box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.07);
 }
 
@@ -439,7 +443,7 @@
   align-self: center;
   width: 1.5rem;
   height: 1.5rem;
-  color: var(--groen);
+  color: var(--cello-primary);
 }
 
 .pick-ico svg {
@@ -456,7 +460,7 @@
 .pick-sub {
   grid-area: sub;
   font-size: 0.85rem;
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
 }
 
 .pick-dots {
@@ -473,7 +477,7 @@
 }
 
 .pick-dots i.on {
-  background: var(--blauw);
+  background: var(--cello-blue);
 }
 
 /* ── Simulatie: gesprek ── */
@@ -488,8 +492,8 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 0.9rem 1.2rem;
-  border-radius: var(--r-m);
-  background: var(--wit);
+  border-radius: var(--radius-panel);
+  background: var(--cello-white);
   box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.07);
 }
 
@@ -515,16 +519,16 @@
 
 .bubble-ai {
   justify-self: start;
-  background: var(--wit);
-  color: var(--donker);
+  background: var(--cello-white);
+  color: var(--cello-ink);
   border-bottom-left-radius: 0.35rem;
   box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.07);
 }
 
 .bubble-user {
   justify-self: end;
-  background: var(--groen);
-  color: var(--creme);
+  background: var(--cello-primary);
+  color: var(--cello-cream);
   border-bottom-right-radius: 0.35rem;
 }
 
@@ -533,8 +537,8 @@
   display: grid;
   gap: 1.3rem;
   padding: clamp(1.2rem, 2vw, 1.7rem);
-  border-radius: var(--r-m);
-  background: var(--wit);
+  border-radius: var(--radius-panel);
+  background: var(--cello-white);
   box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.07);
 }
 
@@ -553,7 +557,7 @@
 
 .report-top span {
   font-size: 0.85rem;
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
 }
 
 .score {
@@ -576,11 +580,11 @@
 }
 
 .score-bg {
-  stroke: var(--mint);
+  stroke: var(--cello-mint);
 }
 
 .score-fg {
-  stroke: var(--groen);
+  stroke: var(--cello-primary);
   stroke-linecap: round;
   stroke-dasharray: 207.3;
   stroke-dashoffset: 207.3;
@@ -615,13 +619,13 @@ html.no-js .score-fg {
 }
 
 .rbar-label {
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
 }
 
 .rbar-track {
   height: 0.55rem;
   border-radius: 999px;
-  background: var(--creme);
+  background: var(--cello-cream);
   box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.05);
   overflow: hidden;
 }
@@ -630,7 +634,7 @@ html.no-js .score-fg {
   display: block;
   height: 100%;
   border-radius: 999px;
-  background: var(--groen);
+  background: var(--cello-primary);
   transform: scaleX(0);
   transform-origin: left;
 }
@@ -640,7 +644,7 @@ html.no-js .rbar-fill {
 }
 
 .rbar-fill-blauw {
-  background: var(--blauw);
+  background: var(--cello-blue);
 }
 
 .rbar-val {
@@ -654,11 +658,11 @@ html.no-js .rbar-fill {
 }
 
 .chip-plus svg {
-  color: var(--groen);
+  color: var(--cello-primary);
 }
 
 .chip-tip svg {
-  color: var(--blauw);
+  color: var(--cello-blue);
 }
 
 /* ── Bento-kaarten ── */
@@ -708,34 +712,34 @@ html.no-js .rbar-fill {
 
 .chart-line {
   fill: none;
-  stroke: var(--groen);
+  stroke: var(--cello-primary);
   stroke-width: 3.5;
   stroke-linecap: round;
 }
 
 .chart-dot {
-  fill: var(--wit);
-  stroke: var(--groen);
+  fill: var(--cello-white);
+  stroke: var(--cello-primary);
   stroke-width: 3;
 }
 
 .chart-dot-end {
-  fill: var(--groen);
+  fill: var(--cello-primary);
 }
 
 .chart-tag {
   position: absolute;
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
-  background: var(--wit);
+  background: var(--cello-white);
   box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.09), var(--shadow-tiny);
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
 }
 
 .chart-tag b {
-  color: var(--donker);
+  color: var(--cello-ink);
   font-variant-numeric: tabular-nums;
 }
 
@@ -747,13 +751,13 @@ html.no-js .rbar-fill {
 .chart-tag-b {
   right: 0;
   top: 4%;
-  background: var(--donker);
+  background: var(--cello-ink);
   color: rgba(244, 242, 234, 0.75);
   box-shadow: var(--shadow-tiny);
 }
 
 .chart-tag-b b {
-  color: var(--creme);
+  color: var(--cello-cream);
 }
 
 .uhm {
@@ -771,13 +775,13 @@ html.no-js .rbar-fill {
   color: rgba(30, 55, 48, 0.3);
   text-decoration: line-through;
   text-decoration-thickness: 3px;
-  text-decoration-color: rgba(196, 87, 78, 0.55);
+  text-decoration-color: color-mix(in srgb, var(--cello-danger) 55%, transparent);
 }
 
 .uhm-arrow {
   width: 1.6rem;
   height: 1.6rem;
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
   align-self: center;
 }
 
@@ -785,7 +789,7 @@ html.no-js .rbar-fill {
   font-size: clamp(3.4rem, 5.4vw, 4.6rem);
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: var(--groen);
+  color: var(--cello-primary);
   font-variant-numeric: tabular-nums;
 }
 
@@ -815,7 +819,7 @@ html.no-js .rbar-fill {
 .tempo-val small {
   font-size: 0.5em;
   font-weight: 600;
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
 }
 
 .taal-fix {
@@ -831,19 +835,19 @@ html.no-js .rbar-fill {
 .taal-fix svg {
   width: 1.2rem;
   height: 1.2rem;
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
   flex: none;
 }
 
 .taal-fix del {
   color: rgba(30, 55, 48, 0.35);
-  text-decoration-color: rgba(196, 87, 78, 0.6);
+  text-decoration-color: color-mix(in srgb, var(--cello-danger) 60%, transparent);
   text-decoration-thickness: 2.5px;
 }
 
 .taal-fix ins {
   text-decoration: none;
-  color: var(--groen);
+  color: var(--cello-primary);
 }
 
 .listen-copy {
@@ -858,7 +862,7 @@ html.no-js .rbar-fill {
   margin-top: 0.6rem;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
 }
 
 .listen-legend span {
@@ -874,11 +878,11 @@ html.no-js .rbar-fill {
 }
 
 .dot-groen {
-  background: var(--groen);
+  background: var(--cello-primary);
 }
 
 .dot-blauw {
-  background: var(--blauw);
+  background: var(--cello-blue);
 }
 
 .ratio {
@@ -894,7 +898,7 @@ html.no-js .rbar-fill {
   align-items: center;
   height: 2.7rem;
   padding-inline: 0.95rem;
-  color: var(--creme);
+  color: var(--cello-cream);
   font-weight: 700;
   font-size: 0.92rem;
   font-variant-numeric: tabular-nums;
@@ -902,12 +906,12 @@ html.no-js .rbar-fill {
 }
 
 .ratio-a {
-  background: var(--groen);
+  background: var(--cello-primary);
   border-radius: 0.9rem 0.4rem 0.4rem 0.9rem;
 }
 
 .ratio-b {
-  background: var(--blauw);
+  background: var(--cello-blue);
   border-radius: 0.4rem 0.9rem 0.9rem 0.4rem;
 }
 
@@ -921,7 +925,7 @@ html.no-js .rbar-fill {
 .acc-item {
   position: relative;
   flex: 1;
-  border-radius: var(--r-l);
+  border-radius: var(--radius-cover);
   overflow: hidden;
   cursor: pointer;
   transition: flex 0.85s var(--ease);
@@ -933,19 +937,19 @@ html.no-js .rbar-fill {
 }
 
 .acc-sales {
-  background: var(--donker);
+  background: var(--cello-ink);
 }
 
 .acc-support {
-  background: var(--mint);
+  background: var(--cello-mint);
 }
 
 .acc-hr {
-  background: #dbe6f0;
+  background: var(--blue-tint);
 }
 
 .acc-lead {
-  background: var(--creme);
+  background: var(--cello-cream);
   box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.07);
 }
 
@@ -963,7 +967,7 @@ html.no-js .rbar-fill {
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: var(--donker);
+  color: var(--cello-ink);
   writing-mode: vertical-rl;
   rotate: 180deg;
   white-space: nowrap;
@@ -972,7 +976,7 @@ html.no-js .rbar-fill {
 }
 
 .acc-sales .acc-title {
-  color: var(--creme);
+  color: var(--cello-cream);
 }
 
 .acc-item.is-open .acc-title {
@@ -1012,7 +1016,7 @@ html.no-js .rbar-fill {
 }
 
 .acc-sales .acc-body h3 {
-  color: var(--creme);
+  color: var(--cello-cream);
 }
 
 .acc-sales .acc-body p {
@@ -1032,13 +1036,13 @@ html.no-js .rbar-fill {
   font-size: 0.84rem;
   font-weight: 600;
   background: rgba(253, 253, 251, 0.75);
-  color: var(--donker);
+  color: var(--cello-ink);
   box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.08);
 }
 
 .acc-sales .acc-chips span {
   background: rgba(244, 242, 234, 0.12);
-  color: var(--creme);
+  color: var(--cello-cream);
   box-shadow: inset 0 0 0 1px rgba(244, 242, 234, 0.18);
 }
 
@@ -1073,7 +1077,7 @@ html.no-js .rbar-fill {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
 }
 
 .admin-field {
@@ -1082,7 +1086,7 @@ html.no-js .rbar-fill {
   gap: 0.55rem;
   padding: 0.6rem 0.95rem;
   border-radius: 0.85rem;
-  background: var(--creme);
+  background: var(--cello-cream);
   box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.07);
   font-size: 0.92rem;
   font-weight: 600;
@@ -1092,7 +1096,7 @@ html.no-js .rbar-fill {
   width: 1rem;
   height: 1rem;
   margin-left: auto;
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
 }
 
 .admin-langs {
@@ -1105,14 +1109,14 @@ html.no-js .rbar-fill {
   border-radius: 0.7rem;
   font-size: 0.82rem;
   font-weight: 700;
-  background: var(--creme);
-  color: var(--grijsgroen);
+  background: var(--cello-cream);
+  color: var(--cello-muted);
   box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.07);
 }
 
 .admin-langs b.on {
-  background: var(--donker);
-  color: var(--creme);
+  background: var(--cello-ink);
+  color: var(--cello-cream);
 }
 
 .admin-slider {
@@ -1124,7 +1128,7 @@ html.no-js .rbar-fill {
 .admin-slider small {
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--grijsgroen);
+  color: var(--cello-muted);
 }
 
 .slider-track {
@@ -1132,7 +1136,7 @@ html.no-js .rbar-fill {
   flex: 1;
   height: 0.5rem;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--mint), rgba(94, 143, 184, 0.35));
+  background: linear-gradient(90deg, var(--cello-mint), rgba(94, 143, 184, 0.35));
   box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.06);
 }
 
@@ -1143,8 +1147,8 @@ html.no-js .rbar-fill {
   width: 1.15rem;
   height: 1.15rem;
   border-radius: 999px;
-  background: var(--wit);
-  box-shadow: 0 2px 8px rgba(30, 55, 48, 0.3), inset 0 0 0 4px var(--groen);
+  background: var(--cello-white);
+  box-shadow: 0 2px 8px rgba(30, 55, 48, 0.3), inset 0 0 0 4px var(--cello-primary);
   transform: translate(-50%, -50%);
 }
 
@@ -1156,8 +1160,8 @@ html.no-js .rbar-fill {
   margin-top: 0.5rem;
   padding: 0.55rem 1.05rem;
   border-radius: 999px;
-  background: var(--groen);
-  color: var(--creme);
+  background: var(--cello-primary);
+  color: var(--cello-cream);
   font-size: 0.88rem;
   font-weight: 700;
 }
@@ -1168,12 +1172,12 @@ html.no-js .rbar-fill {
 }
 
 .team-card-dark {
-  background: var(--donker);
+  background: var(--cello-ink);
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08), inset 0 0 0 1px rgba(244, 242, 234, 0.06);
 }
 
 .team-card-dark h3 {
-  color: var(--creme);
+  color: var(--cello-cream);
 }
 
 .team-card-dark > p {
@@ -1191,7 +1195,7 @@ html.no-js .rbar-fill {
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  color: var(--creme);
+  color: var(--cello-cream);
   font-size: 0.98rem;
   font-weight: 500;
 }
@@ -1199,7 +1203,7 @@ html.no-js .rbar-fill {
 .team-list svg {
   width: 1.15rem;
   height: 1.15rem;
-  color: #8fd0ba;
+  color: var(--cello-positive);
   flex: none;
 }
 
@@ -1208,14 +1212,14 @@ html.no-js .rbar-fill {
   align-items: center;
   gap: 0.55rem;
   margin-top: 1.4rem;
-  color: #a7c8e4;
+  color: var(--blue-on-dark);
   font-weight: 700;
   font-size: 0.98rem;
   transition: color var(--t-fast), gap var(--t-fast);
 }
 
 .team-link:hover {
-  color: var(--creme);
+  color: var(--cello-cream);
   gap: 0.85rem;
 }
 
@@ -1228,7 +1232,7 @@ html.no-js .rbar-fill {
 .cta-logo {
   width: clamp(7rem, 12vw, 10.5rem);
   height: auto;
-  color: var(--creme);
+  color: var(--cello-cream);
   margin-inline: auto;
 }
 
@@ -1262,7 +1266,7 @@ html.no-js .rbar-fill {
 
 /* ── Footer-details ── */
 .footer-logo {
-  color: var(--creme);
+  color: var(--cello-cream);
 }
 
 .footer-col {
@@ -1288,5 +1292,5 @@ html.no-js .rbar-fill {
 }
 
 .footer-col a:hover {
-  color: #fff;
+  color: var(--cello-white);
 }

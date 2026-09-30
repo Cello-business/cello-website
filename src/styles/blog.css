@@ -1,0 +1,472 @@
+/* ─────────────────────────────────────────────
+   Cello: blog (overzicht & artikel)
+   Rustig en klein: een paginatitel, het nieuwste artikel groot met beeld,
+   de oudere eronder. Beelden in de afgeronde vorm en schaduw van de site,
+   tekst in het ritme van de homepage. Geen nieuwe kleuren: alles komt uit
+   base.css. De inhoud bouwt blog/_build/plugin.js; dit bestand bepaalt
+   hoe ze eruitziet.
+───────────────────────────────────────────── */
+
+/* één kolom voor kop, artikels en "Lees ook" */
+.blog-col {
+  width: min(960px, 92vw);
+  margin-inline: auto;
+}
+
+/* ── Kop ── */
+.blog-head {
+  padding-top: clamp(6.5rem, 12vh, 7.5rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.blog-head h1 {
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+}
+
+.blog-lead {
+  margin: 0.7rem auto 0;
+  max-width: 46ch;
+  font-size: 1.05rem;
+}
+
+.blog-posts {
+  padding-bottom: clamp(4.5rem, 9vw, 7rem);
+}
+
+/* ── Beeld: foto, of zonder foto een vlak met het icoon van het onderwerp ── */
+.post-beeld {
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  border-radius: var(--radius-card-lg);
+  background: var(--cello-cream);
+  box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.06), var(--shadow-tiny);
+}
+
+.post-beeld img,
+.post-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post-beeld-leeg {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background: var(--cello-mint);
+  color: var(--cello-primary-hover);
+}
+
+.post-beeld-leeg svg {
+  width: 18%;
+  max-width: 5rem;
+  height: auto;
+}
+
+.post-beeld-klantendienst {
+  background: var(--blue-tint);
+  color: var(--cello-blue);
+}
+
+.post-beeld-leiderschap {
+  background: var(--cello-cream);
+  color: var(--cello-ink);
+}
+
+/* onderwerp · leestijd, onder elk artikel */
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--cello-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.post-onderwerp {
+  color: var(--cello-ink);
+}
+
+/* ── Het nieuwste artikel ── */
+.post-featured a {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.post-featured-text {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 720px;
+}
+
+.post-featured time,
+.post-card time {
+  color: var(--cello-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.post-featured h2 {
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  transition: color var(--duration) var(--ease);
+}
+
+.post-featured p:not(.post-meta) {
+  font-size: 1.02rem;
+}
+
+.post-featured .post-meta {
+  margin-top: 0.3rem;
+}
+
+.post-featured a:hover h2,
+.post-card a:hover h3 {
+  color: var(--cello-primary-hover);
+}
+
+/* ── Oudere artikels en "Lees ook" ── */
+.post-more {
+  margin-top: clamp(3.5rem, 7vw, 5rem);
+}
+
+.post-more h2,
+.post-related h2 {
+  margin-bottom: 1.2rem;
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+}
+
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 1.4rem;
+}
+
+.post-card a {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.post-card .post-beeld {
+  margin-bottom: 0.5rem;
+}
+
+.post-card h3 {
+  font-size: 1.1rem;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  transition: color var(--duration) var(--ease);
+}
+
+/* ── Artikel ── */
+.read-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 70;
+  height: 3px;
+  background: var(--cello-primary);
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.post-head,
+.post-body {
+  width: min(var(--container-narrow), 92vw);
+  margin-inline: auto;
+}
+
+.post-head {
+  padding-top: clamp(6.5rem, 12vh, 7.5rem);
+}
+
+.post-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+  color: var(--cello-muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+/* het onderwerp als stil label (geen knop, dus geen hover) */
+.post-topic {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.2rem;
+  padding: 0 0.85rem;
+  border-radius: var(--radius-pill);
+  background: var(--cello-white);
+  box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.12);
+  color: var(--cello-ink);
+}
+
+/* wie het schreef: klein, in dezelfde regel als datum en leestijd */
+.post-auteur {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--cello-ink);
+}
+
+.post-auteur img {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-pill);
+  object-fit: cover;
+  background: var(--blue-tint);
+}
+
+.post-head h1 {
+  margin-top: 1rem;
+  font-size: clamp(2rem, 4.2vw, 3rem);
+}
+
+.post-lead {
+  margin-top: 1.2rem;
+  font-size: clamp(1.05rem, 1.4vw, 1.18rem);
+  line-height: 1.55;
+}
+
+/* het beeld van het artikel, onder de kop en even breed als de tekst */
+.post-hero {
+  width: min(var(--container-narrow), 92vw);
+  margin: clamp(2rem, 4vw, 2.6rem) auto 0;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  border-radius: var(--radius-card-lg);
+  background: var(--cello-cream);
+  box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.06), var(--shadow-tiny);
+}
+
+.post-body {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* ruimte tussen het einde van het artikel en de donkere CTA eronder */
+.post {
+  padding-bottom: clamp(4.5rem, 9vw, 7rem);
+}
+
+/* staat "Lees ook" ertussen, dan zorgt het artikel al voor de ruimte erboven */
+.post + .post-related {
+  padding-top: 0;
+}
+
+/* de pijn, in de woorden van je lezer: het artikel opent ermee */
+.post-pain {
+  padding: clamp(1.3rem, 2.6vw, 1.9rem) clamp(1.4rem, 2.8vw, 2.2rem);
+  border-radius: var(--radius-input);
+  border-left: 3px solid var(--cello-outline);
+  background: var(--cello-cream);
+}
+
+.prose .post-pain-label {
+  color: var(--cello-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.prose .post-pain p:not(.post-pain-label) {
+  font-size: clamp(1.1rem, 1.7vw, 1.28rem);
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.prose .post-pain-label + p {
+  margin-top: 0.5rem;
+}
+
+/* lopende tekst: ink in plaats van muted, want lange tekst leest men echt */
+.prose > * + * {
+  margin-top: 1.2em;
+}
+
+.prose p,
+.prose li {
+  color: var(--cello-ink);
+  font-size: 1.075rem;
+  line-height: 1.75;
+}
+
+.prose h2 {
+  margin-top: 2.1em;
+  font-size: clamp(1.55rem, 2.6vw, 2rem);
+  line-height: 1.12;
+}
+
+.prose h3 {
+  margin-top: 1.8em;
+  font-size: clamp(1.2rem, 1.8vw, 1.35rem);
+  line-height: 1.2;
+}
+
+.prose h2 + *,
+.prose h3 + * {
+  margin-top: 0.7em;
+}
+
+.prose a:not(.btn) {
+  color: var(--cello-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--cello-outline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--duration) var(--ease);
+}
+
+.prose a:not(.btn):hover {
+  text-decoration-color: var(--cello-primary);
+}
+
+.prose strong {
+  color: var(--cello-ink);
+  font-weight: 700;
+}
+
+.prose code {
+  padding: 0.12em 0.4em;
+  border-radius: 6px;
+  background: var(--cello-cream);
+  box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.08);
+  font-size: 0.9em;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.3em;
+}
+
+.prose li + li {
+  margin-top: 0.45em;
+}
+
+.prose li::marker {
+  color: var(--cello-primary);
+  font-weight: 700;
+}
+
+/* citaat uit een echt gesprek (DS .quote-moment) */
+.prose blockquote:not(.post-pain) {
+  padding: 1.1rem 1.4rem;
+  border-left: 3px solid var(--cello-outline);
+  border-radius: var(--radius-input);
+  background: var(--cello-cream);
+}
+
+.prose blockquote:not(.post-pain) p {
+  font-style: italic;
+}
+
+.prose figure img {
+  width: 100%;
+  border-radius: var(--radius-card-lg);
+}
+
+.prose figcaption {
+  margin-top: 0.7rem;
+  color: var(--cello-muted);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+.prose hr {
+  height: 1px;
+  margin-block: 2.6em;
+  border: 0;
+  background: rgba(30, 55, 48, 0.12);
+}
+
+/* de oplossing: het ene positieve paneel per artikel (DS .card--mint) */
+.post-callout {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 2.2em !important;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  border-radius: var(--radius-card-lg);
+  background: var(--cello-mint);
+}
+
+.prose .post-callout .eyebrow {
+  color: var(--cello-primary-hover);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.prose .post-callout h2,
+.post-callout h3 {
+  margin-top: 0;
+}
+
+.prose .post-callout h2 {
+  font-size: clamp(1.3rem, 2vw, 1.55rem);
+}
+
+.post-callout p {
+  font-size: 1rem;
+}
+
+.post-callout .btn {
+  justify-self: start;
+  margin-top: 0.6rem;
+}
+
+/* bronnen onderaan: kleiner en rustiger dan de lopende tekst */
+.prose .post-sources-title {
+  font-size: 1.15rem;
+}
+
+.prose .post-sources {
+  padding-left: 1.1em;
+}
+
+.prose .post-sources li {
+  color: var(--cello-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.prose .post-sources a {
+  color: var(--cello-muted);
+  font-weight: 600;
+}
+
+.post-related {
+  padding-block: clamp(3.5rem, 7vw, 5rem);
+}
+
+.post-related .blog-col {
+  width: min(var(--container-narrow), 92vw);
+}
+
+/* ─────────────────────────────────────────────
+   Responsive
+───────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .post-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .post-featured a {
+    gap: 1.1rem;
+  }
+
+  .prose p,
+  .prose li {
+    font-size: 1.03rem;
+  }
+}

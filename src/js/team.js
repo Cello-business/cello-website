@@ -3,7 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* Over ons: vier kaarten naast elkaar, rol en bio altijd zichtbaar.
+/* Over ons: drie kaarten naast elkaar, rol en bio altijd zichtbaar.
    Enige beweging: de kaarten schuiven één voor één in beeld. */
 export function initTeam(reduced) {
   const cards = gsap.utils.toArray('.person');

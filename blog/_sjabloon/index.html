@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ── Vul dit in. Canonical, og-, twitter- en JSON-LD-tags maakt de build zelf. ── -->
+    <title>Zo schrijf je een artikel dat raakt · Cello</title>
+    <meta name="description" content="Het sjabloon voor een Cello-artikel: begin bij de pijn, maak ze concreet, draai ze om en sluit af met één stap." />
+    <meta name="author" content="Alexander Vanvinckenroye" />
+    <meta property="article:published_time" content="2026-09-30" />
+    <meta name="cello:onderwerp" content="sales" />
+    <meta name="cello:beeld" content="" />
+    <!-- cello:meta -->
+    <meta name="theme-color" content="#EAEAE6" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
+    <link rel="apple-touch-icon" href="/favicon-180.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <link rel="stylesheet" href="/src/styles/components.css" />
+    <link rel="stylesheet" href="/src/styles/sections.css" />
+    <link rel="stylesheet" href="/src/styles/blog.css" />
+    <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('force-visible')},2600);</script>
+    <script type="module" src="/src/blog.js"></script>
+  </head>
+  <body>
+    <div class="read-progress" data-read-progress aria-hidden="true"></div>
+    <a class="skip" href="#main">Naar inhoud</a>
+
+    <!-- ══════════════ NAV ══════════════ -->
+    <header class="nav" id="top">
+      <div class="nav-pill">
+        <a class="nav-logo" href="/" aria-label="Cello, naar de homepage">
+          <svg class="logo-mark" viewBox="0 0 523 490" aria-hidden="true">
+            <path fill="currentColor" d="M139.489 80.999 C 116.227 84.200, 92.593 106.615, 88.879 129 C 86.318 144.437, 89.545 162.379, 96.923 173.723 C 117.379 205.173, 156.412 212.118, 185.299 189.445 C 218.158 163.656, 218.415 117.026, 185.835 92.535 C 178.118 86.734, 173.629 84.398, 166.780 82.618 C 159.612 80.756, 146.790 79.995, 139.489 80.999 Z" />
+            <path fill="currentColor" d="M137.500 290.480 C 113.152 295.001, 94.773 312.734, 89.381 336.908 C 80.019 378.885, 114.924 417.130, 157.149 411.159 C 181.690 407.689, 205.424 384.321, 209.110 360 C 215.584 317.288, 179.867 282.613, 137.500 290.480 Z" />
+            <path fill="currentColor" d="M324.656 35.527 C 309.861 39.247, 290.539 53.896, 283.989 66.359 L 281.500 71.094 284.848 77.297 C 286.690 80.709, 299.706 101.886, 313.773 124.358 L 339.350 165.216 342.925 164.731 C 344.891 164.465, 355.180 161.012, 365.789 157.059 C 376.398 153.106, 386.069 150.013, 387.281 150.186 C 392.602 150.945, 405.878 191.292, 409.595 218 C 411.896 234.542, 411.115 269.060, 408.079 285 C 404.680 302.840, 400.358 317.263, 393.291 334.352 C 389.389 343.789, 388.206 344.937, 384.103 343.270 C 368.539 336.949, 344.064 328, 342.342 328 C 340.612 328, 338.083 331.274, 330.175 343.750 C 292.358 403.413, 282.864 418.692, 282.360 420.703 C 281.131 425.599, 289.566 437.331, 299.995 445.232 C 313.292 455.305, 325.638 459.518, 341.500 459.393 C 367.024 459.194, 383.347 449.594, 405.910 421.514 C 439.153 380.144, 459.028 335.486, 466.666 285 C 469.375 267.092, 469.100 221.973, 466.177 204.772 C 456.071 145.300, 431.300 95.068, 393.552 57.500 C 375.558 39.591, 365.429 34.863, 344 34.369 C 334.521 34.150, 328.760 34.495, 324.656 35.527 Z" />
+          </svg>
+          <span class="nav-word">cello</span>
+        </a>
+        <nav class="nav-links" aria-label="Hoofdnavigatie">
+          <a href="/#hoe-het-werkt">Hoe het werkt</a>
+          <a href="/#feedback">Feedback</a>
+          <a href="/#scenarios">Scenario's</a>
+          <a href="/#teams">Voor teams</a>
+          <a href="/#over-ons">Over ons</a>
+          <a href="/blog/" aria-current="true">Blog</a>
+        </nav>
+        <div class="lang-switch nav-lang" role="group" aria-label="Taal">
+          <button type="button" class="lang-opt" data-lang="nl">NL</button>
+          <button type="button" class="lang-opt" data-lang="en">EN</button>
+        </div>
+        <a href="#demo" class="btn btn-primary btn-s nav-cta">
+          <span>Plan een demo</span>
+          <span class="btn-orb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <button class="burger" type="button" aria-label="Menu openen" aria-expanded="false" aria-controls="menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- fullscreen mobiel menu -->
+    <div class="menu" id="menu" aria-hidden="true">
+      <nav class="menu-links" aria-label="Mobiele navigatie">
+        <a href="/#hoe-het-werkt">Hoe het werkt</a>
+        <a href="/#feedback">Feedback</a>
+        <a href="/#scenarios">Scenario's</a>
+        <a href="/#teams">Voor teams</a>
+        <a href="/#over-ons">Over ons</a>
+        <a href="/blog/">Blog</a>
+        <a href="#demo" class="menu-demo">Plan een demo</a>
+      </nav>
+      <div class="lang-switch menu-lang" role="group" aria-label="Taal">
+        <button type="button" class="lang-opt" data-lang="nl">NL</button>
+        <button type="button" class="lang-opt" data-lang="en">EN</button>
+      </div>
+      <p class="menu-foot">contact@cellobusiness.com</p>
+    </div>
+
+    <main id="main">
+      <!--
+        SJABLOON VOOR EEN ARTIKEL
+        1. Kopieer deze map naar blog/jouw-slug (kort, kleine letters, koppeltekens).
+           Mappen die met _ beginnen gaan niet live; jouw kopie wel, vanzelf.
+        2. Vul in de <head> de titel, description, auteur, datum en het onderwerp in
+           (sales, klantendienst, onboarding of leiderschap). Heb je een beeld (2:1,
+           bv. 2400×1200 jpg)? Zet het in public/blog/beelden/ en vul cello:beeld in.
+        3. Schrijf de titel (h1), de intro en de tekst hieronder. De auteur moet in
+           blog/_build/auteurs.js staan; foto en naam komen dan in de kop.
+        Het overzicht, de leestijd, het deelbeeld en "Lees ook" komen er vanzelf bij.
+      -->
+      <article class="post">
+        <header class="post-head">
+          <!-- cello:kop -->
+          <h1>Zo schrijf je een artikel dat <em>raakt.</em></h1>
+          <p class="post-lead">Dit sjabloon is meteen de handleiding. Kopieer de map, vervang de tekst en houd de opbouw aan: begin bij de pijn, maak ze concreet, draai ze om en sluit af met één stap.</p>
+        </header>
+
+        <!-- cello:beeld -->
+
+        <div class="post-body prose">
+          <blockquote class="post-pain">
+            <p class="post-pain-label">Herkenbaar?</p>
+            <p>Je weet dat je moet bellen. Je leest je mail nog eens. Je haalt koffie. Het is elf uur en de lijst ligt er nog.</p>
+          </blockquote>
+
+          <h2>Begin bij de pijn</h2>
+          <p>Je lezer is een teamleider die elke dag ziet wat moeilijke gesprekken kosten. Open dus niet met Cello, maar met hun week: het uitgestelde telefoontje, de klant die escaleert, de nieuwe collega die dichtklapt. Schrijf het zo concreet dat ze denken: <strong>dat is bij ons.</strong></p>
+          <p>Het blok hierboven is daarvoor. Eén of twee zinnen, in de tweede persoon, nog zonder oplossing.</p>
+
+          <h2>Maak het concreet</h2>
+          <p>Een pijnpunt blijft abstract tot je het in een scène giet. Kies één moment en beschrijf wat er gebeurt, wat het kost en wie het merkt.</p>
+          <ul>
+            <li><strong>Het moment.</strong> Wanneer gaat het mis? Maandagochtend, de eerste call van de dag, het derde klachtgesprek op rij.</li>
+            <li><strong>De kost.</strong> Gemiste afspraken, klanten die afhaken, mensen die na drie maanden vertrekken.</li>
+            <li><strong>Wie het merkt.</strong> De beller zelf, de klant, en jij als teamleider die het achteraf oplost.</li>
+          </ul>
+          <p>Cijfers helpen, maar alleen met een bron. <a href="https://cellobusiness.com/blog/">Link ze</a>, of laat ze weg.</p>
+          <blockquote>
+            <p>Ik weet wat ik moet zeggen. Alleen niet meer zodra de andere kant opneemt.</p>
+          </blockquote>
+          <p>Een citaat uit een echt gesprek werkt beter dan elke samenvatting. Gebruik alleen wat je echt gehoord hebt, en vraag toestemming.</p>
+
+          <h2>Draai het om</h2>
+          <p>Na de pijn komt de ommezwaai: dit is geen karaktertrek, het is een vaardigheid, en vaardigheden train je. Leg uit wat werkt, ook los van Cello. Een lezer die iets bijleert, onthoudt wie het uitlegde.</p>
+
+          <aside class="post-callout">
+            <p class="eyebrow">Zo oefen je dit met Cello</p>
+            <h3>Oefen het gesprek voor het telt.</h3>
+            <p>Kies een scenario dat lijkt op het moment uit dit artikel, voer het gesprek met een AI die terugpraat en krijg meteen feedback op tempo, structuur en stopwoorden.</p>
+            <a href="#demo" class="btn btn-primary">
+              <span>Plan een demo</span>
+              <span class="btn-orb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+          </aside>
+
+          <h2>Sluit af met één stap</h2>
+          <p>Eindig niet met een samenvatting, maar met iets wat je lezer deze week kan doen. Eén stap, klein genoeg om vandaag te beginnen.</p>
+
+          <hr />
+
+          <h3>Voor je publiceert</h3>
+          <ol>
+            <li>Titel onder de 60 tekens, description rond de 155. Die description is ook de samenvatting op de kaart.</li>
+            <li>De datum en het onderwerp staan alleen in de <code>&lt;head&gt;</code>; de leestijd rekent de build zelf uit.</li>
+            <li>Check het artikel met <code>npm run dev</code> op <code>/blog/jouw-slug/</code>, ook op je telefoon.</li>
+          </ol>
+        </div>
+
+      </article>
+
+      <!-- cello:lees-ook -->
+
+      <!-- ══════════════ CTA ══════════════ -->
+      <section class="cta" id="demo">
+        <div class="container cta-inner">
+          <svg class="cta-logo" viewBox="0 0 523 490" aria-hidden="true" data-reveal>
+            <path fill="currentColor" d="M139.489 80.999 C 116.227 84.200, 92.593 106.615, 88.879 129 C 86.318 144.437, 89.545 162.379, 96.923 173.723 C 117.379 205.173, 156.412 212.118, 185.299 189.445 C 218.158 163.656, 218.415 117.026, 185.835 92.535 C 178.118 86.734, 173.629 84.398, 166.780 82.618 C 159.612 80.756, 146.790 79.995, 139.489 80.999 Z" />
+            <path fill="currentColor" d="M137.500 290.480 C 113.152 295.001, 94.773 312.734, 89.381 336.908 C 80.019 378.885, 114.924 417.130, 157.149 411.159 C 181.690 407.689, 205.424 384.321, 209.110 360 C 215.584 317.288, 179.867 282.613, 137.500 290.480 Z" />
+            <g class="cta-hand">
+              <path fill="currentColor" d="M324.656 35.527 C 309.861 39.247, 290.539 53.896, 283.989 66.359 L 281.500 71.094 284.848 77.297 C 286.690 80.709, 299.706 101.886, 313.773 124.358 L 339.350 165.216 342.925 164.731 C 344.891 164.465, 355.180 161.012, 365.789 157.059 C 376.398 153.106, 386.069 150.013, 387.281 150.186 C 392.602 150.945, 405.878 191.292, 409.595 218 C 411.896 234.542, 411.115 269.060, 408.079 285 C 404.680 302.840, 400.358 317.263, 393.291 334.352 C 389.389 343.789, 388.206 344.937, 384.103 343.270 C 368.539 336.949, 344.064 328, 342.342 328 C 340.612 328, 338.083 331.274, 330.175 343.750 C 292.358 403.413, 282.864 418.692, 282.360 420.703 C 281.131 425.599, 289.566 437.331, 299.995 445.232 C 313.292 455.305, 325.638 459.518, 341.500 459.393 C 367.024 459.194, 383.347 449.594, 405.910 421.514 C 439.153 380.144, 459.028 335.486, 466.666 285 C 469.375 267.092, 469.100 221.973, 466.177 204.772 C 456.071 145.300, 431.300 95.068, 393.552 57.500 C 375.558 39.591, 365.429 34.863, 344 34.369 C 334.521 34.150, 328.760 34.495, 324.656 35.527 Z" />
+            </g>
+          </svg>
+          <h2 data-reveal>Klaar om<br /><em>op te nemen?</em></h2>
+          <p data-reveal>Plan een demo van 30 minuten en laat je team deze week nog oefenen.</p>
+          <div class="cta-actions" data-reveal>
+            <a class="btn btn-light" href="mailto:contact@cellobusiness.com?subject=Demo%20aanvragen" data-magnetic>
+              <span>Plan een demo</span>
+              <span class="btn-orb btn-orb-donker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+            <a class="cta-mail" href="mailto:contact@cellobusiness.com">contact@cellobusiness.com</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="nav-logo footer-logo" href="/" aria-label="Cello, naar de homepage">
+            <svg class="logo-mark" viewBox="0 0 523 490" aria-hidden="true">
+              <path fill="currentColor" d="M139.489 80.999 C 116.227 84.200, 92.593 106.615, 88.879 129 C 86.318 144.437, 89.545 162.379, 96.923 173.723 C 117.379 205.173, 156.412 212.118, 185.299 189.445 C 218.158 163.656, 218.415 117.026, 185.835 92.535 C 178.118 86.734, 173.629 84.398, 166.780 82.618 C 159.612 80.756, 146.790 79.995, 139.489 80.999 Z" />
+              <path fill="currentColor" d="M137.500 290.480 C 113.152 295.001, 94.773 312.734, 89.381 336.908 C 80.019 378.885, 114.924 417.130, 157.149 411.159 C 181.690 407.689, 205.424 384.321, 209.110 360 C 215.584 317.288, 179.867 282.613, 137.500 290.480 Z" />
+              <path fill="currentColor" d="M324.656 35.527 C 309.861 39.247, 290.539 53.896, 283.989 66.359 L 281.500 71.094 284.848 77.297 C 286.690 80.709, 299.706 101.886, 313.773 124.358 L 339.350 165.216 342.925 164.731 C 344.891 164.465, 355.180 161.012, 365.789 157.059 C 376.398 153.106, 386.069 150.013, 387.281 150.186 C 392.602 150.945, 405.878 191.292, 409.595 218 C 411.896 234.542, 411.115 269.060, 408.079 285 C 404.680 302.840, 400.358 317.263, 393.291 334.352 C 389.389 343.789, 388.206 344.937, 384.103 343.270 C 368.539 336.949, 344.064 328, 342.342 328 C 340.612 328, 338.083 331.274, 330.175 343.750 C 292.358 403.413, 282.864 418.692, 282.360 420.703 C 281.131 425.599, 289.566 437.331, 299.995 445.232 C 313.292 455.305, 325.638 459.518, 341.500 459.393 C 367.024 459.194, 383.347 449.594, 405.910 421.514 C 439.153 380.144, 459.028 335.486, 466.666 285 C 469.375 267.092, 469.100 221.973, 466.177 204.772 C 456.071 145.300, 431.300 95.068, 393.552 57.500 C 375.558 39.591, 365.429 34.863, 344 34.369 C 334.521 34.150, 328.760 34.495, 324.656 35.527 Z" />
+            </svg>
+            <span class="nav-word">cello</span>
+          </a>
+          <p>AI-belsimulaties die van elk team zelfverzekerde bellers maken.</p>
+        </div>
+        <nav class="footer-col" aria-label="Product">
+          <strong>Product</strong>
+          <a href="/#hoe-het-werkt">Hoe het werkt</a>
+          <a href="/#feedback">Feedback</a>
+          <a href="/#scenarios">Scenario's</a>
+          <a href="/#teams">Voor teams</a>
+          <a href="/#over-ons">Over ons</a>
+          <a href="/blog/">Blog</a>
+        </nav>
+        <nav class="footer-col" aria-label="Contact">
+          <strong>Contact</strong>
+          <a href="mailto:contact@cellobusiness.com">contact@cellobusiness.com</a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="#demo">Plan een demo</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Cello</span>
+        <a href="mailto:contact@cellobusiness.com">contact@cellobusiness.com</a>
+      </div>
+      <div class="footer-mark" aria-hidden="true">
+        <span class="footer-mark-word">cello</span>
+        <svg class="footer-mark-logo" viewBox="0 0 523 490">
+          <path d="M139.489 80.999 C 116.227 84.200, 92.593 106.615, 88.879 129 C 86.318 144.437, 89.545 162.379, 96.923 173.723 C 117.379 205.173, 156.412 212.118, 185.299 189.445 C 218.158 163.656, 218.415 117.026, 185.835 92.535 C 178.118 86.734, 173.629 84.398, 166.780 82.618 C 159.612 80.756, 146.790 79.995, 139.489 80.999 Z" />
+          <path d="M137.500 290.480 C 113.152 295.001, 94.773 312.734, 89.381 336.908 C 80.019 378.885, 114.924 417.130, 157.149 411.159 C 181.690 407.689, 205.424 384.321, 209.110 360 C 215.584 317.288, 179.867 282.613, 137.500 290.480 Z" />
+          <path d="M324.656 35.527 C 309.861 39.247, 290.539 53.896, 283.989 66.359 L 281.500 71.094 284.848 77.297 C 286.690 80.709, 299.706 101.886, 313.773 124.358 L 339.350 165.216 342.925 164.731 C 344.891 164.465, 355.180 161.012, 365.789 157.059 C 376.398 153.106, 386.069 150.013, 387.281 150.186 C 392.602 150.945, 405.878 191.292, 409.595 218 C 411.896 234.542, 411.115 269.060, 408.079 285 C 404.680 302.840, 400.358 317.263, 393.291 334.352 C 389.389 343.789, 388.206 344.937, 384.103 343.270 C 368.539 336.949, 344.064 328, 342.342 328 C 340.612 328, 338.083 331.274, 330.175 343.750 C 292.358 403.413, 282.864 418.692, 282.360 420.703 C 281.131 425.599, 289.566 437.331, 299.995 445.232 C 313.292 455.305, 325.638 459.518, 341.500 459.393 C 367.024 459.194, 383.347 449.594, 405.910 421.514 C 439.153 380.144, 459.028 335.486, 466.666 285 C 469.375 267.092, 469.100 221.973, 466.177 204.772 C 456.071 145.300, 431.300 95.068, 393.552 57.500 C 375.558 39.591, 365.429 34.863, 344 34.369 C 334.521 34.150, 328.760 34.495, 324.656 35.527 Z" />
+        </svg>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -172,17 +172,14 @@ export const EN = {
 
   // ── Over ons ──
   'Het team achter': 'The team behind',
-  'Vier oprichters, één team.': 'Four founders, one team.',
+  'Drie oprichters, één team.': 'Three founders, one team.',
   'Foto van Wout Severens': 'Photo of Wout Severens',
   'Foto van Alexander Vanvinckenroye': 'Photo of Alexander Vanvinckenroye',
-  'Foto van Brendan': 'Photo of Brendan',
   'Foto van Sophia': 'Photo of Sophia',
   'Onze software-man. Zet ideeën om in een platform dat gewoon werkt. Als het werkt, was het Wout. Als het niet werkt, ook.':
     "Our software guy. Turns ideas into a platform that just works. If it works, it was Wout. If it doesn't, also Wout.",
   'De CEO. Houdt het hele team georganiseerd, en huurt zichzelf steeds opnieuw in als developer.':
     'The CEO. Keeps the whole team organised, and keeps re-hiring himself as a developer.',
-  'Marketing en sales. Zorgt dat de juiste bedrijven Cello vinden, en er niet meer mee willen stoppen. Kan een ijsbeer een airco aansmeren.':
-    'Marketing and sales. Makes sure the right companies find Cello, and never want to leave. Could sell an air conditioner to a polar bear.',
   'Houdt alle contracten en documenten op orde, en zorgt dat we niet in de gevangenis belanden. Tegelijk de creatieve stem van het team.':
     'Keeps all contracts and documents in order, and makes sure we stay out of jail. Also the creative voice of the team.',
 
@@ -198,6 +195,17 @@ export const EN = {
 
   // ── Documenttitel ──
   'Cello · Beter bellen begint met oefenen': 'Cello · Better calling starts with practice',
+
+  // ── Blog (overzicht en rand van elk artikel; de artikels zelf zijn Nederlandstalig) ──
+  'Cello, naar de homepage': 'Cello, to the homepage',
+  'Blog · Cello: over de gesprekken waar teams tegen opzien': 'Blog · Cello: on the conversations teams dread',
+  'De Cello-blog': 'The Cello blog',
+  'Over de gesprekken waar teams tegen opzien, en hoe je ze oefent voor ze tellen.':
+    'On the conversations teams dread, and how to practise them before they count.',
+  Artikels: 'Articles',
+  'Meer artikels': 'More articles',
+  'min lezen': 'min read',
+  'Lees ook': 'Read next',
 };
 
 const TRANSLATABLE_ATTRS = ['aria-label', 'alt', 'title', 'placeholder'];
