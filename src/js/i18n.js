@@ -123,14 +123,20 @@ export const EN = {
   Klantendienst: 'Customer service',
   Leiderschap: 'Leadership',
   'Van eerste cold call tot laatste onderhandeling.': 'From first cold call to final negotiation.',
-  Opvolggesprekken: 'Follow-up calls',
-  Prijsonderhandeling: 'Price negotiation',
-  'Demo inplannen': 'Booking demos',
   'Boze klanten worden oefenmateriaal.': 'Angry customers become practice material.',
-  Klachten: 'Complaints',
-  Retenties: 'Retention',
-  Escalaties: 'Escalations',
-  Terugbetalingen: 'Refunds',
+
+  // ── Scenario's ──
+  'Cold calling · Opvolggesprekken · Prijsonderhandeling · Demo inplannen':
+    'Cold calling · Follow-up calls · Price negotiation · Booking demos',
+  'Klachten · Retenties · Escalaties · Terugbetalingen': 'Complaints · Retention · Escalations · Refunds',
+  'Ook voor HR en leiderschap.': 'Also for HR and leadership.',
+  'Sollicitaties, feedback- en exitgesprekken, slecht nieuws brengen, evaluaties en conflicten.':
+    'Job interviews, feedback and exit conversations, delivering bad news, reviews and conflicts.',
+
+  // ── Teamleider: vette inleidingen ──
+  'Waar het team op zakt.': 'Where the team drops.',
+  'Wie klaar is voor de lijn.': 'Who is ready for real calls.',
+  'Hoe snel iemand groeit.': 'How fast someone improves.',
 
   // ── Voor teams ──
   "Jullie scenario's.": 'Your scenarios.',
@@ -183,37 +189,35 @@ export const EN = {
   // ── AI-klant ──
   'AI-klant': 'AI customer',
 
-  // ── Voor de teamleider ──
+  // ── Voor de teamleider (een stukje uit het echte dashboard) ──
   'Voor de teamleider': 'For the team leader',
   'Zie wie': 'See who',
   'klaar is voor de lijn.': 'is ready for real calls.',
-  'Eén dashboard met per nieuwe medewerker hoe de oefengesprekken gaan, wie zelfstandig mag bellen en hoe lang het duurde om daar te komen.':
-    'One dashboard showing, for every new team member, how their practice calls are going, who can take calls on their own and how long it took to get there.',
-  'Het dashboard': 'The dashboard',
-  'Scores per medewerker en per scenario, week na week. Je ziet meteen waar je team op vastloopt.':
-    'Scores per team member and per scenario, week after week. You see straight away where your team gets stuck.',
-  'Wie klaar is voor de lijn': 'Who is ready for real calls',
-  'Haalt iemand de lat op structuur, bezwaren en taal, dan zie je dat. Op basis van scores, niet op gevoel.':
-    'When someone clears the bar on structure, objections and language, you see it. Based on scores, not gut feeling.',
-  'Hoe lang tot zelfstandig bellen': 'How long until they call on their own',
-  'Per nieuwe medewerker het aantal dagen tot die zelfstandig belt. Het cijfer dat je wil zien dalen.':
-    'For every new team member, the number of days until they take calls on their own. The number you want to see go down.',
+  'Eén overzicht van je hele team: hoe de oefengesprekken gaan, waar het team op zakt en wie klaar is voor de lijn.':
+    'One overview of your whole team: how the practice calls are going, where the team drops and who is ready for real calls.',
   'Voorbeeld van het dashboard voor de teamleider': 'Example of the team leader dashboard',
-  'Nieuwe medewerkers': 'New team members',
-  'Deze maand': 'This month',
-  'Klaar voor de lijn': 'Ready for real calls',
-  'van 4': 'of 4',
-  Oefengesprekken: 'Practice calls',
-  'Zelfstandig na': 'On their own after',
-  dagen: 'days',
+  Medewerkers: 'Team members',
   Medewerker: 'Team member',
-  Zelfstandig: 'On their own',
-  'Oefent nog': 'Still practising',
-  'na 9 dagen': 'after 9 days',
-  'na 13 dagen': 'after 13 days',
-  'dag 6': 'day 6',
-  'dag 3': 'day 3',
+  Gemiddelde: 'Average',
+  Verschil: 'Change',
+  Verloop: 'Trend',
+  '↑ 10,4': '↑ 10.4',
+  '↑ 12,1': '↑ 12.1',
+  '↑ 8,9': '↑ 8.9',
+  '↑ 3,2': '↑ 3.2',
+  Teamgemiddelde: 'Team average',
+  '↑ 8,7': '↑ 8.7',
+  'Waar het hele team op zakt': 'Where the whole team drops',
+  'Kwaliteit van je vragen': 'Quality of your questions',
+  '↑ 13,8': '↑ 13.8',
+  'Bij 3 van de 4 medewerkers is dit het zwakste punt.': 'For 3 of the 4 team members this is the weakest point.',
   'Voorbeeld van het dashboard, met fictieve medewerkers.': 'Example of the dashboard, with fictional team members.',
+  'Het zwakste punt van het hele team, en welk scenario het lastigst is. Meteen je volgende trainingsonderwerp.':
+    'The weakest point of the whole team, and which scenario is the hardest. Your next training topic, right there.',
+  'Per medewerker de gemiddelde score, de vooruitgang en het zwakste punt. Op basis van scores, niet op gevoel.':
+    'For every team member: the average score, the progress and the weakest point. Based on scores, not gut feeling.',
+  'Het verloop per medewerker, gesprek na gesprek. Zo zie je wanneer iemand zelfstandig kan bellen.':
+    'The trend for every team member, call after call. So you can see when someone is ready to call on their own.',
 
   // ── Pilot ──
   'Start met een pilot van': 'Start with a pilot of',
@@ -221,11 +225,17 @@ export const EN = {
   "We bouwen je eerste scenario's samen met jou. Je nieuwe medewerkers oefenen, en jij ziet wie klaar is voor de lijn.":
     'We build your first scenarios together with you. Your new team members practise, and you see who is ready for real calls.',
   "Je eerste scenario's, samen gebouwd": 'Your first scenarios, built together',
-  'Oefenen in het Nederlands, Frans en Engels': 'Practice in Dutch, French and English',
+  'Oefenen met Vlaamse AI-klanten, in het Nederlands, Frans en Engels':
+    'Practise with Flemish AI customers, in Dutch, French and English',
   'Het dashboard voor de teamleider': 'The team leader dashboard',
-  'Na de pilot': 'After the pilot',
-  vanaf: 'from',
+  'Vooraf afgesproken doelen, zodat je na 6 weken weet of het werkt':
+    'Goals agreed upfront, so after 6 weeks you know whether it works',
+  'Na de pilot:': 'After the pilot:',
+  'vanaf €750': 'from €750',
   'per maand per team, alles inbegrepen': 'per month per team, all-inclusive',
+  'De pilot wordt volledig verrekend met je eerste jaar. Na 6 weken beslis jij of je doorgaat.':
+    'The pilot is fully credited against your first year. After 6 weeks, you decide whether to continue.',
+  'Plan een kennismaking': 'Book an intro call',
 
   // ── Documenttitel ──
   'Cello · Beter bellen begint met oefenen': 'Cello · Better calling starts with practice',

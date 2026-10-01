@@ -287,18 +287,11 @@
 
 /* "AI-klant": zodat niemand denkt aan een echte klant of een getuigenis */
 .ai-tag {
-  display: inline-flex;
-  align-items: center;
-  margin-left: 0.35rem;
-  padding: 0.14rem 0.5rem;
-  border-radius: 999px;
-  background: var(--cello-mint);
-  color: var(--cello-primary-hover);
-  font-size: 0.66rem;
-  font-weight: 700;
+  margin-left: 0.3rem;
+  color: var(--cello-muted);
+  font-size: 0.78em;
+  font-weight: 600;
   font-style: normal;
-  letter-spacing: 0.04em;
-  vertical-align: 0.15em;
 }
 
 .call-status {
@@ -683,7 +676,7 @@ html.no-js .rbar-fill {
 
 .report-detail b {
   margin-right: 0.2rem;
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -926,127 +919,74 @@ html.no-js .rbar-fill {
   border-radius: 0.4rem 0.9rem 0.9rem 0.4rem;
 }
 
-/* ── Accordeon ── */
-.acc {
-  display: flex;
-  gap: 0.8rem;
-  min-height: 460px;
+/* ── Scenario's: sales en klantendienst groot, HR en leiderschap kleiner ── */
+.scen-main {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
 }
 
-.acc-item {
-  position: relative;
-  flex: 1;
-  border-radius: var(--radius-cover);
-  overflow: hidden;
-  cursor: pointer;
-  transition: flex 0.85s var(--ease);
-}
-
-.acc-item.is-open {
-  flex: 3.1;
-  cursor: default;
-}
-
-.acc-sales {
-  background: var(--cello-ink);
-}
-
-.acc-support {
-  background: var(--cello-mint);
-}
-
-
-.acc-head {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 1.6rem;
-  text-align: left;
-}
-
-.acc-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--cello-ink);
-  writing-mode: vertical-rl;
-  rotate: 180deg;
-  white-space: nowrap;
-  opacity: 1;
-  transition: opacity 0.4s var(--ease);
-}
-
-.acc-sales .acc-title {
-  color: var(--cello-cream);
-}
-
-.acc-item.is-open .acc-title {
-  opacity: 0;
-}
-
-.acc-body {
-  position: absolute;
-  inset: 0;
+.scen {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 0.7rem;
+  min-height: 18rem;
   padding: clamp(1.6rem, 3vw, 2.6rem);
-  min-width: 320px;
-  opacity: 0;
-  transform: translateY(1.4rem);
-  /* dicht: content meteen weg zodra je een ander paneel kiest */
-  transition: opacity 0.14s var(--ease), transform 0.14s var(--ease);
-  pointer-events: none;
+  border-radius: var(--radius-cover);
 }
 
-.acc-item.is-open .acc-body {
-  opacity: 1;
-  transform: none;
-  /* open: rustige reveal die wacht tot het paneel breder is */
-  transition: opacity 0.55s var(--ease) 0.12s, transform 0.55s var(--ease) 0.12s;
-  pointer-events: auto;
+.scen-sales {
+  background: var(--cello-ink);
 }
 
-.acc-body h3 {
+.scen-support {
+  background: var(--cello-mint);
+}
+
+.scen-body {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.scen-body h3 {
   font-size: clamp(1.6rem, 2.6vw, 2.2rem);
 }
 
-.acc-body p {
+.scen-body p {
   max-width: 34ch;
 }
 
-.acc-sales .acc-body h3 {
+.scen-sales h3 {
   color: var(--cello-cream);
 }
 
-.acc-sales .acc-body p {
+.scen-sales p {
   color: rgba(244, 242, 234, 0.65);
 }
 
-.acc-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.acc-chips span {
-  padding: 0.45rem 0.9rem;
-  border-radius: 999px;
-  font-size: 0.84rem;
-  font-weight: 600;
-  background: rgba(253, 253, 251, 0.75);
+/* de gesprekstypes: gewoon een regel tekst */
+.scen-body .scen-types {
+  margin-top: 0.4rem;
+  max-width: none;
   color: var(--cello-ink);
-  box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.08);
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
-.acc-sales .acc-chips span {
-  background: rgba(244, 242, 234, 0.12);
-  color: var(--cello-cream);
-  box-shadow: inset 0 0 0 1px rgba(244, 242, 234, 0.18);
+.scen-sales .scen-types {
+  color: rgba(244, 242, 234, 0.82);
+}
+
+/* HR en leiderschap: aanwezig, maar in één zin onder de twee grote */
+.scen-also {
+  max-width: 62ch;
+  margin-top: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: 1.02rem;
+}
+
+.scen-also strong {
+  color: var(--cello-ink);
+  font-weight: 700;
 }
 
 /* ── Teams: admin-mockup ── */

@@ -442,158 +442,173 @@ html.no-js .sim-stage {
   display: grid;
 }
 
-/* ── Voor de teamleider ── */
+/* ── Voor de teamleider ──
+   Een stukje uit het echte dashboard (de medewerkerslijst) met twee
+   kaartjes die erboven zweven, zoals het feedbackpaneel in de hero. */
 .lead {
   padding-bottom: var(--sec-pad);
 }
 
 .lead-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.35fr);
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.35fr);
   gap: clamp(2rem, 5vw, 4.5rem);
   align-items: center;
 }
 
-.lead-points {
-  list-style: none;
+/* uitleg naast het dashboard: lopende tekst met een vette inleiding */
+.lead-copy {
   display: grid;
-  gap: 1.8rem;
+  gap: 1.2rem;
+  max-width: 44ch;
 }
 
-.lead-points li {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 1rem;
+.lead-copy p {
+  font-size: 1.02rem;
+  line-height: 1.65;
 }
 
-.lead-ico {
-  display: grid;
-  place-items: center;
-  width: 2.8rem;
-  height: 2.8rem;
-  border-radius: 999px;
-  background: var(--cello-mint);
-  color: var(--cello-primary-hover);
+.lead-copy strong {
+  color: var(--cello-ink);
+  font-weight: 700;
 }
 
-.lead-ico svg {
-  width: 1.3rem;
-  height: 1.3rem;
-}
-
-.lead-points h3 {
-  font-size: 1.15rem;
-}
-
-.lead-points p {
-  margin-top: 0.35rem;
-  max-width: 40ch;
-  font-size: 0.97rem;
+/* ruimte voor het kaartje dat boven uitsteekt; het bijschrift komt onder
+   het kaartje dat onderaan uitsteekt */
+.lead-dash {
+  padding-top: 1.5rem;
 }
 
 .lead-dash figcaption {
-  margin-top: 0.9rem;
+  margin-top: 4.4rem;
   color: var(--cello-muted);
   font-size: 0.8rem;
   text-align: center;
 }
 
-/* het dashboard zelf: dezelfde taal als de app (periode-pil, lichtgroene status) */
+.lead-stage {
+  position: relative;
+}
+
 .dash {
   display: grid;
-  gap: 1.2rem;
-  padding: clamp(1.2rem, 2.2vw, 1.8rem);
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.4rem;
+  padding: clamp(1.2rem, 2.4vw, 1.8rem);
 }
 
-.dash-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.dash-top strong {
-  display: block;
-  font-size: 1.05rem;
+.dash-card-title {
+  color: var(--cello-ink);
+  font-size: 1.02rem;
+  font-weight: 700;
   letter-spacing: -0.01em;
 }
 
-.dash-top div span {
-  display: block;
-  color: var(--cello-muted);
-  font-size: 0.84rem;
+.dash-card-sub {
+  margin-top: 0.3rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
 }
 
-.dash-period {
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  background: var(--cello-ink);
-  color: var(--cello-cream);
+.dash-up {
+  color: var(--green-text);
   font-size: 0.8rem;
   font-weight: 600;
   white-space: nowrap;
-}
-
-.dash-kpis {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.7rem;
-}
-
-.dash-kpi {
-  display: grid;
-  gap: 0.25rem;
-  padding: 0.85rem 1rem;
-  border-radius: var(--radius-input);
-  background: var(--cello-cream);
-}
-
-.dash-kpi span {
-  color: var(--cello-muted);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.dash-kpi b {
-  color: var(--cello-ink);
-  font-size: 1.6rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
   font-variant-numeric: tabular-nums;
 }
 
-.dash-kpi small {
-  color: var(--cello-muted);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0;
+/* zwevende kaartjes */
+.dash-float {
+  position: absolute;
+  z-index: 2;
+  border-radius: 1.15rem;
+  box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.08), var(--shadow-soft);
 }
 
+.dash-float-avg {
+  top: -1.4rem;
+  right: -1.2rem;
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.8rem 1.1rem;
+  background: var(--cello-white);
+}
+
+.dash-float-avg > span {
+  color: var(--cello-muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dash-float-avg b {
+  color: var(--cello-ink);
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.dash-float-avg .dash-up {
+  margin-left: 0.25rem;
+  letter-spacing: 0;
+  vertical-align: 0.35em;
+}
+
+.dash-float-weak {
+  right: -1.6rem;
+  bottom: -3.2rem;
+  width: min(20rem, 70%);
+  padding: 1.1rem 1.25rem;
+  background: var(--cello-mint);
+}
+
+.dash-weakest {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.6rem;
+  color: var(--cello-ink);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.dash-weakest b {
+  font-size: 1.4rem;
+  font-weight: 800;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* medewerkerslijst */
 .dash-scroll {
   overflow-x: auto;
+  margin-top: 0.6rem;
 }
 
 .dash-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
 .dash-table th {
-  padding: 0 0.6rem 0.6rem;
+  padding: 0 0.7rem 0.7rem;
   color: var(--cello-muted);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-align: left;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .dash-table td {
-  padding: 0.7rem 0.6rem;
+  padding: 0.75rem 0.7rem;
   border-top: 1px solid var(--cello-divider);
   vertical-align: middle;
   white-space: nowrap;
@@ -612,34 +627,49 @@ html.no-js .sim-stage {
 .dash-who {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.7rem;
+}
+
+.dash-who b {
+  display: block;
   color: var(--cello-ink);
-  font-weight: 600;
+  font-weight: 700;
+}
+
+.dash-who small {
+  display: block;
+  color: var(--cello-muted);
+  font-size: 0.74rem;
 }
 
 .dash-avatar {
-  width: 1.9rem;
-  height: 1.9rem;
-  font-size: 0.66rem;
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  flex: none;
+  border-radius: 999px;
+  background: var(--cello-mint);
+  color: var(--green-text);
+  font-size: 0.72rem;
+  font-weight: 700;
 }
 
 .dash-score {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.7rem;
   color: var(--cello-ink);
-  font-weight: 700;
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
 }
 
-/* de balk met de lat: wie erover gaat, is klaar voor de lijn */
 .dash-bar {
-  position: relative;
-  width: 4.5rem;
+  width: 4.6rem;
   height: 0.45rem;
   border-radius: 999px;
   background: var(--cello-cream);
-  box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.06);
+  overflow: hidden;
 }
 
 .dash-bar i {
@@ -649,137 +679,90 @@ html.no-js .sim-stage {
   background: var(--cello-primary);
 }
 
-.dash-bar::after {
-  content: '';
-  position: absolute;
-  top: -3px;
-  bottom: -3px;
-  left: 80%;
-  width: 2px;
-  border-radius: 2px;
-  background: var(--cello-ink);
-  opacity: 0.35;
+.dash-spark {
+  display: block;
+  width: 5rem;
+  height: 1.75rem;
+  overflow: visible;
 }
 
-.dash-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.28rem 0.65rem;
-  border-radius: 999px;
-  background: var(--cello-cream);
-  color: var(--cello-muted);
-  font-size: 0.78rem;
-  font-weight: 600;
+.dash-spark path {
+  fill: none;
+  stroke: var(--cello-primary);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.dash-tag svg {
-  width: 0.85rem;
-  height: 0.85rem;
+.dash-spark circle {
+  fill: var(--cello-primary);
 }
 
-.dash-tag-ok {
-  background: var(--cello-mint);
-  color: var(--cello-primary-hover);
-}
-
-.dash-days {
-  color: var(--cello-muted);
-  font-size: 0.85rem;
-  font-variant-numeric: tabular-nums;
-}
-
-/* ── Pilot ── */
+/* ── Pilot: bewust eenvoudig, links de titel, rechts wat je krijgt en wat het kost ── */
 .pilot {
   padding-bottom: var(--sec-pad);
 }
 
-.pilot-panel {
+.pilot-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
-  padding: clamp(2rem, 5vw, 4rem);
-  border-radius: var(--radius-cover);
-  background: var(--cello-cream);
-  box-shadow: inset 0 0 0 1px rgba(30, 55, 48, 0.07);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2rem clamp(3rem, 6vw, 6rem);
+  align-items: start;
 }
 
-.pilot-copy h2 {
+.pilot-grid h2 {
   margin-top: 1rem;
-  font-size: clamp(2rem, 4vw, 3.2rem);
 }
 
-.pilot-copy > p:not(.eyebrow) {
-  margin-top: 1rem;
-  max-width: 46ch;
-  font-size: 1.08rem;
+.pilot-lead {
+  max-width: 48ch;
+  font-size: 1.1rem;
 }
 
 .pilot-list {
   list-style: none;
   display: grid;
-  gap: 0.65rem;
-  margin-top: 1.5rem;
+  gap: 0.7rem;
+  margin-top: 1.8rem;
 }
 
 .pilot-list li {
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  align-items: flex-start;
+  gap: 0.7rem;
   color: var(--cello-ink);
-  font-size: 0.98rem;
   font-weight: 600;
+  line-height: 1.45;
 }
 
 .pilot-list svg {
   width: 1.1rem;
   height: 1.1rem;
   flex: none;
+  margin-top: 0.15rem;
   color: var(--cello-primary);
 }
 
 .pilot-price {
-  display: grid;
-  justify-items: start;
-  gap: 0.4rem;
-  padding: clamp(1.6rem, 3vw, 2.2rem);
-}
-
-.pilot-label {
-  color: var(--cello-muted);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.pilot-amount {
-  margin-top: 0.3rem;
+  margin-top: 2rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid rgba(30, 55, 48, 0.12);
   color: var(--cello-ink);
-  font-size: clamp(2.8rem, 5vw, 3.8rem);
+  font-size: 1.1rem;
+}
+
+.pilot-price strong {
   font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.035em;
-  font-variant-numeric: tabular-nums;
 }
 
-.pilot-amount small {
-  margin-right: 0.15rem;
-  color: var(--cello-muted);
-  font-size: 0.34em;
-  font-weight: 700;
-  letter-spacing: 0;
-  vertical-align: 0.7em;
+.pilot-note {
+  max-width: 52ch;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
 }
 
-.pilot-unit {
-  max-width: 24ch;
-  font-size: 0.98rem;
-}
-
-.pilot-price .btn {
-  margin-top: 1.2rem;
+.pilot-cta {
+  margin-top: 1.8rem;
 }
 
 /* ── Over ons ── */
@@ -1134,33 +1117,13 @@ html.no-js .sim-stage {
     grid-row: auto;
   }
 
-  /* accordeon verticaal */
-  .acc {
-    flex-direction: column;
+  /* scenario's onder elkaar */
+  .scen-main {
+    grid-template-columns: 1fr;
+  }
+
+  .scen {
     min-height: 0;
-  }
-
-  .acc-item {
-    flex: none;
-    min-height: 4.6rem;
-    transition: min-height 0.7s var(--ease);
-  }
-
-  .acc-item.is-open {
-    min-height: 21rem;
-  }
-
-  .acc-head {
-    align-items: flex-start;
-  }
-
-  .acc-title {
-    writing-mode: horizontal-tb;
-    rotate: none;
-  }
-
-  .acc-body {
-    min-width: 0;
   }
 
   /* teams & footer */
@@ -1168,9 +1131,30 @@ html.no-js .sim-stage {
     grid-template-columns: 1fr;
   }
 
-  .lead-grid,
-  .pilot-panel {
+  .pilot-grid,
+  .lead-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* zwevende kaartjes: op kleinere schermen gewoon onder de lijst */
+  .lead-dash {
+    padding-top: 0;
+  }
+
+  .lead-dash figcaption {
+    margin-top: 1rem;
+  }
+
+  .dash-float {
+    position: static;
+    width: auto;
+    margin-top: 0.8rem;
+  }
+
+  .dash-float-avg {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
   }
 
   .team-people {
@@ -1193,50 +1177,21 @@ html.no-js .sim-stage {
     --container: min(1200px, 92vw);
   }
 
-  /* dashboard op de telefoon: de cijfers als lijstje, en de scorekolom valt
-     weg zodat "Zelfstandig" (waar het om draait) in beeld blijft */
-  .dash-kpis {
-    grid-template-columns: 1fr;
-    gap: 0.4rem;
-  }
-
-  .dash-kpi {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.6rem 0.85rem;
-  }
-
-  .dash-kpi b {
-    font-size: 1.15rem;
-  }
-
-  .dash-table th:nth-child(2),
-  .dash-table td:nth-child(2) {
+  /* dashboard op de telefoon: naam, gemiddelde en verschil */
+  .dash-table th:nth-child(4),
+  .dash-table td:nth-child(4),
+  .dash-bar,
+  .dash-avatar {
     display: none;
-  }
-
-  .dash-table th,
-  .dash-table td {
-    padding-inline: 0.4rem;
   }
 
   .dash-table th {
     letter-spacing: 0.05em;
   }
 
-  .dash-avatar {
-    display: none;
-  }
-
-  .dash-tag {
-    padding: 0.24rem 0.55rem;
-    font-size: 0.72rem;
-  }
-
-  .dash-days {
-    white-space: normal;
+  .dash-table th,
+  .dash-table td {
+    padding-inline: 0.45rem;
   }
 
   .hero-cta {

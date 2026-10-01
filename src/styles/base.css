@@ -44,6 +44,7 @@
   --ink-deep: color-mix(in oklab, var(--cello-ink) 86%, #000); /* footer onder de donkere CTA */
   --blue-tint: color-mix(in oklab, var(--cello-blue) 20%, var(--cello-white)); /* zacht blauw vlak */
   --blue-on-dark: color-mix(in oklab, var(--cello-blue) 55%, var(--cello-white)); /* link op donker */
+  --green-text: color-mix(in oklab, var(--cello-primary-hover) 62%, var(--cello-ink)); /* kleine groene tekst op licht, haalt AA */
 
   /* Typografie */
   --font: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;

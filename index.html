@@ -361,87 +361,73 @@
         </div>
       </section>
 
-      <!-- ══════════════ VOOR DE TEAMLEIDER ══════════════ -->
+      <!-- ══════════════ VOOR DE TEAMLEIDER ══════════════
+           Een stukje uit het echte dashboard: de medewerkerslijst, met
+           fictieve medewerkers, en twee kaartjes die erboven zweven. -->
       <section class="lead" id="teamleider">
         <div class="container">
           <div class="sec-head">
             <p class="eyebrow" data-reveal>Voor de teamleider</p>
             <h2 data-reveal>Zie wie <em>klaar is voor de lijn.</em></h2>
-            <p class="sec-sub" data-reveal>Eén dashboard met per nieuwe medewerker hoe de oefengesprekken gaan, wie zelfstandig mag bellen en hoe lang het duurde om daar te komen.</p>
+            <p class="sec-sub" data-reveal>Eén overzicht van je hele team: hoe de oefengesprekken gaan, waar het team op zakt en wie klaar is voor de lijn.</p>
           </div>
           <div class="lead-grid">
-            <ul class="lead-points">
-              <li data-reveal>
-                <span class="lead-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="13.5" y="3.5" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="3.5" y="13.5" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M14 18.5l2 2 4-4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                <div>
-                  <h3>Het dashboard</h3>
-                  <p>Scores per medewerker en per scenario, week na week. Je ziet meteen waar je team op vastloopt.</p>
-                </div>
-              </li>
-              <li data-reveal>
-                <span class="lead-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 12.5l2.8 2.8L16.2 9.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                <div>
-                  <h3>Wie klaar is voor de lijn</h3>
-                  <p>Haalt iemand de lat op structuur, bezwaren en taal, dan zie je dat. Op basis van scores, niet op gevoel.</p>
-                </div>
-              </li>
-              <li data-reveal>
-                <span class="lead-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="13" r="7.5" stroke="currentColor" stroke-width="1.7"/><path d="M12 9.5V13l2.5 1.8M9.5 3h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                <div>
-                  <h3>Hoe lang tot zelfstandig bellen</h3>
-                  <p>Per nieuwe medewerker het aantal dagen tot die zelfstandig belt. Het cijfer dat je wil zien dalen.</p>
-                </div>
-              </li>
-            </ul>
+            <div class="lead-copy" data-reveal>
+              <p><strong>Waar het team op zakt.</strong> Het zwakste punt van het hele team, en welk scenario het lastigst is. Meteen je volgende trainingsonderwerp.</p>
+              <p><strong>Wie klaar is voor de lijn.</strong> Per medewerker de gemiddelde score, de vooruitgang en het zwakste punt. Op basis van scores, niet op gevoel.</p>
+              <p><strong>Hoe snel iemand groeit.</strong> Het verloop per medewerker, gesprek na gesprek. Zo zie je wanneer iemand zelfstandig kan bellen.</p>
+            </div>
 
             <figure class="lead-dash" data-reveal>
-              <div class="shell lead-shell">
-                <div class="core dash" role="group" aria-label="Voorbeeld van het dashboard voor de teamleider">
-                  <header class="dash-top">
-                    <div>
-                      <strong>Klantendienst</strong>
-                      <span>Nieuwe medewerkers</span>
+              <div class="lead-stage">
+                <div class="shell lead-shell">
+                  <div class="core dash" role="group" aria-label="Voorbeeld van het dashboard voor de teamleider">
+                    <p class="dash-card-title">Medewerkers</p>
+                    <div class="dash-scroll">
+                      <table class="dash-table">
+                        <thead>
+                          <tr><th>Medewerker</th><th>Gemiddelde</th><th>Verschil</th><th>Verloop</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td><span class="dash-who"><span class="dash-avatar">EP</span><span><b>Emma Peeters</b><small>Medewerker</small></span></span></td>
+                          <td><span class="dash-score"><span class="dash-bar"><i style="width: 82%"></i></span>82</span></td>
+                          <td><span class="dash-up">↑ 10,4</span></td>
+                          <td><svg class="dash-spark" viewBox="0 0 80 28" aria-hidden="true" focusable="false"><path d="M4.0 15.4 L18.4 14.3 L32.8 14.9 L47.2 12.0 L61.6 10.3 L76.0 8.6" /><circle cx="76.0" cy="8.6" r="2.4" /></svg></td>
+                        </tr>
+                        <tr>
+                          <td><span class="dash-who"><span class="dash-avatar">AG</span><span><b>Arne Goossens</b><small>Medewerker</small></span></span></td>
+                          <td><span class="dash-score"><span class="dash-bar"><i style="width: 78%"></i></span>78</span></td>
+                          <td><span class="dash-up">↑ 12,1</span></td>
+                          <td><svg class="dash-spark" viewBox="0 0 80 28" aria-hidden="true" focusable="false"><path d="M4.0 18.9 L18.4 16.6 L32.8 17.7 L47.2 14.9 L61.6 12.6 L76.0 10.9" /><circle cx="76.0" cy="10.9" r="2.4" /></svg></td>
+                        </tr>
+                        <tr>
+                          <td><span class="dash-who"><span class="dash-avatar">LJ</span><span><b>Lina Jacobs</b><small>Medewerker</small></span></span></td>
+                          <td><span class="dash-score"><span class="dash-bar"><i style="width: 76%"></i></span>76</span></td>
+                          <td><span class="dash-up">↑ 8,9</span></td>
+                          <td><svg class="dash-spark" viewBox="0 0 80 28" aria-hidden="true" focusable="false"><path d="M4.0 16.6 L18.4 17.1 L32.8 15.4 L47.2 14.3 L61.6 14.9 L76.0 12.0" /><circle cx="76.0" cy="12.0" r="2.4" /></svg></td>
+                        </tr>
+                        <tr>
+                          <td><span class="dash-who"><span class="dash-avatar">MD</span><span><b>Milan De Smet</b><small>Medewerker</small></span></span></td>
+                          <td><span class="dash-score"><span class="dash-bar"><i style="width: 61%"></i></span>61</span></td>
+                          <td><span class="dash-up">↑ 3,2</span></td>
+                          <td><svg class="dash-spark" viewBox="0 0 80 28" aria-hidden="true" focusable="false"><path d="M4.0 22.3 L22.0 22.9 L40.0 21.1 L58.0 21.7 L76.0 20.6" /><circle cx="76.0" cy="20.6" r="2.4" /></svg></td>
+                        </tr>
+                        </tbody>
+                      </table>
                     </div>
-                    <span class="dash-period">Deze maand</span>
-                  </header>
-                  <div class="dash-kpis">
-                    <div class="dash-kpi"><span>Klaar voor de lijn</span><b>2 <small>van 4</small></b></div>
-                    <div class="dash-kpi"><span>Oefengesprekken</span><b>57</b></div>
-                    <div class="dash-kpi"><span>Zelfstandig na</span><b>11 <small>dagen</small></b></div>
                   </div>
-                  <div class="dash-scroll">
-                    <table class="dash-table">
-                      <thead>
-                        <tr><th>Medewerker</th><th>Score</th><th>Status</th><th>Zelfstandig</th></tr>
-                      </thead>
-                      <tbody>
-                    <tr>
-                      <td><span class="dash-who"><span class="avatar dash-avatar">LV</span>Lotte</span></td>
-                      <td><span class="dash-score"><span class="dash-bar"><i style="width: 86%"></i></span>86</span></td>
-                      <td><span class="dash-tag dash-tag-ok"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l5 5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Klaar voor de lijn</span></td>
-                      <td class="dash-days">na 9 dagen</td>
-                    </tr>
-                    <tr>
-                      <td><span class="dash-who"><span class="avatar dash-avatar">JM</span>Jonas</span></td>
-                      <td><span class="dash-score"><span class="dash-bar"><i style="width: 81%"></i></span>81</span></td>
-                      <td><span class="dash-tag dash-tag-ok"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l5 5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Klaar voor de lijn</span></td>
-                      <td class="dash-days">na 13 dagen</td>
-                    </tr>
-                    <tr>
-                      <td><span class="dash-who"><span class="avatar dash-avatar">AB</span>Amira</span></td>
-                      <td><span class="dash-score"><span class="dash-bar"><i style="width: 72%"></i></span>72</span></td>
-                      <td><span class="dash-tag">Oefent nog</span></td>
-                      <td class="dash-days">dag 6</td>
-                    </tr>
-                    <tr>
-                      <td><span class="dash-who"><span class="avatar dash-avatar">PD</span>Pieter</span></td>
-                      <td><span class="dash-score"><span class="dash-bar"><i style="width: 58%"></i></span>58</span></td>
-                      <td><span class="dash-tag">Oefent nog</span></td>
-                      <td class="dash-days">dag 3</td>
-                    </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                </div>
+
+                <div class="dash-float dash-float-avg" aria-hidden="true">
+                  <span>Teamgemiddelde</span>
+                  <b>76 <span class="dash-up">↑ 8,7</span></b>
+                </div>
+
+                <div class="dash-float dash-float-weak">
+                  <p class="dash-card-title">Waar het hele team op zakt</p>
+                  <p class="dash-weakest"><span>Kwaliteit van je vragen</span><b>72 <span class="dash-up">↑ 13,8</span></b></p>
+                  <p class="dash-card-sub">Bij 3 van de 4 medewerkers is dit het zwakste punt.</p>
                 </div>
               </div>
               <figcaption>Voorbeeld van het dashboard, met fictieve medewerkers.</figcaption>
@@ -450,39 +436,32 @@
         </div>
       </section>
 
-      <!-- ══════════════ SCENARIO ACCORDEON ══════════════ -->
+      <!-- ══════════════ SCENARIO'S ══════════════
+           Sales en klantendienst zijn de twee grootste: groot en naast elkaar.
+           HR en leiderschap kan ook, in één zin eronder. -->
       <section class="scenarios" id="scenarios">
         <div class="container">
           <div class="sec-head">
             <p class="eyebrow" data-reveal>Scenario's</p>
             <h2 data-reveal>Voor elk gesprek <em>dat telt.</em></h2>
           </div>
-          <div class="acc" data-reveal>
-            <div class="acc-item acc-sales is-open">
-              <button class="acc-head" type="button" aria-expanded="true">
-                <span class="acc-title">Sales</span>
-              </button>
-              <div class="acc-body">
+          <div class="scen-main">
+            <article class="scen scen-sales" data-reveal>
+              <div class="scen-body">
                 <h3>Sales</h3>
                 <p>Van eerste cold call tot laatste onderhandeling.</p>
-                <div class="acc-chips">
-                  <span>Cold calling</span><span>Opvolggesprekken</span><span>Prijsonderhandeling</span><span>Demo inplannen</span>
-                </div>
+                <p class="scen-types">Cold calling · Opvolggesprekken · Prijsonderhandeling · Demo inplannen</p>
               </div>
-            </div>
-            <div class="acc-item acc-support">
-              <button class="acc-head" type="button" aria-expanded="false">
-                <span class="acc-title">Klantendienst</span>
-              </button>
-              <div class="acc-body">
+            </article>
+            <article class="scen scen-support" data-reveal>
+              <div class="scen-body">
                 <h3>Klantendienst</h3>
                 <p>Boze klanten worden oefenmateriaal.</p>
-                <div class="acc-chips">
-                  <span>Klachten</span><span>Retenties</span><span>Escalaties</span><span>Terugbetalingen</span>
-                </div>
+                <p class="scen-types">Klachten · Retenties · Escalaties · Terugbetalingen</p>
               </div>
-            </div>
+            </article>
           </div>
+          <p class="scen-also" data-reveal><strong>Ook voor HR en leiderschap.</strong> Sollicitaties, feedback- en exitgesprekken, slecht nieuws brengen, evaluaties en conflicten.</p>
         </div>
       </section>
 
@@ -540,30 +519,29 @@
         </div>
       </section>
 
-      <!-- ══════════════ PILOT ══════════════ -->
+      <!-- ══════════════ PILOT ══════════════
+           Bewust eenvoudig: links de titel, rechts wat je krijgt en wat het kost. -->
       <section class="pilot" id="pilot">
-        <div class="container">
-          <div class="pilot-panel">
-            <div class="pilot-copy">
-              <p class="eyebrow" data-reveal>Pilot</p>
-              <h2 data-reveal>Start met een pilot van <em>6 weken.</em></h2>
-              <p data-reveal>We bouwen je eerste scenario's samen met jou. Je nieuwe medewerkers oefenen, en jij ziet wie klaar is voor de lijn.</p>
-              <ul class="pilot-list" data-reveal>
-                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l5 5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Je eerste scenario's, samen gebouwd</li>
-                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l5 5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Oefenen in het Nederlands, Frans en Engels</li>
-                <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l5 5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Het dashboard voor de teamleider</li>
-              </ul>
-            </div>
-            <div class="shell pilot-shell" data-reveal>
-              <div class="core pilot-price">
-                <span class="pilot-label">Na de pilot</span>
-                <p class="pilot-amount"><small>vanaf</small> €750</p>
-                <p class="pilot-unit">per maand per team, alles inbegrepen</p>
-                <a class="btn btn-primary" href="https://calendar.app.google/77pxgr12Scj3SJNN8" target="_blank" rel="noopener noreferrer" data-magnetic>
-                  <span>Plan een demo</span>
-                  <span class="btn-orb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                </a>
-              </div>
+        <div class="container pilot-grid">
+          <div>
+            <p class="eyebrow" data-reveal>Pilot</p>
+            <h2 data-reveal>Start met een pilot van <em>6 weken.</em></h2>
+          </div>
+          <div>
+            <p class="pilot-lead" data-reveal>We bouwen je eerste scenario's samen met jou. Je nieuwe medewerkers oefenen, en jij ziet wie klaar is voor de lijn.</p>
+            <ul class="pilot-list" data-reveal>
+              <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l5 5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Je eerste scenario's, samen gebouwd</li>
+              <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l5 5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Oefenen met Vlaamse AI-klanten, in het Nederlands, Frans en Engels</li>
+              <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l5 5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Het dashboard voor de teamleider</li>
+              <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l5 5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Vooraf afgesproken doelen, zodat je na 6 weken weet of het werkt</li>
+            </ul>
+            <p class="pilot-price" data-reveal>Na de pilot: <strong>vanaf €750</strong> per maand per team, alles inbegrepen</p>
+            <p class="pilot-note" data-reveal>De pilot wordt volledig verrekend met je eerste jaar. Na 6 weken beslis jij of je doorgaat.</p>
+            <div class="pilot-cta" data-reveal>
+              <a class="btn btn-primary" href="https://calendar.app.google/77pxgr12Scj3SJNN8" target="_blank" rel="noopener noreferrer" data-magnetic>
+                <span>Plan een kennismaking</span>
+                <span class="btn-orb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </a>
             </div>
           </div>
         </div>
