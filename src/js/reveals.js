@@ -41,6 +41,21 @@ export function initReveals(reduced) {
     );
   });
 
+  /* ── Scores in de feedbacksectie vullen zich één voor één ── */
+  gsap.utils.toArray('.b-scores .rbar-fill').forEach((bar, i) => {
+    gsap.fromTo(
+      bar,
+      { scaleX: 0 },
+      {
+        scaleX: parseFloat(bar.dataset.bar) / 100,
+        duration: 1.1,
+        delay: 0.2 + i * 0.12,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: '.b-scores', start: 'top 82%', once: true },
+      }
+    );
+  });
+
   /* ── Tellers (buiten de simulatie, die stuurt zijn eigen teller) ── */
   gsap.utils.toArray('[data-count-to]').forEach((el) => {
     if (el.closest('.sim')) return;
@@ -86,4 +101,5 @@ export function initReveals(reduced) {
 /* Reduced motion: meteen de eindwaarden tonen. */
 function finalizeStats() {
   document.querySelectorAll('[data-count-to]').forEach((el) => (el.textContent = el.dataset.countTo));
+  document.querySelectorAll('.b-scores .rbar-fill').forEach((bar) => (bar.style.transform = `scaleX(${parseFloat(bar.dataset.bar) / 100})`));
 }

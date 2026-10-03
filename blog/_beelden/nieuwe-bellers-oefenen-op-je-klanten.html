@@ -1,0 +1,331 @@
+<!doctype html>
+<!--
+  Bronbestand voor het beeld van "Piloten oefenen in een simulator. Nieuwe
+  bellers oefenen op je klanten.": glazen schermpjes van een oefengesprek op
+  een zacht verloop in de Cello-kleuren.
+  Opnieuw renderen: `npm run dev`, dan deze pagina als 1600×800 screenshot
+  (bv. headless Chrome/Edge met --window-size=1600,800) opslaan als
+  public/blog/beelden/nieuwe-bellers-oefenen-op-je-klanten.jpg.
+  Mappen die met _ beginnen gaan niet live.
+-->
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <style>
+      html,
+      body {
+        width: 1600px;
+        height: 800px;
+        overflow: hidden;
+      }
+
+      .scene {
+        position: relative;
+        width: 1600px;
+        height: 800px;
+        overflow: hidden;
+        background: linear-gradient(125deg, #8fc7b3 0%, var(--cello-primary) 38%, var(--cello-blue) 72%, #3f6f93 100%);
+      }
+
+      /* zachte kleurvlekken, vervaagd tot één verloop */
+      .blobs {
+        position: absolute;
+        inset: -120px;
+        filter: blur(120px);
+      }
+
+      .blobs i {
+        position: absolute;
+        border-radius: 50%;
+      }
+
+      .b1 { width: 760px; height: 640px; left: -120px; top: -120px; background: var(--cello-mint); opacity: 0.8; }
+      .b2 { width: 640px; height: 560px; left: 120px; bottom: -160px; background: var(--cello-primary-hover); opacity: 0.9; }
+      .b3 { width: 700px; height: 560px; right: 60px; top: -140px; background: #a9c6de; opacity: 0.9; }
+      .b4 { width: 560px; height: 520px; right: -120px; bottom: -120px; background: var(--cello-ink); opacity: 0.55; }
+      .b5 { width: 620px; height: 480px; left: 560px; top: 200px; background: var(--cello-cream); opacity: 0.35; }
+
+      /* fijne korrel en een puntjesraster in het midden, voor diepte */
+      .grain {
+        position: absolute;
+        inset: 0;
+        opacity: 0.16;
+        mix-blend-mode: overlay;
+      }
+
+      .dots {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.55) 1.3px, transparent 1.6px);
+        background-size: 18px 18px;
+        -webkit-mask-image: radial-gradient(ellipse 46% 38% at 50% 50%, #000 20%, transparent 75%);
+        mask-image: radial-gradient(ellipse 46% 38% at 50% 50%, #000 20%, transparent 75%);
+        opacity: 0.55;
+      }
+
+      /* glas: licht, doorschijnend, met een witte rand */
+      .glass {
+        position: absolute;
+        border-radius: 26px;
+        background: rgba(255, 255, 255, 0.16);
+        box-shadow:
+          inset 0 0 0 1.5px rgba(255, 255, 255, 0.55),
+          inset 0 1px 0 rgba(255, 255, 255, 0.5),
+          0 30px 60px -30px rgba(20, 45, 40, 0.45);
+        backdrop-filter: blur(14px);
+      }
+
+      /* de telefoon, groot en half uit beeld, achter de rest */
+      .phone {
+        left: 590px;
+        top: 70px;
+        width: 420px;
+        height: 860px;
+        border-radius: 58px;
+        background: rgba(255, 255, 255, 0.07);
+        box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.45);
+        backdrop-filter: none;
+      }
+
+      .phone::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 22px;
+        width: 92px;
+        height: 22px;
+        border-radius: 99px;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.28);
+      }
+
+      .line {
+        display: block;
+        height: 10px;
+        border-radius: 99px;
+        background: rgba(255, 255, 255, 0.75);
+      }
+
+      .line.soft {
+        background: rgba(255, 255, 255, 0.42);
+      }
+
+      /* belvenster */
+      .call {
+        left: 360px;
+        top: 200px;
+        width: 560px;
+        height: 350px;
+        padding: 30px 32px;
+      }
+
+      .call-top {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .avatar-ph {
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.55);
+        box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.8);
+      }
+
+      .who {
+        display: grid;
+        gap: 10px;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin-left: auto;
+        padding: 8px 15px;
+        border-radius: 99px;
+        background: rgba(255, 255, 255, 0.22);
+        box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.6);
+        color: #fff;
+        font: 600 16px/1 'Figtree', sans-serif;
+      }
+
+      .chip i {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--cello-positive);
+        box-shadow: 0 0 0 4px rgba(158, 224, 200, 0.35);
+      }
+
+      .wave {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        height: 150px;
+        margin-top: 28px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.12);
+        box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.35);
+      }
+
+      .wave i {
+        width: 6px;
+        border-radius: 3px;
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .attempts {
+        display: flex;
+        gap: 9px;
+        margin-top: 26px;
+      }
+
+      .attempts i {
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.8);
+      }
+
+      .attempts i.on {
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      /* feedbackkaartje */
+      .feedback {
+        left: 900px;
+        top: 150px;
+        width: 350px;
+        padding: 26px 28px;
+        display: grid;
+        gap: 20px;
+      }
+
+      .fb-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .fb-row .line {
+        flex: 1;
+      }
+
+      .tick {
+        display: grid;
+        place-items: center;
+        width: 26px;
+        height: 26px;
+        flex: none;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.85);
+        color: var(--cello-primary-hover);
+      }
+
+      .tick.again {
+        background: transparent;
+        box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.85);
+        color: #fff;
+      }
+
+      .tick svg {
+        width: 15px;
+        height: 15px;
+      }
+
+      /* de knop en de cursor */
+      .retry {
+        left: 1010px;
+        top: 490px;
+        display: inline-flex;
+        align-items: center;
+        gap: 11px;
+        padding: 17px 26px 17px 22px;
+        border-radius: 99px;
+        color: #fff;
+        font: 600 19px/1 'Figtree', sans-serif;
+      }
+
+      .retry svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .cursor {
+        position: absolute;
+        left: 1196px;
+        top: 530px;
+        width: 40px;
+        height: 40px;
+        filter: drop-shadow(0 6px 10px rgba(20, 45, 40, 0.35));
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scene">
+      <div class="blobs"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i><i class="b5"></i></div>
+      <svg class="grain" width="1600" height="800" aria-hidden="true">
+        <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" /></filter>
+        <rect width="100%" height="100%" filter="url(#n)" />
+      </svg>
+      <div class="dots"></div>
+
+      <div class="glass phone"></div>
+
+      <div class="glass call">
+        <div class="call-top">
+          <span class="avatar-ph"></span>
+          <span class="who"><span class="line" style="width: 150px"></span><span class="line soft" style="width: 220px"></span></span>
+          <span class="chip"><i></i>Oefengesprek</span>
+        </div>
+        <div class="wave" data-wave></div>
+        <div class="attempts"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+      </div>
+
+      <div class="glass feedback">
+        <span class="line" style="width: 130px; height: 11px"></span>
+        <div class="fb-row">
+          <span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l5 5L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          <span class="line soft"></span>
+        </div>
+        <div class="fb-row">
+          <span class="tick again"><svg viewBox="0 0 24 24" fill="none"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 5v6h-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          <span class="line soft" style="max-width: 190px"></span>
+        </div>
+        <div class="fb-row">
+          <span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l5 5L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          <span class="line soft" style="max-width: 150px"></span>
+        </div>
+      </div>
+
+      <div class="glass retry">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 5v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        Opnieuw oefenen
+      </div>
+
+      <svg class="cursor" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 3.5 19 10l-6.2 1.9L10.4 18z" fill="#fff" stroke="rgba(30,55,48,.35)" stroke-width="1" stroke-linejoin="round" />
+      </svg>
+    </div>
+
+    <script>
+      // golfvorm: witte balkjes, hoog in het midden
+      const wave = document.querySelector('[data-wave]');
+      const n = 44;
+      for (let i = 0; i < n; i++) {
+        const t = i / (n - 1);
+        const env = Math.sin(Math.PI * t) ** 0.7;
+        const h = Math.max(8, Math.round(112 * env * (0.4 + 0.6 * Math.abs(Math.sin(i * 0.67) * Math.cos(i * 0.21 + 1.1)))));
+        const el = document.createElement('i');
+        el.style.height = h + 'px';
+        el.style.opacity = (0.45 + 0.55 * env).toFixed(2);
+        wave.appendChild(el);
+      }
+    </script>
+  </body>
+</html>

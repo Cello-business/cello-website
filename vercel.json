@@ -1,12 +1,18 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/b/blog", "destination": "/b/blog/", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/b", "destination": "/b/index.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'sha256-WiY23gBgLEoWhQiICRpYtKXQFYeFOK4wAT+kL89LN24='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.vercel-insights.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self' 'sha256-WiY23gBgLEoWhQiICRpYtKXQFYeFOK4wAT+kL89LN24=' 'sha256-69+pmnh3wnPvcvvGFDdLBYoq3BzlDcIXKXGcF/gmsEo=' 'sha256-UK2jH5sfk3/WcCJmmTiVAR2PKnVX1ISNoWCl/ZZEPoU=' 'sha256-HXevM+JO7UpcEV042dmnhtYR7mOlomL1A4JnSnrDJnY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.vercel-insights.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
         },
         {
           "key": "Strict-Transport-Security",
