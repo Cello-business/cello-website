@@ -1,7 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
-    { "source": "/b/blog", "destination": "/b/blog/", "permanent": false }
+    { "source": "/b/blog", "destination": "/b/blog/", "permanent": false },
+    { "source": "/b/blog/piloten-oefenen-in-een-simulator", "destination": "/b/blog/piloten-oefenen-in-een-simulator.html", "permanent": false },
+    { "source": "/b/blog/piloten-oefenen-in-een-simulator/", "destination": "/b/blog/piloten-oefenen-in-een-simulator.html", "permanent": false }
   ],
   "rewrites": [
     { "source": "/b", "destination": "/b/index.html" }
