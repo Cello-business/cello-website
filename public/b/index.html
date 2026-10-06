@@ -643,9 +643,21 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 .checks .ico{width:18px;height:18px;margin-top:4px;color:var(--mint)}
 .price{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding-top:26px;border-top:1px solid rgba(244,247,243,.16)}
 @media (max-width:380px){.pl-br{display:none}}
-.pilot-media{position:relative;min-height:380px;background:var(--deep-2)}
-.pilot-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 30%}
-@media (max-width:900px){.pilot{grid-template-columns:minmax(0,1fr)}.pilot-media{min-height:280px}}
+/* The pilot in three steps, as a timeline: the week on the left, a line with a node per step, then what happens */
+.pilot-plan{display:flex;flex-direction:column;justify-content:center;gap:28px;padding:clamp(28px,4.5vw,56px);background:var(--deep-2)}
+.pp-title{font-size:19px;font-weight:600;line-height:1.3;letter-spacing:-.01em;color:var(--on-deep)}
+.pp-steps{list-style:none;margin:0;padding:0;display:grid}
+.pp-steps li{position:relative;display:grid;grid-template-columns:86px minmax(0,1fr);gap:4px 42px;padding-bottom:30px}
+.pp-steps li:last-child{padding-bottom:0}
+.pp-steps li::before{content:"";position:absolute;left:101px;top:5px;width:12px;height:12px;border:2px solid var(--mint);border-radius:50%;background:var(--deep-2);box-sizing:border-box;z-index:1}
+.pp-steps li:last-child::before{background:var(--mint)}
+.pp-steps li:not(:last-child)::after{content:"";position:absolute;left:106px;top:17px;bottom:-5px;width:2px;background:rgba(140,201,178,.32)}
+.pp-when{grid-row:1;grid-column:1;padding-top:1px;font-size:13.5px;font-weight:600;line-height:1.35;color:var(--mint);font-variant-numeric:tabular-nums}
+.pp-steps b{grid-row:1;grid-column:2;font-size:16px;font-weight:600;line-height:1.35;color:var(--on-deep)}
+.pp-d{grid-row:2;grid-column:2;font-size:15px;line-height:1.5;color:var(--on-deep-2)}
+@media (max-width:900px){.pilot{grid-template-columns:minmax(0,1fr)}}
+/* Narrow phones: the week sits on the same line as the step, the line runs along the left */
+@media (max-width:420px){.pp-steps li{grid-template-columns:auto minmax(0,1fr);gap:4px 10px;padding-left:28px}.pp-steps li::before{left:0}.pp-steps li:not(:last-child)::after{left:5px}.pp-when{padding-top:2px}.pp-d{grid-column:1/-1}}
 
 /* FAQ */
 .faq{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,64px);align-items:start}
@@ -1271,18 +1283,25 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
       <div class="pilot on-dark">
         <div class="pilot-body">
           <h2 class="h2" id="pl-title">Start met een gratis<br class="pl-br"> pilot van <em>4&nbsp;weken.</em></h2>
-          <p class="lead">We bouwen je eerste scenario's samen met jou. Tot 5 gebruikers oefenen een maand lang, en jij ziet wie klaar is voor echte klanten.</p>
+          <p class="lead">Test Cello een maand lang met je eigen team. We zetten alles samen met jullie op, en na vier weken weet je of het werkt.</p>
           <ul class="checks">
             <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Tot 5 gebruikers, 4 weken, volledig gratis</li>
             <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Je eerste scenario's, samen gebouwd op jullie praktijk</li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Oefenen met AI-klanten die klinken als jouw klanten</li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Vooraf afgesproken doelen, zodat je na 4 weken weet of het werkt</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Vooraf afgesproken doelen om het resultaat te meten</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Geen verplichting na de pilot</li>
           </ul>
           <div class="price">
             <a class="btn btn-light btn-lg" href="https://calendar.app.google/77pxgr12Scj3SJNN8" target="_blank" rel="noopener">Vraag je gratis pilot aan <span class="arr" aria-hidden="true">→</span></a>
           </div>
         </div>
-        <div class="pilot-media"><img src="/b/img/building.jpg" alt="" width="1496" height="1412"></div>
+        <div class="pilot-plan">
+          <h3 class="pp-title">Zo verloopt de pilot</h3>
+          <ol class="pp-steps">
+            <li><span class="pp-when">Week 1</span><b>Samen opzetten</b><span class="pp-d">We spreken de doelen af en bouwen je eerste scenario's op jullie praktijk.</span></li>
+            <li><span class="pp-when">Week 2 en 3</span><b>Je team oefent</b><span class="pp-d">Tot 5 medewerkers bellen met de <span style="white-space:nowrap">AI-klanten</span>. Jij volgt alles in het dashboard.</span></li>
+            <li><span class="pp-when">Week 4</span><b>Resultaat</b><span class="pp-d">We leggen het resultaat naast de doelen. Daarna beslis jij of je verdergaat.</span></li>
+          </ol>
+        </div>
       </div>
     </div>
   </section>
