@@ -4,7 +4,9 @@
    1. een inline <script> waarvan de hash niet in de CSP van vercel.json staat
       (de browser weigert het script dan, en menu, tabs en audio werken niet meer);
    2. een lokaal pad (src, href, og:image, sitemap ...) dat naar een bestand verwijst dat niet bestaat;
-   3. een pagina uit sitemap.xml met noindex (dan verdwijnt ze uit Google). */
+   3. een pagina uit sitemap.xml met noindex (dan verdwijnt ze uit Google);
+   4. een FAQ in de JSON-LD die afwijkt van de zichtbare FAQ (Google wil dezelfde tekst).
+   De sitemap zelf maakt scripts/sitemap.mjs, dat vlak voor deze controle draait. */
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
@@ -79,10 +81,27 @@ for (const m of sitemap.matchAll(/<loc>https:\/\/www\.cellobusiness\.com(\/[^<]*
   }
 }
 
+// 4. De FAQ voor Google (JSON-LD) moet woord voor woord gelijk zijn aan de zichtbare FAQ
+const text = (html) => html.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+for (const file of pages) {
+  const html = readFileSync(file, 'utf8');
+  const visible = [...html.matchAll(/<summary>([\s\S]*?)<\/summary>\s*<p class="a">([\s\S]*?)<\/p>/g)].map((m) => [text(m[1]), text(m[2])]);
+  for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    const data = JSON.parse(m[1]);
+    const faq = (data['@graph'] || [data]).find((x) => x['@type'] === 'FAQPage');
+    if (!faq) continue;
+    const ld = faq.mainEntity.map((q) => [q.name, q.acceptedAnswer.text]);
+    if (JSON.stringify(ld) !== JSON.stringify(visible)) {
+      const i = ld.findIndex((q, k) => JSON.stringify(q) !== JSON.stringify(visible[k]));
+      errors.push(`${relative(ROOT, file)}: FAQ in de JSON-LD wijkt af van de zichtbare FAQ (vanaf vraag ${i + 1}: "${(visible[i] || ld[i])[0]}"). Pas beide gelijk aan.`);
+    }
+  }
+}
+
 if (errors.length) {
   console.error(`\n${errors.length} probleem/problemen gevonden:\n`);
   for (const e of errors) console.error(`  - ${e}`);
   console.error('');
   process.exit(1);
 }
-console.log(`OK: ${pages.length} pagina's, CSP-hashes, lokale paden en sitemap kloppen.`);
+console.log(`OK: ${pages.length} pagina's, CSP-hashes, lokale paden, sitemap en FAQ kloppen.`);

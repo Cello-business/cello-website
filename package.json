@@ -4,8 +4,8 @@
   "version": "2.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/serve.mjs",
-    "check": "node scripts/check.mjs",
-    "build": "node scripts/check.mjs"
+    "dev": "node scripts/sitemap.mjs && node scripts/serve.mjs",
+    "check": "node scripts/sitemap.mjs && node scripts/check.mjs",
+    "build": "node scripts/sitemap.mjs && node scripts/check.mjs"
   }
 }
