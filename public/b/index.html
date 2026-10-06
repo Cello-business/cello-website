@@ -182,8 +182,8 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 .text-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--ink);font-size:15px;font-weight:600;text-decoration:underline;text-decoration-color:var(--line-2);text-decoration-thickness:1px;text-underline-offset:6px}
 .text-link:hover{color:var(--green);text-decoration-color:var(--green)}
 
-/* How it works: four product rows. Each mock is a white app window on the light stage; the builder and the call are
-   short films played while in view, the report and the dashboard are stills */
+/* How it works: four product rows. Each mock is a white app window on the light stage; the builder, the call and
+   the report are short films played while in view, the dashboard is a still */
 .f-n{margin-right:16px;color:var(--green);font-variant-numeric:tabular-nums}
 .mock{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:var(--paper);color:var(--ink);font-size:14px;line-height:1.45;box-shadow:0 40px 80px -36px rgba(15,42,30,.32),0 2px 8px rgba(15,42,30,.05);-webkit-user-select:none;user-select:none}
 .cursor{position:absolute;left:0;top:0;z-index:6;width:20px;height:24px;overflow:visible;pointer-events:none;opacity:0;filter:drop-shadow(0 2px 3px rgba(11,15,18,.28));will-change:transform}
@@ -295,69 +295,115 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
   .call-btn .sh{display:inline}
 }
 
-/* 3. The call report: the call to listen back with feedback pinned to its moments, the score with a one-line summary,
-   what went well, at most two work points with a tip and a replay button, the score per skill and the measured numbers.
-   A still, so it does not repeat the report card in the why section */
-.rp{container-type:inline-size;padding:18px 22px 20px}
-.rp-top{display:flex;align-items:center;gap:12px;--mt:var(--green);--mb:var(--teal)}
+/* 3. The call report, as in the app: play the call back with feedback on the moments it is about, then the score,
+   what went well, what makes the most difference, the score per skill and the measured numbers.
+   The film plays the call, scrolls down to the work points and replays the moment the first one is about */
+.rp{display:flex;flex-direction:column;container-type:inline-size;background:var(--paper-2)}
+.rp-bar{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--paper);--mt:var(--green);--mb:var(--teal)}
 .rp-mark{width:24px;height:24px;flex:none}
-.rp-id{flex:1;min-width:0;display:grid;gap:1px}
+.rp-id{min-width:0;display:grid;gap:1px}
 .rp-id b{font-size:15px;font-weight:600;line-height:1.3}
 .rp-id span{overflow:hidden;font-size:13px;line-height:1.3;color:var(--muted);white-space:nowrap;text-overflow:ellipsis}
-.rp-btn{display:inline-flex;align-items:center;gap:7px;min-height:32px;padding:0 12px;border:1px solid var(--line-2);border-radius:8px;background:var(--paper);font-size:12.5px;font-weight:600;line-height:1;white-space:nowrap}
-.rp-btn svg{width:14px;height:14px;flex:none;color:var(--ink-2)}
-.rp-player{display:flex;align-items:flex-start;gap:12px;margin-top:18px;padding:14px 16px 16px 14px;border:1px solid var(--line);border-radius:14px;background:var(--paper-2)}
-.rp-play{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--green);color:var(--paper)}
-.rp-play svg{width:16px;height:16px;margin-left:2px}
-.rp-track{flex:1;min-width:0}
-.rp-wave{position:relative;display:flex;align-items:center;justify-content:space-between;gap:2px;height:36px}
-.rp-wave i{flex:0 1 3px;min-width:1px;border-radius:2px;background:var(--line-2)}
-.rp-wave i.p{background:var(--green)}
-.rp-now{position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;border-radius:1px;background:var(--ink)}
-.rp-marks{position:relative;height:10px;margin-top:8px}
-.rp-mk{position:absolute;top:1px;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:var(--teal)}
-.rp-mk.wp{background:var(--warn)}
-.rp-mk.on{box-shadow:0 0 0 2px var(--paper-2),0 0 0 4px var(--warn)}
-.rp-cap{position:relative;margin:12px 0 0;padding:10px 12px 11px;border:1px solid var(--line);border-radius:10px;background:var(--paper);font-size:13px;line-height:1.45;box-shadow:0 10px 22px -16px rgba(15,42,30,.4)}
-.rp-cap::before{content:"";position:absolute;top:-6px;left:var(--at);width:10px;height:10px;margin-left:-5px;border-top:1px solid var(--line);border-left:1px solid var(--line);background:var(--paper);transform:rotate(45deg)}
-.rp-cap small{display:block;margin-bottom:2px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
-.rp-cap small b{font-weight:600;color:var(--ink)}
-.rp-time{flex:none;padding-top:9px;font-size:12.5px;font-weight:600;line-height:18px;color:var(--muted);font-variant-numeric:tabular-nums}
-.rp-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:22px 26px;margin-top:20px}
-.rp-col{display:grid;align-content:start;gap:20px;min-width:0}
-.rp-score{display:flex;align-items:flex-start;gap:14px}
-.rp-num{flex:none;display:grid;justify-items:center;gap:2px}
-.rp-num b{font-size:38px;font-weight:600;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.rp-num small{font-size:11.5px;color:var(--muted);white-space:nowrap}
-.rp-score p{margin:0;font-size:14px;line-height:1.45;color:var(--ink-2)}
-.rp-h{display:block;margin-bottom:9px;font-size:13px;font-weight:600;line-height:1.35}
-.rp-good{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.rp-good li{display:grid;grid-template-columns:16px minmax(0,1fr);gap:9px;font-size:13px;line-height:1.45;color:var(--ink-2)}
-.rp-good svg{width:16px;height:16px;margin-top:1px;color:var(--green)}
-.rp-skills{list-style:none;margin:0;padding:0;font-size:12.5px;line-height:1.3;color:var(--ink-2)}
-.rp-skills li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-top:1px solid var(--line)}
-.rp-skills b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
-.rp-skills .wp b{color:var(--warn-ink)}
-.rp-wps{display:grid;gap:10px}
-.rp-wp{display:grid;justify-items:start;gap:6px;padding:12px 14px 14px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
-.rp-wp-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;width:100%;font-size:13.5px;font-weight:600;line-height:1.35}
-.rp-wp-top span{color:var(--warn-ink);font-variant-numeric:tabular-nums}
-.rp-wp p{margin:0 0 4px;font-size:13px;line-height:1.45;color:var(--ink-2)}
-.rp-stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin:20px 0 0;padding-top:16px;border-top:1px solid var(--line)}
-.rp-stats div{display:grid;grid-template-rows:1fr auto;gap:3px;min-width:0}
-.rp-stats dt{font-size:11.5px;line-height:1.3;color:var(--muted)}
-.rp-stats dd{margin:0;font-size:15px;font-weight:600;line-height:1.2;white-space:nowrap;font-variant-numeric:tabular-nums}
-.rp-stats dd small{font-size:11.5px;font-weight:500;color:var(--muted)}
-@container (max-width:560px){
-  .rp-body{grid-template-columns:minmax(0,1fr)}
-  .rp-stats{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:14px}
+.rp-view{position:relative;height:var(--rp-h,516px);overflow:hidden}
+.rp-view::after{content:"";position:absolute;left:0;right:0;bottom:0;height:24px;background:linear-gradient(rgba(250,251,249,0),var(--paper-2));pointer-events:none}
+.rp-page{display:grid;gap:12px;padding:16px 16px 20px;transition:opacity .45s ease}
+.rp.is-reset .rp-page{opacity:0}
+.rp-card{min-width:0;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+.rp-h{display:block;font-size:14.5px;font-weight:600;line-height:1.3}
+.rp-ctrls{display:flex;align-items:center;gap:8px}
+.rp-play{display:grid;place-items:center;width:40px;height:40px;flex:none;border-radius:50%;background:var(--deep);color:var(--on-deep);transition:transform .15s}
+.rp-play svg{width:17px;height:17px}
+.rp-play .i-on{margin-left:2px}
+.rp-play .i-off,.rp.is-playing .rp-play .i-on{display:none}
+.rp.is-playing .rp-play .i-off{display:block}
+.rp-play.is-press{transform:scale(.92)}
+.rp-skip{display:grid;place-items:center;width:34px;height:34px;flex:none;border:1px solid var(--line-2);border-radius:50%;color:var(--ink-2)}
+.rp-skip svg{width:16px;height:16px}
+.rp-skip .back{transform:scaleX(-1)}
+.rp-clock{margin-left:6px;font-size:13.5px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.rp-clock b{font-weight:600;color:var(--ink)}
+.rp-pill{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 12px;border:1px solid var(--line-2);border-radius:999px;background:var(--paper);font-size:12.5px;font-weight:600;line-height:1;white-space:nowrap}
+.rp-pill svg{width:14px;height:14px;flex:none;color:var(--ink-2)}
+.rp-speed{margin-left:auto}
+.rp-tl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 14px;margin-top:14px}
+.rp-who{display:grid;grid-template-rows:repeat(2,minmax(0,1fr));height:var(--rp-wave,88px);margin-top:20px;font-size:11.5px;line-height:1.3;color:var(--muted);font-variant-numeric:tabular-nums}
+.rp-who span{display:grid;align-content:center}
+.rp-who b{font-weight:600;color:var(--ink)}
+.rp-plot{position:relative;min-width:0}
+.rp-ticks{position:relative;height:14px;margin-bottom:6px;font-size:11px;line-height:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.rp-ticks span{position:absolute;top:0;transform:translateX(-50%)}
+.rp-ticks span:first-child{transform:none}
+.rp-wave{display:block;width:100%;height:var(--rp-wave,88px);overflow:visible}
+.rp-wave .them{fill:var(--mint)}
+.rp-wave .you{fill:var(--teal)}
+.rp-wave line{stroke:var(--line-2);stroke-width:1;stroke-dasharray:2 3;vector-effect:non-scaling-stroke}
+.rp-head{position:absolute;top:16px;height:calc(var(--rp-wave,88px) + 6px);width:2px;margin-left:-1px;border-radius:1px;background:var(--deep)}
+.rp-head::before{content:"";position:absolute;top:-4px;left:-4px;width:10px;height:10px;border-radius:50%;background:var(--deep)}
+.rp-marks{position:relative;height:24px;margin-top:8px}
+.rp-mk{position:absolute;top:0;width:24px;height:24px;margin-left:-12px;transition:transform .25s}
+.rp-mk svg{display:block;width:100%;height:100%}
+.rp-mk.wp,.rp-cap.wp svg{color:var(--warn)}
+.rp-mk.ok,.rp-cap.ok svg{color:var(--green)}
+.rp-mk.on{transform:scale(1.22)}
+.rp-mk svg,.rp-cap svg{fill:var(--paper)}
+.rp-caps{display:grid;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.rp-cap{grid-area:1/1;display:grid;grid-template-columns:20px minmax(0,1fr);gap:10px;margin:0;font-size:13px;line-height:1.5;color:var(--ink-2);opacity:0;transition:opacity .18s}
+.rp-cap.on{opacity:1;transition:opacity .28s .16s}
+.rp-cap svg{width:20px;height:20px;color:var(--ink-2)}
+.rp-cap b{font-weight:600;color:var(--ink)}
+.rp-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.rp-score{display:flex;align-items:center;gap:18px;min-width:0;padding:18px 20px;border-radius:14px;background:var(--deep);color:var(--on-deep)}
+.rp-ring{flex:none;display:grid;justify-items:center;gap:5px}
+.rp-ring>div{position:relative;width:76px;height:76px}
+.rp-ring svg{display:block;width:100%;height:100%;transform:rotate(-90deg)}
+.rp-ring .trk{fill:none;stroke:var(--deep-2);stroke-width:7}
+.rp-ring .val{fill:none;stroke:var(--mint);stroke-width:7;stroke-linecap:round}
+.rp-ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:26px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.rp-ring small{font-size:12px;color:var(--on-deep-2)}
+.rp-score p{margin:0;font-size:13.5px;line-height:1.5}
+.rp-good{display:grid;align-content:start;justify-items:start;gap:8px}
+.rp-good p{margin:0;font-size:13px;line-height:1.5;color:var(--ink-2)}
+.rp-at{display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:0 11px;border:1px solid var(--line-2);border-radius:999px;background:var(--paper);font-size:12.5px;font-weight:600;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums;transition:transform .15s,background-color .15s}
+.rp-at svg{width:11px;height:11px;flex:none}
+.rp-at.is-press{transform:scale(.93);background:var(--sand)}
+.rp-row-b{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.rp-wps{list-style:none;margin:6px 0 0;padding:0}
+.rp-wps li{display:grid;grid-template-columns:14px minmax(0,1fr) auto;align-items:center;gap:6px 10px;padding:10px 0}
+.rp-wps li+li{border-top:1px solid var(--line)}
+.rp-wps li:last-child{padding-bottom:0}
+.rp-n{font-size:13.5px;font-weight:600;color:var(--green);font-variant-numeric:tabular-nums}
+.rp-wps b{font-size:13.5px;font-weight:600;line-height:1.35}
+.rp-wps p{grid-column:2/-1;margin:0;font-size:13px;line-height:1.5;color:var(--ink-2)}
+.rp-bars{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:10px}
+.rp-bars li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 12px;font-size:13px;line-height:1.3}
+.rp-bars b{font-weight:600;font-variant-numeric:tabular-nums}
+.rp-bars i{grid-column:1/-1;display:block;height:6px;overflow:hidden;border-radius:3px;background:var(--track)}
+.rp-bars i span{display:block;height:100%;border-radius:3px;background:var(--green);transform-origin:0 50%}
+.rp-bars .hy i span{background:var(--mint)}
+.rp-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.rp-tile{display:grid;align-content:start;gap:2px;min-width:0;padding:10px 12px;border:1px solid var(--line);border-radius:12px}
+.rp-tile small{font-size:12px;line-height:1.3;color:var(--muted)}
+.rp-tile b{font-size:18px;font-weight:600;line-height:1.25;letter-spacing:-.01em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.rp-tile b span{margin-left:4px;font-size:12px;font-weight:500;letter-spacing:0;color:var(--muted)}
+.rp-tile em{font-size:11.5px;font-style:normal;line-height:1.35;color:var(--muted)}
+.rp-split{display:flex;gap:2px;height:5px;margin:3px 0 2px}
+.rp-split i{border-radius:3px;background:var(--mint)}
+.rp-split i:first-child{background:var(--teal)}
+@container (max-width:540px){
+  .rp-view{--rp-h:560px}
+  .rp-row,.rp-row-b{grid-template-columns:minmax(0,1fr)}
+  .rp-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rp-skip,.rp-speed{display:none}
+  .rp-tr{margin-left:auto}
 }
-@container (max-width:440px){
-  .rp{padding:16px 16px 18px}
-  .rp-top .rp-btn span{display:none}
-  .rp-top .rp-btn{padding:0 9px}
-  .rp-player{padding:12px}
-  .rp-time,.rp-skills-box,.rp-wp+.rp-wp{display:none}
+@container (max-width:400px){
+  .rp-bar{padding:12px 14px}
+  .rp-page{padding:12px 12px 16px}
+  .rp-card{padding:14px}
+  .rp-tr span{display:none}
+  .rp-tr{padding:0 9px}
+  .rp-tl{--rp-wave:72px;gap:0 10px}
+  .rp-score{gap:14px;padding:16px}
 }
 
 /* 4. The team lead's dashboard, as in the app: sidebar collapsed to its icons */
@@ -655,6 +701,8 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
   <defs>
     <symbol id="mark" viewBox="0 0 64 64"><g transform="translate(5.6 0) skewX(-10)"><path style="fill:var(--mt)" d="M29 12H47A9 9 0 0 1 56 21V30H29A9 9 0 0 1 20 21A9 9 0 0 1 29 12Z"/><path style="fill:var(--mb)" d="M17 34H35A9 9 0 0 1 44 43A9 9 0 0 1 35 52H8V43A9 9 0 0 1 17 34Z"/></g></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bulbc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.2" stroke="currentColor" stroke-width="1.6"/><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.6a3.6 3.6 0 0 0-2.2 6.5c.4.3.7.8.7 1.3h3c0-.5.3-1 .7-1.3A3.6 3.6 0 0 0 12 6.6z"/><path d="M10.6 17.3h2.8"/></g></symbol>
+    <symbol id="i-okc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.2" stroke="currentColor" stroke-width="1.6"/><path d="M8 12.4l2.8 2.8 5.2-5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-retry" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.4-5.7M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-browser" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M3 9h18M6.5 6.8h.01M9.5 6.8h.01"/></g></symbol>
     <symbol id="i-tune" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8M16 4.5v5M10 14.5v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
@@ -1050,70 +1098,84 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
             <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Het transcript van je gesprek</li>
           </ul>
         </div>
-        <div class="f-visual light" role="img" aria-label="Het belrapport na het gesprek met Marc: het gesprek om terug te beluisteren met feedback op het moment zelf, een score van 68 met een samenvatting, wat goed ging, de score per vaardigheid, twee werkpunten met een tip en de gemeten cijfers.">
+        <div class="f-visual light" role="img" aria-label="Animatie: het belrapport na het gesprek met Marc. Het gesprek speelt af en op drie momenten verschijnt feedback. Daarna je score, wat goed ging, de twee werkpunten, je score per vaardigheid en de gemeten cijfers. Een klik op een werkpunt speelt dat moment opnieuw af.">
           <div class="mock rp" id="report">
-            <div class="rp-top">
+            <div class="rp-bar">
               <svg class="rp-mark"><use href="#mark"/></svg>
               <span class="rp-id"><b>Belrapport</b><span>Klant wil zijn geld terug · Marc</span></span>
-              <span class="rp-btn"><svg><use href="#i-doc"/></svg><span>Transcript</span></span>
             </div>
-            <div class="rp-player">
-              <span class="rp-play"><svg><use href="#i-play"/></svg></span>
-              <div class="rp-track">
-                <div class="rp-wave"><i class="p" style="height:53%"></i><i class="p" style="height:50%"></i><i class="p" style="height:77%"></i><i class="p" style="height:55%"></i><i class="p" style="height:78%"></i><i class="p" style="height:70%"></i><i class="p" style="height:54%"></i><i class="p" style="height:68%"></i><i class="p" style="height:40%"></i><i class="p" style="height:48%"></i><i class="p" style="height:22%"></i><i class="p" style="height:14%"></i><i class="p" style="height:22%"></i><i class="p" style="height:32%"></i><i class="p" style="height:14%"></i><i class="p" style="height:14%"></i><i class="p" style="height:34%"></i><i class="p" style="height:55%"></i><i class="p" style="height:48%"></i><i class="p" style="height:49%"></i><i class="p" style="height:83%"></i><i class="p" style="height:49%"></i><i class="p" style="height:89%"></i><i class="p" style="height:65%"></i><i class="p" style="height:58%"></i><i class="p" style="height:53%"></i><i style="height:58%"></i><i style="height:76%"></i><i style="height:44%"></i><i style="height:59%"></i><i style="height:61%"></i><i style="height:14%"></i><i style="height:20%"></i><i style="height:45%"></i><i style="height:49%"></i><i style="height:59%"></i><i style="height:82%"></i><i style="height:70%"></i><i style="height:62%"></i><i style="height:69%"></i><i style="height:55%"></i><i style="height:39%"></i><i style="height:52%"></i><i style="height:39%"></i><i style="height:14%"></i><i style="height:21%"></i><i style="height:21%"></i><i style="height:40%"></i><i style="height:39%"></i><i style="height:28%"></i><i style="height:68%"></i><i style="height:40%"></i><i style="height:62%"></i><i style="height:83%"></i><i style="height:61%"></i><i style="height:77%"></i><span class="rp-now" style="left:47%"></span></div>
-                <div class="rp-marks"><span class="rp-mk" style="left:14%"></span><span class="rp-mk wp on" style="left:47%"></span><span class="rp-mk" style="left:63%"></span><span class="rp-mk wp" style="left:80%"></span></div>
-                <p class="rp-cap" style="--at:47%"><small>1:56 · <b>Kwaliteit van je vragen</b></small>Hier stel je al een oplossing voor, nog voor je weet wat Marc verwacht.</p>
-              </div>
-              <span class="rp-time">1:56 / 4:07</span>
-            </div>
-            <div class="rp-body">
-              <div class="rp-col">
-                <div class="rp-score">
-                  <span class="rp-num"><b>68</b><small>van 100</small></span>
-                  <p>Je bleef rustig onder druk, maar je zocht te snel naar een oplossing.</p>
-                </div>
-                <div>
-                  <b class="rp-h">Wat goed ging</b>
-                  <ul class="rp-good">
-                    <li><svg aria-hidden="true"><use href="#i-check"/></svg>Je erkende zijn frustratie voor je iets uitlegde</li>
-                    <li><svg aria-hidden="true"><use href="#i-check"/></svg>Je bleef rustig, ook toen Marc luider werd</li>
-                  </ul>
-                </div>
-                <div class="rp-skills-box">
-                  <b class="rp-h">Per vaardigheid</b>
-                  <ul class="rp-skills">
-                    <li><span>Je doel bereiken</span><b>72</b></li>
-                    <li class="wp"><span>Kwaliteit van je vragen</span><b>61</b></li>
-                    <li><span>Overtuigingskracht</span><b>70</b></li>
-                    <li class="wp"><span>Omgaan met weerstand</span><b>64</b></li>
-                    <li><span>Spreekstijl</span><b>74</b></li>
-                  </ul>
-                </div>
-              </div>
-              <div>
-                <b class="rp-h">Werkpunten</b>
-                <div class="rp-wps">
-                  <div class="rp-wp">
-                    <span class="rp-wp-top">Kwaliteit van je vragen<span>61</span></span>
-                    <p>Vraag eerst wat Marc verwacht. Bijvoorbeeld: wat zou dit voor u oplossen?</p>
-                    <span class="rp-btn"><svg><use href="#i-play"/></svg>Beluister dit moment</span>
+            <div class="rp-view">
+              <div class="rp-page">
+                <div class="rp-card">
+                  <div class="rp-ctrls">
+                    <span class="rp-play"><svg class="i-on"><use href="#i-play"/></svg><svg class="i-off"><use href="#i-pausef"/></svg></span>
+                    <span class="rp-skip"><svg class="back"><use href="#i-retry"/></svg></span>
+                    <span class="rp-skip"><svg><use href="#i-retry"/></svg></span>
+                    <span class="rp-clock"><b class="rp-t">0:31</b> / 2:24</span>
+                    <span class="rp-pill rp-speed">1×</span>
+                    <span class="rp-pill rp-tr"><svg><use href="#i-list"/></svg><span>Transcript</span></span>
                   </div>
-                  <div class="rp-wp">
-                    <span class="rp-wp-top">Omgaan met weerstand<span>64</span></span>
-                    <p>Herhaal zijn bezwaar in je eigen woorden voor je antwoordt. Dan voelt hij zich gehoord.</p>
-                    <span class="rp-btn"><svg><use href="#i-play"/></svg>Beluister dit moment</span>
+                  <div class="rp-tl">
+                    <div class="rp-who"><span><b>Marc</b>54%</span><span><b>Jij</b>46%</span></div>
+                    <div class="rp-plot">
+                      <div class="rp-ticks"><span style="left:0">0:00</span><span style="left:41.67%">1:00</span><span style="left:83.33%">2:00</span></div>
+                      <svg class="rp-wave" viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="0" y1="50" x2="100" y2="50"/><path class="them" d="M4.445 36.32h0.833v12.28h-0.833zM5.833 14.6h0.833v34.0h-0.833zM7.222 28.65h0.833v19.95h-0.833zM8.611 28.74h0.833v19.86h-0.833zM10.0 32.55h0.833v16.05h-0.833zM11.389 5.37h0.833v43.23h-0.833zM12.778 13.97h0.833v34.63h-0.833zM14.167 38.88h0.833v9.72h-0.833zM15.556 34.5h0.833v14.1h-0.833zM16.945 26.13h0.833v22.47h-0.833zM18.333 38.55h0.833v10.05h-0.833zM25.278 24.6h0.833v24.0h-0.833zM26.667 9.09h0.833v39.51h-0.833zM28.056 22.85h0.833v25.75h-0.833zM29.445 37.32h0.833v11.28h-0.833zM30.833 11.03h0.833v37.57h-0.833zM32.222 8.92h0.833v39.68h-0.833zM33.611 6.0h0.833v42.6h-0.833zM35.0 31.11h0.833v17.49h-0.833zM36.389 7.25h0.833v41.35h-0.833zM37.778 5.41h0.833v43.19h-0.833zM39.167 29.2h0.833v19.4h-0.833zM40.556 10.71h0.833v37.89h-0.833zM41.945 37.73h0.833v10.87h-0.833zM55.834 24.98h0.833v23.62h-0.833zM57.222 23.15h0.833v25.45h-0.833zM58.611 25.6h0.833v23.0h-0.833zM60.0 8.72h0.833v39.88h-0.833zM61.389 28.49h0.833v20.11h-0.833zM62.778 25.53h0.833v23.07h-0.833zM64.167 10.86h0.833v37.74h-0.833zM65.556 37.24h0.833v11.36h-0.833zM66.945 37.69h0.833v10.91h-0.833zM82.222 41.54h0.833v7.06h-0.833zM83.611 30.11h0.833v18.49h-0.833zM85.0 24.87h0.833v23.73h-0.833zM86.389 24.38h0.833v24.22h-0.833zM87.778 15.48h0.833v33.12h-0.833zM89.167 36.46h0.833v12.14h-0.833z"/><path class="you" d="M0.278 51.4h0.833v16.14h-0.833zM1.667 51.4h0.833v41.71h-0.833zM3.056 51.4h0.833v16.94h-0.833zM19.722 51.4h0.833v15.97h-0.833zM21.111 51.4h0.833v31.09h-0.833zM22.5 51.4h0.833v30.58h-0.833zM23.889 51.4h0.833v16.21h-0.833zM43.334 51.4h0.833v23.52h-0.833zM44.722 51.4h0.833v20.57h-0.833zM46.111 51.4h0.833v9.06h-0.833zM47.5 51.4h0.833v38.38h-0.833zM48.889 51.4h0.833v32.14h-0.833zM50.278 51.4h0.833v22.48h-0.833zM51.667 51.4h0.833v20.91h-0.833zM53.056 51.4h0.833v20.53h-0.833zM54.445 51.4h0.833v12.68h-0.833zM68.334 51.4h0.833v13.12h-0.833zM69.722 51.4h0.833v27.23h-0.833zM71.111 51.4h0.833v42.63h-0.833zM72.5 51.4h0.833v32.55h-0.833zM73.889 51.4h0.833v22.27h-0.833zM75.278 51.4h0.833v41.3h-0.833zM76.667 51.4h0.833v24.02h-0.833zM78.056 51.4h0.833v36.87h-0.833zM79.445 51.4h0.833v22.63h-0.833zM80.834 51.4h0.833v22.34h-0.833zM90.556 51.4h0.833v10.61h-0.833zM91.945 51.4h0.833v32.15h-0.833zM93.334 51.4h0.833v33.59h-0.833zM94.722 51.4h0.833v41.53h-0.833zM96.111 51.4h0.833v17.91h-0.833zM97.5 51.4h0.833v13.12h-0.833zM98.889 51.4h0.833v12.16h-0.833z"/></svg>
+                      <span class="rp-head" style="left:21.53%"></span>
+                      <div class="rp-marks"><span class="rp-mk wp on" style="left:21.53%"><svg><use href="#i-bulbc"/></svg></span><span class="rp-mk ok" style="left:50%"><svg><use href="#i-okc"/></svg></span><span class="rp-mk wp" style="left:75%"><svg><use href="#i-bulbc"/></svg></span></div>
+                    </div>
+                  </div>
+                  <div class="rp-caps">
+                    <p class="rp-cap"><svg><use href="#i-bulbc"/></svg><span>Er zit feedback op <b>3 momenten</b> in dit gesprek.</span></p>
+                    <p class="rp-cap wp on"><svg><use href="#i-bulbc"/></svg><span><b>0:31 · Kwaliteit van je vragen.</b> Je stelt al een oplossing voor, nog voor je weet wat Marc verwacht.</span></p>
+                    <p class="rp-cap ok"><svg><use href="#i-okc"/></svg><span><b>1:12 · Inleving.</b> Goed: je erkent eerst zijn frustratie, en Marc wordt rustiger.</span></p>
+                    <p class="rp-cap wp"><svg><use href="#i-bulbc"/></svg><span><b>1:48 · Structuur.</b> Je sluit af zonder samen te vatten wat jullie afspreken.</span></p>
                   </div>
                 </div>
+                <div class="rp-row">
+                  <div class="rp-score">
+                    <div class="rp-ring"><div><svg viewBox="0 0 76 76"><circle class="trk" cx="38" cy="38" r="34"/><circle class="val" cx="38" cy="38" r="34" stroke-dasharray="213.63" stroke-dashoffset="68.36"/></svg><b>68</b></div><small>Je score</small></div>
+                    <p>Je bleef rustig en toonde begrip, maar je stelde te snel een oplossing voor.</p>
+                  </div>
+                  <div class="rp-card rp-good">
+                    <b class="rp-h">Wat goed ging</b>
+                    <p>Je erkende Marcs frustratie voor je iets uitlegde. Daardoor werd hij merkbaar rustiger.</p>
+                    <span class="rp-at"><svg><use href="#i-play"/></svg>1:12</span>
+                  </div>
+                </div>
+                <div class="rp-row rp-row-b">
+                  <div class="rp-card rp-work">
+                    <b class="rp-h">Wat het meeste scheelt</b>
+                    <ol class="rp-wps">
+                      <li><span class="rp-n">1</span><b>Kwaliteit van je vragen</b><span class="rp-at"><svg><use href="#i-play"/></svg>0:31</span><p>Vraag eerst wat Marc verwacht, bijvoorbeeld 'wat zou dit voor u in orde maken?'</p></li>
+                      <li><span class="rp-n">2</span><b>Structuur</b><span class="rp-at"><svg><use href="#i-play"/></svg>1:48</span><p>Vat op het einde samen wat je afspreekt en wanneer hij iets van je hoort.</p></li>
+                    </ol>
+                  </div>
+                  <div class="rp-card">
+                    <b class="rp-h">Per vaardigheid</b>
+                    <ul class="rp-bars">
+                      <li><span>Structuur</span><b>62</b><i><span style="width:62%"></span></i></li>
+                      <li><span>Je doel bereiken</span><b>66</b><i><span style="width:66%"></span></i></li>
+                      <li><span>Kwaliteit van je vragen</span><b>54</b><i><span style="width:54%"></span></i></li>
+                      <li><span>Inleving</span><b>78</b><i><span style="width:78%"></span></i></li>
+                      <li class="hy"><span>Spreekverzorging</span><b>80</b><i><span style="width:80%"></span></i></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="rp-card">
+                  <b class="rp-h">Gemeten tijdens het gesprek</b>
+                  <div class="rp-tiles">
+                    <div class="rp-tile"><small>Spreektijd</small><b>46%<span>jij</span></b><span class="rp-split"><i style="width:46%"></i><i style="flex:1"></i></span></div>
+                    <div class="rp-tile"><small>Tempo</small><b>152</b><em>woorden per minuut</em></div>
+                    <div class="rp-tile"><small>Twijfelwoorden</small><b>4</b><em>1,7 per minuut</em></div>
+                    <div class="rp-tile"><small>Vragen</small><b>5</b><em>2 open, 3 gesloten</em></div>
+                    <div class="rp-tile"><small>Langste stilte</small><b>3,1<span>s</span></b><em>voor een antwoord</em></div>
+                    <div class="rp-tile"><small>Duur</small><b>2:24</b><em>van max. 8:00</em></div>
+                  </div>
+                </div>
               </div>
             </div>
-            <dl class="rp-stats">
-              <div><dt>Jouw spreektijd</dt><dd>58%</dd></div>
-              <div><dt>Tempo</dt><dd>164 <small>w/min</small></dd></div>
-              <div><dt>Stopwoorden</dt><dd>9</dd></div>
-              <div><dt>Open / gesloten vragen</dt><dd>2 / 6</dd></div>
-              <div><dt>Langste stilte</dt><dd>6 s</dd></div>
-              <div><dt>Duur</dt><dd>4:07</dd></div>
-            </dl>
+            <span class="click-ring"></span>
+            <svg class="cursor" viewBox="0 0 20 24"><path d="M3 2.2v17.1c0 .7.8 1 1.3.6l4-3.9 2.8 6.2c.2.5.8.7 1.3.5l1.9-.9c.5-.2.7-.8.5-1.3l-2.8-6.1h5.6c.7 0 1.1-.9.6-1.4L4.4 1.6C3.9 1.1 3 1.5 3 2.2z"/></svg>
           </div>
         </div>
       </div>
@@ -1505,7 +1567,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
     });
   });
 
-  /* How it works: three short product films. Each is a pure render(t) over a fixed timeline, so it pauses
+  /* How it works: three short product films and a still. Each film is a pure render(t) over a fixed timeline, so it pauses
      off-screen and picks up where it was; with reduced motion each one shows a single still frame. */
   function clamp01(x) { return x < 0 ? 0 : (x > 1 ? 1 : x); }
   function easeInOut(p) { return p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; }
@@ -1681,7 +1743,78 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
     playInView(root, render);
   })();
 
-  /* 3. The team dashboard is a still. Only the progress chart answers the mouse, as it does in the app */
+  /* 3. The call report: the call plays back and feedback appears at the moment it is about. Then the page scrolls
+     down to the work points, and a click on the first one scrolls back up and replays that moment */
+  (function () {
+    var root = $('#report');
+    if (!root) return;
+    var view = $('.rp-view', root), page = $('.rp-page', root), head = $('.rp-head', root), clock = $('.rp-t', root);
+    var play = $('.rp-play', root), marks = $$('.rp-mk', root), caps = $$('.rp-cap', root);
+    var ring = $('.rp-ring .val', root), num = $('.rp-ring b', root), fills = $$('.rp-bars i span', root);
+    var work = $('.rp-work', root), jump = $('.rp-wps .rp-at', root);
+    var LEN = 144, AT = [31, 72, 108], RING = 213.63, SCORE = 68;
+    var TOTAL = 18000, COUNT = [300, 1500], PLAY = [1900, 9400], DOWN = [9900, 10900], FILL = [10300, 11300];
+    var CLICK = 12100, UP = [12400, 13300], AGAIN = [13300, 16300], FADE = 17400;
+    var PATH = [[0, 'off'], [500, 'off'], [1500, 'play'], [2300, 'play'], [3300, 'rest'], [10900, 'rest'], [11900, 'jump'], [12500, 'jump'], [13500, 'off']];
+    var cur = pointer(root, {
+      off: function () { return { x: root.clientWidth + 30, y: root.clientHeight * 0.55 }; },
+      play: spotOf(root, play, 0.55, 0.6),
+      // A quiet spot beside the controls that stays put while the page scrolls
+      rest: function () { return { x: root.clientWidth * 0.62, y: view.offsetTop + 52 }; },
+      jump: spotOf(root, jump, 0.5, 0.6)
+    });
+    var workY = 0, width = -1, shown = {};
+    function measure() {
+      width = root.clientWidth;
+      workY = Math.max(0, Math.min(page.offsetHeight - view.clientHeight, work.offsetTop - 8));
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+    function put(key, el, prop, val) { if (shown[key] !== val) { shown[key] = val; el.style[prop] = val; } }
+    function secAt(t) {
+      if (t < PLAY[0]) return 0;
+      if (t < PLAY[1]) return LEN * (t - PLAY[0]) / (PLAY[1] - PLAY[0]);
+      if (t < CLICK) return LEN;
+      if (t < AGAIN[0]) return AT[0];
+      return AT[0] + 6 * clamp01((t - AGAIN[0]) / (AGAIN[1] - AGAIN[0]));
+    }
+    function scrollAt(t) {
+      if (t < DOWN[0] || t >= UP[1]) return 0;
+      if (t < DOWN[1]) return workY * easeInOut((t - DOWN[0]) / (DOWN[1] - DOWN[0]));
+      if (t < UP[0]) return workY;
+      return workY * (1 - easeInOut((t - UP[0]) / (UP[1] - UP[0])));
+    }
+    function render(ms, still) {
+      var t = ms % TOTAL, sec, cap = 0, i;
+      if (root.clientWidth !== width) measure();
+      sec = still ? AT[0] : secAt(t);
+      if (sec > 0) for (i = 0; i < AT.length; i++) if (sec >= AT[i]) cap = i + 1;
+      var playing = !still && ((t >= PLAY[0] && t < PLAY[1]) || (t >= AGAIN[0] && t < AGAIN[1]));
+      setClass(root, 'is-playing', playing);
+      setClass(root, 'is-reset', !still && t >= FADE);
+      put('head', head, 'left', (sec / LEN * 100).toFixed(2) + '%');
+      var s = Math.floor(sec), txt = Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2);
+      if (clock.textContent !== txt) clock.textContent = txt;
+      marks.forEach(function (m, k) { setClass(m, 'on', k === cap - 1); });
+      caps.forEach(function (c, k) { setClass(c, 'on', k === cap); });
+      var k = still ? 1 : easeOut(clamp01((t - COUNT[0]) / (COUNT[1] - COUNT[0])));
+      put('ring', ring, 'strokeDashoffset', (RING * (1 - SCORE / 100 * k)).toFixed(2));
+      if (num.textContent !== String(Math.round(SCORE * k))) num.textContent = Math.round(SCORE * k);
+      var f = still ? 1 : easeOut(clamp01((t - FILL[0]) / (FILL[1] - FILL[0])));
+      fills.forEach(function (el, j) { put('f' + j, el, 'transform', 'scaleX(' + f.toFixed(3) + ')'); });
+      put('page', page, 'transform', 'translateY(' + (-scrollAt(still ? 0 : t)).toFixed(1) + 'px)');
+      setClass(play, 'is-press', !still && t >= PLAY[0] && t < PLAY[0] + 170);
+      setClass(jump, 'is-press', !still && t >= CLICK && t < CLICK + 170);
+      if (still) return;
+      var p = cur.at(t, PATH), ringK = -1;
+      [PLAY[0], CLICK].forEach(function (c) { if (t >= c && t < c + 450) ringK = (t - c) / 450; });
+      cur.draw(p, t >= 400 && t < 13600);
+      cur.click(p, ringK);
+    }
+    if (reduce) { render(0, true); return; }
+    playInView(root, render);
+  })();
+
+  /* 4. The team dashboard is a still. Only the progress chart answers the mouse, as it does in the app */
   (function () {
     var root = $('#dash');
     if (!root) return;
