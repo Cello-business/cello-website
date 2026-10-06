@@ -182,7 +182,8 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 .text-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--ink);font-size:15px;font-weight:600;text-decoration:underline;text-decoration-color:var(--line-2);text-decoration-thickness:1px;text-underline-offset:6px}
 .text-link:hover{color:var(--green);text-decoration-color:var(--green)}
 
-/* How it works: three short product films. Each mock is a white app window on the light stage, played while in view */
+/* How it works: four product rows. Each mock is a white app window on the light stage; the builder and the call are
+   short films played while in view, the report and the dashboard are stills */
 .f-n{margin-right:16px;color:var(--green);font-variant-numeric:tabular-nums}
 .mock{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:var(--paper);color:var(--ink);font-size:14px;line-height:1.45;box-shadow:0 40px 80px -36px rgba(15,42,30,.32),0 2px 8px rgba(15,42,30,.05);-webkit-user-select:none;user-select:none}
 .cursor{position:absolute;left:0;top:0;z-index:6;width:20px;height:24px;overflow:visible;pointer-events:none;opacity:0;filter:drop-shadow(0 2px 3px rgba(11,15,18,.28));will-change:transform}
@@ -294,7 +295,72 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
   .call-btn .sh{display:inline}
 }
 
-/* 3. The team lead's dashboard, as in the app: sidebar collapsed to its icons */
+/* 3. The call report: the call to listen back with feedback pinned to its moments, the score with a one-line summary,
+   what went well, at most two work points with a tip and a replay button, the score per skill and the measured numbers.
+   A still, so it does not repeat the report card in the why section */
+.rp{container-type:inline-size;padding:18px 22px 20px}
+.rp-top{display:flex;align-items:center;gap:12px;--mt:var(--green);--mb:var(--teal)}
+.rp-mark{width:24px;height:24px;flex:none}
+.rp-id{flex:1;min-width:0;display:grid;gap:1px}
+.rp-id b{font-size:15px;font-weight:600;line-height:1.3}
+.rp-id span{overflow:hidden;font-size:13px;line-height:1.3;color:var(--muted);white-space:nowrap;text-overflow:ellipsis}
+.rp-btn{display:inline-flex;align-items:center;gap:7px;min-height:32px;padding:0 12px;border:1px solid var(--line-2);border-radius:8px;background:var(--paper);font-size:12.5px;font-weight:600;line-height:1;white-space:nowrap}
+.rp-btn svg{width:14px;height:14px;flex:none;color:var(--ink-2)}
+.rp-player{display:flex;align-items:flex-start;gap:12px;margin-top:18px;padding:14px 16px 16px 14px;border:1px solid var(--line);border-radius:14px;background:var(--paper-2)}
+.rp-play{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--green);color:var(--paper)}
+.rp-play svg{width:16px;height:16px;margin-left:2px}
+.rp-track{flex:1;min-width:0}
+.rp-wave{position:relative;display:flex;align-items:center;justify-content:space-between;gap:2px;height:36px}
+.rp-wave i{flex:0 1 3px;min-width:1px;border-radius:2px;background:var(--line-2)}
+.rp-wave i.p{background:var(--green)}
+.rp-now{position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;border-radius:1px;background:var(--ink)}
+.rp-marks{position:relative;height:10px;margin-top:8px}
+.rp-mk{position:absolute;top:1px;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:var(--teal)}
+.rp-mk.wp{background:var(--warn)}
+.rp-mk.on{box-shadow:0 0 0 2px var(--paper-2),0 0 0 4px var(--warn)}
+.rp-cap{position:relative;margin:12px 0 0;padding:10px 12px 11px;border:1px solid var(--line);border-radius:10px;background:var(--paper);font-size:13px;line-height:1.45;box-shadow:0 10px 22px -16px rgba(15,42,30,.4)}
+.rp-cap::before{content:"";position:absolute;top:-6px;left:var(--at);width:10px;height:10px;margin-left:-5px;border-top:1px solid var(--line);border-left:1px solid var(--line);background:var(--paper);transform:rotate(45deg)}
+.rp-cap small{display:block;margin-bottom:2px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.rp-cap small b{font-weight:600;color:var(--ink)}
+.rp-time{flex:none;padding-top:9px;font-size:12.5px;font-weight:600;line-height:18px;color:var(--muted);font-variant-numeric:tabular-nums}
+.rp-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:22px 26px;margin-top:20px}
+.rp-col{display:grid;align-content:start;gap:20px;min-width:0}
+.rp-score{display:flex;align-items:flex-start;gap:14px}
+.rp-num{flex:none;display:grid;justify-items:center;gap:2px}
+.rp-num b{font-size:38px;font-weight:600;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.rp-num small{font-size:11.5px;color:var(--muted);white-space:nowrap}
+.rp-score p{margin:0;font-size:14px;line-height:1.45;color:var(--ink-2)}
+.rp-h{display:block;margin-bottom:9px;font-size:13px;font-weight:600;line-height:1.35}
+.rp-good{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.rp-good li{display:grid;grid-template-columns:16px minmax(0,1fr);gap:9px;font-size:13px;line-height:1.45;color:var(--ink-2)}
+.rp-good svg{width:16px;height:16px;margin-top:1px;color:var(--green)}
+.rp-skills{list-style:none;margin:0;padding:0;font-size:12.5px;line-height:1.3;color:var(--ink-2)}
+.rp-skills li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-top:1px solid var(--line)}
+.rp-skills b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.rp-skills .wp b{color:var(--warn-ink)}
+.rp-wps{display:grid;gap:10px}
+.rp-wp{display:grid;justify-items:start;gap:6px;padding:12px 14px 14px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+.rp-wp-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;width:100%;font-size:13.5px;font-weight:600;line-height:1.35}
+.rp-wp-top span{color:var(--warn-ink);font-variant-numeric:tabular-nums}
+.rp-wp p{margin:0 0 4px;font-size:13px;line-height:1.45;color:var(--ink-2)}
+.rp-stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin:20px 0 0;padding-top:16px;border-top:1px solid var(--line)}
+.rp-stats div{display:grid;grid-template-rows:1fr auto;gap:3px;min-width:0}
+.rp-stats dt{font-size:11.5px;line-height:1.3;color:var(--muted)}
+.rp-stats dd{margin:0;font-size:15px;font-weight:600;line-height:1.2;white-space:nowrap;font-variant-numeric:tabular-nums}
+.rp-stats dd small{font-size:11.5px;font-weight:500;color:var(--muted)}
+@container (max-width:560px){
+  .rp-body{grid-template-columns:minmax(0,1fr)}
+  .rp-stats{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:14px}
+}
+@container (max-width:440px){
+  .rp{padding:16px 16px 18px}
+  .rp-top .rp-btn span{display:none}
+  .rp-top .rp-btn{padding:0 9px}
+  .rp-player{padding:12px}
+  .rp-time,.rp-skills-box,.rp-wp+.rp-wp{display:none}
+}
+
+/* 4. The team lead's dashboard, as in the app: sidebar collapsed to its icons */
 .dash{display:grid;grid-template-columns:56px minmax(0,1fr);container-type:inline-size}
 .dash-rail{display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px 0 14px;background:var(--deep);--mt:var(--on-deep);--mb:var(--teal)}
 .dash-mark{width:26px;height:26px;margin-bottom:16px}
@@ -976,7 +1042,85 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 
       <div class="feature wide flip">
         <div class="f-copy">
-          <h3><span class="f-n">3</span>Zie wie klaar is voor echte klanten.</h3>
+          <h3><span class="f-n">3</span>Feedback na elk gesprek.</h3>
+          <p>Luister je gesprek terug met feedback op het moment zelf. Je ziet je score per vaardigheid, wat goed ging en wat het meeste verschil maakt.</p>
+          <ul class="f-list">
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Maximaal twee werkpunten, elk met een concrete tip</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Gemeten cijfers zoals tempo, stopwoorden en stiltes</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Het transcript van je gesprek</li>
+          </ul>
+        </div>
+        <div class="f-visual light" role="img" aria-label="Het belrapport na het gesprek met Marc: het gesprek om terug te beluisteren met feedback op het moment zelf, een score van 68 met een samenvatting, wat goed ging, de score per vaardigheid, twee werkpunten met een tip en de gemeten cijfers.">
+          <div class="mock rp" id="report">
+            <div class="rp-top">
+              <svg class="rp-mark"><use href="#mark"/></svg>
+              <span class="rp-id"><b>Belrapport</b><span>Klant wil zijn geld terug · Marc</span></span>
+              <span class="rp-btn"><svg><use href="#i-doc"/></svg><span>Transcript</span></span>
+            </div>
+            <div class="rp-player">
+              <span class="rp-play"><svg><use href="#i-play"/></svg></span>
+              <div class="rp-track">
+                <div class="rp-wave"><i class="p" style="height:53%"></i><i class="p" style="height:50%"></i><i class="p" style="height:77%"></i><i class="p" style="height:55%"></i><i class="p" style="height:78%"></i><i class="p" style="height:70%"></i><i class="p" style="height:54%"></i><i class="p" style="height:68%"></i><i class="p" style="height:40%"></i><i class="p" style="height:48%"></i><i class="p" style="height:22%"></i><i class="p" style="height:14%"></i><i class="p" style="height:22%"></i><i class="p" style="height:32%"></i><i class="p" style="height:14%"></i><i class="p" style="height:14%"></i><i class="p" style="height:34%"></i><i class="p" style="height:55%"></i><i class="p" style="height:48%"></i><i class="p" style="height:49%"></i><i class="p" style="height:83%"></i><i class="p" style="height:49%"></i><i class="p" style="height:89%"></i><i class="p" style="height:65%"></i><i class="p" style="height:58%"></i><i class="p" style="height:53%"></i><i style="height:58%"></i><i style="height:76%"></i><i style="height:44%"></i><i style="height:59%"></i><i style="height:61%"></i><i style="height:14%"></i><i style="height:20%"></i><i style="height:45%"></i><i style="height:49%"></i><i style="height:59%"></i><i style="height:82%"></i><i style="height:70%"></i><i style="height:62%"></i><i style="height:69%"></i><i style="height:55%"></i><i style="height:39%"></i><i style="height:52%"></i><i style="height:39%"></i><i style="height:14%"></i><i style="height:21%"></i><i style="height:21%"></i><i style="height:40%"></i><i style="height:39%"></i><i style="height:28%"></i><i style="height:68%"></i><i style="height:40%"></i><i style="height:62%"></i><i style="height:83%"></i><i style="height:61%"></i><i style="height:77%"></i><span class="rp-now" style="left:47%"></span></div>
+                <div class="rp-marks"><span class="rp-mk" style="left:14%"></span><span class="rp-mk wp on" style="left:47%"></span><span class="rp-mk" style="left:63%"></span><span class="rp-mk wp" style="left:80%"></span></div>
+                <p class="rp-cap" style="--at:47%"><small>1:56 · <b>Kwaliteit van je vragen</b></small>Hier stel je al een oplossing voor, nog voor je weet wat Marc verwacht.</p>
+              </div>
+              <span class="rp-time">1:56 / 4:07</span>
+            </div>
+            <div class="rp-body">
+              <div class="rp-col">
+                <div class="rp-score">
+                  <span class="rp-num"><b>68</b><small>van 100</small></span>
+                  <p>Je bleef rustig onder druk, maar je zocht te snel naar een oplossing.</p>
+                </div>
+                <div>
+                  <b class="rp-h">Wat goed ging</b>
+                  <ul class="rp-good">
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg>Je erkende zijn frustratie voor je iets uitlegde</li>
+                    <li><svg aria-hidden="true"><use href="#i-check"/></svg>Je bleef rustig, ook toen Marc luider werd</li>
+                  </ul>
+                </div>
+                <div class="rp-skills-box">
+                  <b class="rp-h">Per vaardigheid</b>
+                  <ul class="rp-skills">
+                    <li><span>Je doel bereiken</span><b>72</b></li>
+                    <li class="wp"><span>Kwaliteit van je vragen</span><b>61</b></li>
+                    <li><span>Overtuigingskracht</span><b>70</b></li>
+                    <li class="wp"><span>Omgaan met weerstand</span><b>64</b></li>
+                    <li><span>Spreekstijl</span><b>74</b></li>
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <b class="rp-h">Werkpunten</b>
+                <div class="rp-wps">
+                  <div class="rp-wp">
+                    <span class="rp-wp-top">Kwaliteit van je vragen<span>61</span></span>
+                    <p>Vraag eerst wat Marc verwacht. Bijvoorbeeld: wat zou dit voor u oplossen?</p>
+                    <span class="rp-btn"><svg><use href="#i-play"/></svg>Beluister dit moment</span>
+                  </div>
+                  <div class="rp-wp">
+                    <span class="rp-wp-top">Omgaan met weerstand<span>64</span></span>
+                    <p>Herhaal zijn bezwaar in je eigen woorden voor je antwoordt. Dan voelt hij zich gehoord.</p>
+                    <span class="rp-btn"><svg><use href="#i-play"/></svg>Beluister dit moment</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <dl class="rp-stats">
+              <div><dt>Jouw spreektijd</dt><dd>58%</dd></div>
+              <div><dt>Tempo</dt><dd>164 <small>w/min</small></dd></div>
+              <div><dt>Stopwoorden</dt><dd>9</dd></div>
+              <div><dt>Open / gesloten vragen</dt><dd>2 / 6</dd></div>
+              <div><dt>Langste stilte</dt><dd>6 s</dd></div>
+              <div><dt>Duur</dt><dd>4:07</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature wide">
+        <div class="f-copy">
+          <h3><span class="f-n">4</span>Zie wie klaar is voor echte klanten.</h3>
           <p>Het dashboard voor de teamleider toont in één oogopslag hoe je team ervoor staat.</p>
           <ul class="f-list">
             <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Voortgang van het team, week na week</li>
