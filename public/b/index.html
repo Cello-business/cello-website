@@ -102,7 +102,8 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 .actions{display:flex;flex-wrap:wrap;gap:12px}
 
 /* Header */
-.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rgba(246,247,244,.9);-webkit-backdrop-filter:saturate(1.3) blur(12px);backdrop-filter:saturate(1.3) blur(12px);border-bottom:1px solid var(--line)}
+/* A solid bar instead of a frosted one: a backdrop blur has to be redrawn on every scrolled frame, which is heavy on large high-res screens */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--sand);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px}
 .logo{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:var(--ink);text-decoration:none;--mt:var(--green);--mb:var(--teal)}
 .logo:hover{color:var(--ink)}
@@ -191,6 +192,8 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 .click-ring{position:absolute;left:0;top:0;z-index:5;width:34px;height:34px;margin:-17px 0 0 -17px;border:2px solid var(--teal);border-radius:50%;opacity:0;pointer-events:none}
 
 /* 1. Scenario builder: name the customer, pick a mood, add an objection, check the summary and publish */
+/* The films each get their own layer, so what changes inside them never forces the rest of the page to be redrawn while you scroll */
+#sb,#callcard,#why-chat{contain:layout paint;will-change:transform}
 .sb{container-type:inline-size}
 .sb-scene{display:flex;flex-direction:column;min-width:0;padding:22px 24px 20px;transition:opacity .45s ease}
 .sb.is-reset .sb-scene{opacity:0}
