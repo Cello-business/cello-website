@@ -580,6 +580,8 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 @media (max-width:960px){.why-grid{grid-template-columns:minmax(0,1fr);grid-template-rows:none;row-gap:18px}.why-card{display:flex;flex-direction:column;grid-row:auto}.why-call{min-height:560px}.why-call .why-stage{flex:1 1 auto}.why-report .why-stage{padding-block:40px 28px}}
 @media (max-width:900px){.why-boxes{grid-template-columns:minmax(0,1fr)}.why-box{min-height:0;flex-direction:row;justify-content:flex-start;gap:16px;padding:24px}.why-box svg{width:24px;height:24px;margin-top:2px}.why-box h3{font-size:18px}.why-box p{font-size:15px}}
 @media (max-width:560px){.why-card{border-radius:22px}.why-stage{padding:24px 18px 10px}.why-text{padding:0 22px 26px}.why-desc{font-size:16px}.chat{padding:0 16px}.rc{padding:18px}.rc-body{gap:18px}.rc-ring{width:72px}.rc-ring>div{width:72px;height:72px}.rc-ring b{font-size:22px}}
+/* Very narrow phones: the ring goes above the bars, so long skill names like Spreekverzorging keep their own line */
+@media (max-width:349px){.rc-body{flex-direction:column;align-items:flex-start;gap:16px}.rc-bars{width:100%}}
 
 /* Shared animations */
 
@@ -900,7 +902,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
                   <li><span>Kwaliteit van je vragen</span><b>64</b><i><span style="width:64%"></span></i></li>
                   <li><span>Overtuigingskracht</span><b>71</b><i><span style="width:71%"></span></i></li>
                   <li><span>Omgaan met weerstand</span><b>62</b><i><span style="width:62%"></span></i></li>
-                  <li class="hy"><span>Spreekstijl</span><b>88</b><i><span style="width:88%"></span></i></li>
+                  <li class="hy"><span>Spreekverzorging</span><b>88</b><i><span style="width:88%"></span></i></li>
                 </ul>
               </div>
             </div>
