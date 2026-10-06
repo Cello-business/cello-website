@@ -1,34 +1,41 @@
-# Cello website
+# Cello Business website
 
-Marketingsite voor Cello: AI-belsimulaties waarmee teams echte telefoongesprekken oefenen en meteen feedback krijgen.
+Marketingsite voor Cello Business: beltraining met AI-klanten voor contactcenters en salesteams. Live op https://www.cellobusiness.com.
 
-## Stack
+## Opbouw
 
-- [Vite](https://vitejs.dev): build & dev server
-- [GSAP](https://gsap.com) + ScrollTrigger: scroll-animaties (gepinde simulatie, reveals, tellers)
-- [Lenis](https://lenis.darkroom.engineering): smooth scrolling
-- Vanilla HTML/CSS/JS, merkstijl uit `merkstijl.md`
+De site is statisch: alles in `public/` gaat ongewijzigd live op Vercel. Er is geen framework en geen bundler; elke pagina is één HTML-bestand met de CSS en JavaScript inline.
+
+```
+public/
+  index.html                                     homepage
+  blog/index.html                                blogoverzicht
+  blog/piloten-oefenen-in-een-simulator/         artikel
+  404.html                                       pagina voor onbekende links
+  img/  audio/                                   foto's en de stemmen van de AI-klanten
+  favicon.ico  favicon.svg  apple-touch-icon.png  icon-*.png  site.webmanifest
+  sitemap.xml  robots.txt
+scripts/check.mjs                                controle voor elke deploy
+scripts/serve.mjs                                lokale server
+vercel.json                                      headers (CSP), redirects, buildinstellingen
+```
 
 ## Ontwikkelen
 
 ```bash
-npm install
-npm run dev      # dev server op http://localhost:5173
-npm run build    # productie-build naar dist/
-npm run preview  # bekijk de productie-build lokaal
+npm run dev     # lokale server op http://localhost:5173, met dezelfde CSP als productie
+npm run check   # dezelfde controle die Vercel bij elke deploy draait
 ```
+
+Er zijn geen dependencies; `npm install` is niet nodig.
 
 ## Goed om te weten
 
-- **E-mailadres**: alle CTA's verwijzen naar `contact@cellobusiness.com`.
-- **Copy**: alle teksten staan in `index.html`; kleuren en tokens in `src/styles/base.css`. Die tokens komen uit het Cello design system (`docs/design.md` in de webapp): het palet is gesloten, dus geen nieuwe kleuren toevoegen.
-- **Blog**: elk artikel is een eigen map `blog/<slug>/index.html`. Een nieuw artikel maak je zo:
-  1. Kopieer `blog/_sjabloon` naar `blog/<slug>` (kort, kleine letters, koppeltekens). Het sjabloon is meteen de schrijfhandleiding.
-  2. Vul in de `<head>` de titel, description, auteur (moet in `blog/_build/auteurs.js` staan, voor foto en rol), datum (`article:published_time`) en het onderwerp (`cello:onderwerp`: `sales`, `klantendienst`, `onboarding` of `leiderschap`) in.
-  3. Zet een beeld (verhouding 2:1, bv. 2400×1200 jpg) in `public/blog/beelden/` en vul `cello:beeld` in. Zonder beeld toont de blog een rustig vlak met het icoon van het onderwerp.
-  4. Schrijf de titel, intro en tekst.
-  5. Voor de Engelse versie: zet een `en.html` naast het artikel, met dezelfde opbouw in het Engels (voorbeeld in `blog/_sjabloon/en.html`). Wie EN kiest, krijgt dan het Engelse artikel; zonder `en.html` blijft het artikel Nederlands.
-
-  De rest gebeurt vanzelf, in `npm run dev` en bij de build (`blog/_build/plugin.js`): het overzicht (het nieuwste artikel groot, oudere eronder), de leestijd, "Lees ook", het deelbeeld voor LinkedIn en de canonical/og/JSON-LD-tags. De titel in het overzicht is de `<h1>` van het artikel; de `<title>` mag korter, voor Google. Het beeld van het eerste artikel is gemaakt met de stijlen van de site; de bron staat in `blog/_beelden/`. Mappen die met `_` beginnen gaan niet live. Artikels zijn Nederlandstalig; de rand (nav, footer, overzicht) vertaalt mee via `src/js/i18n.js`.
-- **Animaties**: respecteren `prefers-reduced-motion` en werken ook zonder JavaScript (statische eindtoestanden).
-- **Simulatie-sectie**: de gepinde scroll-ervaring zit in `src/js/sim.js`; op mobiel wordt die automatisch een gestapelde versie.
+- **Demo en contact**: de knoppen "Plan een demo" gaan naar de Google Agenda-boekingspagina; het e-mailadres is `contact@cellobusiness.com`.
+- **CSP**: `vercel.json` laat alleen inline scripts toe waarvan de hash in `script-src` staat. Pas je een inline `<script>` aan, dan faalt `npm run check` en toont het de nieuwe hash die je in `vercel.json` zet. Zo gaat er nooit een versie live waarin de browser de scripts weigert. JSON-LD (`type="application/ld+json"`) valt daarbuiten.
+- **Vindbaarheid en delen**: elke pagina heeft een canonical URL, een description, Open Graph-tags met een deelbeeld van 1200×630 en gestructureerde gegevens (JSON-LD) voor Google. Een nieuwe pagina krijgt die ook, en komt in `sitemap.xml`. De check controleert dat elk lokaal pad en elke URL naar de eigen site bestaat, en dat geen pagina uit de sitemap op `noindex` staat.
+- **Foto's**: elke foto heeft een alt-tekst. Puur decoratieve foto's hebben daarnaast `aria-hidden="true"`, zodat een schermlezer ze overslaat.
+- **Nieuw blogartikel**: kopieer de map van een bestaand artikel, pas de tekst, de `<head>` (titel, description, canonical, og-tags, datum) en de JSON-LD aan, voeg het artikel toe aan `public/blog/index.html` en `sitemap.xml`, en maak een deelbeeld van 1200×630 in `public/img/`.
+- **Adressen**: de site staat alleen op de echte adressen (`/`, `/blog/`, `/blog/<artikel>/`). De vroegere testversie op `/b` bestaat niet meer en geeft een 404. Alleen het oude artikel `/blog/nieuwe-bellers-oefenen-op-je-klanten/` stuurt permanent door naar het huidige (zie `redirects` in `vercel.json`).
+- **Analytics**: Vercel Web Analytics via `/_vercel/insights/script.js` (zonder cookies). Lokaal geeft dat script een 404; dat is normaal.
+- **Animaties**: respecteren `prefers-reduced-motion` en tonen dan een stilstaand eindbeeld.

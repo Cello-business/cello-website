@@ -1,11 +1,14 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "public",
   "redirects": [
-    { "source": "/b/blog", "destination": "/b/blog/", "permanent": false },
-    { "source": "/b/blog/piloten-oefenen-in-een-simulator.html", "destination": "/b/blog/piloten-oefenen-in-een-simulator/", "permanent": false }
-  ],
-  "rewrites": [
-    { "source": "/b", "destination": "/b/index.html" }
+    { "source": "/blog", "destination": "/blog/", "permanent": true },
+    { "source": "/blog/piloten-oefenen-in-een-simulator", "destination": "/blog/piloten-oefenen-in-een-simulator/", "permanent": true },
+    { "source": "/blog/nieuwe-bellers-oefenen-op-je-klanten", "destination": "/blog/piloten-oefenen-in-een-simulator/", "permanent": true },
+    { "source": "/blog/nieuwe-bellers-oefenen-op-je-klanten/", "destination": "/blog/piloten-oefenen-in-een-simulator/", "permanent": true },
+    { "source": "/blog/nieuwe-bellers-oefenen-op-je-klanten/:path*", "destination": "/blog/piloten-oefenen-in-een-simulator/", "permanent": true }
   ],
   "headers": [
     {
@@ -13,7 +16,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'sha256-WiY23gBgLEoWhQiICRpYtKXQFYeFOK4wAT+kL89LN24=' 'sha256-w41zHuxssv1zfrb85N1HT4ZZXg4aYj03XawaaDNPv2Q=' 'sha256-UK2jH5sfk3/WcCJmmTiVAR2PKnVX1ISNoWCl/ZZEPoU=' 'sha256-HXevM+JO7UpcEV042dmnhtYR7mOlomL1A4JnSnrDJnY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.vercel-insights.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self' 'sha256-UK2jH5sfk3/WcCJmmTiVAR2PKnVX1ISNoWCl/ZZEPoU=' 'sha256-w41zHuxssv1zfrb85N1HT4ZZXg4aYj03XawaaDNPv2Q=' 'sha256-HXevM+JO7UpcEV042dmnhtYR7mOlomL1A4JnSnrDJnY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self' https://*.vercel-insights.com; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
         },
         {
           "key": "Strict-Transport-Security",
