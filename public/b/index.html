@@ -304,7 +304,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 .rp-id{min-width:0;display:grid;gap:1px}
 .rp-id b{font-size:15px;font-weight:600;line-height:1.3}
 .rp-id span{overflow:hidden;font-size:13px;line-height:1.3;color:var(--muted);white-space:nowrap;text-overflow:ellipsis}
-.rp-view{position:relative;height:var(--rp-h,516px);overflow:hidden}
+.rp-view{position:relative;height:var(--rp-h,516px);overflow:hidden;contain:layout paint}
 .rp-view::after{content:"";position:absolute;left:0;right:0;bottom:0;height:24px;background:linear-gradient(rgba(250,251,249,0),var(--paper-2));pointer-events:none}
 .rp-page{display:grid;gap:12px;padding:16px 16px 20px;transition:opacity .45s ease}
 .rp.is-reset .rp-page{opacity:0}
@@ -337,7 +337,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 .rp-wave .them{fill:var(--mint)}
 .rp-wave .you{fill:var(--teal)}
 .rp-wave line{stroke:var(--line-2);stroke-width:1;stroke-dasharray:2 3;vector-effect:non-scaling-stroke}
-.rp-head{position:absolute;top:16px;height:calc(var(--rp-wave,88px) + 6px);width:2px;margin-left:-1px;border-radius:1px;background:var(--deep)}
+.rp-head{position:absolute;top:16px;left:0;height:calc(var(--rp-wave,88px) + 6px);width:2px;margin-left:-1px;border-radius:1px;background:var(--deep)}
 .rp-head::before{content:"";position:absolute;top:-4px;left:-4px;width:10px;height:10px;border-radius:50%;background:var(--deep)}
 .rp-marks{position:relative;height:24px;margin-top:8px}
 .rp-mk{position:absolute;top:0;width:24px;height:24px;margin-left:-12px;transition:transform .25s}
@@ -357,7 +357,8 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 .rp-ring>div{position:relative;width:76px;height:76px}
 .rp-ring svg{display:block;width:100%;height:100%;transform:rotate(-90deg)}
 .rp-ring .trk{fill:none;stroke:var(--deep-2);stroke-width:7}
-.rp-ring .val{fill:none;stroke:var(--mint);stroke-width:7;stroke-linecap:round}
+.rp-ring .val{fill:none;stroke:var(--mint);stroke-width:7;stroke-linecap:round;transition:stroke-dashoffset 1.2s cubic-bezier(.33,1,.68,1)}
+.rp.is-zero .rp-ring .val{stroke-dashoffset:213.63;transition:none}
 .rp-ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:26px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .rp-ring small{font-size:12px;color:var(--on-deep-2)}
 .rp-score p{margin:0;font-size:13.5px;line-height:1.5}
@@ -1744,32 +1745,29 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
   })();
 
   /* 3. The call report: the call plays back and feedback appears at the moment it is about. Then the page scrolls
-     down to the work points, and a click on the first one scrolls back up and replays that moment */
+     down to the work points, and a click on the first one scrolls back up and replays that moment.
+     Unlike the other films this one does not render every frame: everything that moves (playhead, page, bars,
+     pointer) is a looping Web Animation on transform or opacity, which the browser runs off the main thread, so
+     scrolling past it stays smooth. Only the clock, the score and which feedback is shown are set by a slow timer.
+     The markup is the still frame, so without script or with reduced motion nothing needs to happen */
   (function () {
     var root = $('#report');
-    if (!root) return;
+    if (!root || reduce || !root.animate) return;
     var view = $('.rp-view', root), page = $('.rp-page', root), head = $('.rp-head', root), clock = $('.rp-t', root);
-    var play = $('.rp-play', root), marks = $$('.rp-mk', root), caps = $$('.rp-cap', root);
-    var ring = $('.rp-ring .val', root), num = $('.rp-ring b', root), fills = $$('.rp-bars i span', root);
-    var work = $('.rp-work', root), jump = $('.rp-wps .rp-at', root);
-    var LEN = 144, AT = [31, 72, 108], RING = 213.63, SCORE = 68;
+    var play = $('.rp-play', root), marks = $$('.rp-mk', root), caps = $$('.rp-cap', root), num = $('.rp-ring b', root);
+    var fills = $$('.rp-bars i span', root), work = $('.rp-work', root), jump = $('.rp-wps .rp-at', root);
+    var cursorEl = $('.cursor', root), ringEl = $('.click-ring', root);
+    var LEN = 144, AT = [31, 72, 108], SCORE = 68, EASE = 'cubic-bezier(.65,0,.35,1)', OUT = 'cubic-bezier(.33,1,.68,1)';
     var TOTAL = 18000, COUNT = [300, 1500], PLAY = [1900, 9400], DOWN = [9900, 10900], FILL = [10300, 11300];
     var CLICK = 12100, UP = [12400, 13300], AGAIN = [13300, 16300], FADE = 17400;
     var PATH = [[0, 'off'], [500, 'off'], [1500, 'play'], [2300, 'play'], [3300, 'rest'], [10900, 'rest'], [11900, 'jump'], [12500, 'jump'], [13500, 'off']];
-    var cur = pointer(root, {
-      off: function () { return { x: root.clientWidth + 30, y: root.clientHeight * 0.55 }; },
-      play: spotOf(root, play, 0.55, 0.6),
-      // A quiet spot beside the controls that stays put while the page scrolls
-      rest: function () { return { x: root.clientWidth * 0.62, y: view.offsetTop + 52 }; },
-      jump: spotOf(root, jump, 0.5, 0.6)
-    });
-    var workY = 0, width = -1, shown = {};
-    function measure() {
-      width = root.clientWidth;
-      workY = Math.max(0, Math.min(page.offsetHeight - view.clientHeight, work.offsetTop - 8));
+    var G = { w: 0, h: 0, plot: 0, work: 0, rest: 0, play: null, jump: null }, y = 0, anims = [], timer = 0, seen = false;
+    function scrollAt(t) {
+      if (t < DOWN[0] || t >= UP[1]) return 0;
+      if (t < DOWN[1]) return G.work * easeInOut((t - DOWN[0]) / (DOWN[1] - DOWN[0]));
+      if (t < UP[0]) return G.work;
+      return G.work * (1 - easeInOut((t - UP[0]) / (UP[1] - UP[0])));
     }
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
-    function put(key, el, prop, val) { if (shown[key] !== val) { shown[key] = val; el.style[prop] = val; } }
     function secAt(t) {
       if (t < PLAY[0]) return 0;
       if (t < PLAY[1]) return LEN * (t - PLAY[0]) / (PLAY[1] - PLAY[0]);
@@ -1777,41 +1775,104 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
       if (t < AGAIN[0]) return AT[0];
       return AT[0] + 6 * clamp01((t - AGAIN[0]) / (AGAIN[1] - AGAIN[0]));
     }
-    function scrollAt(t) {
-      if (t < DOWN[0] || t >= UP[1]) return 0;
-      if (t < DOWN[1]) return workY * easeInOut((t - DOWN[0]) / (DOWN[1] - DOWN[0]));
-      if (t < UP[0]) return workY;
-      return workY * (1 - easeInOut((t - UP[0]) / (UP[1] - UP[0])));
+    // The pointer's targets, measured with the page at rest; while the page scrolls they move up by its offset
+    var cur = pointer(root, {
+      off: function () { return { x: G.w + 30, y: G.h * 0.55 }; },
+      play: function () { return G.play && { x: G.play.x, y: G.play.y - y }; },
+      rest: function () { return { x: G.w * 0.62, y: G.rest }; },
+      jump: function () { return G.jump && { x: G.jump.x, y: G.jump.y - y }; }
+    });
+    function measure() {
+      var o = root.getBoundingClientRect(), dy = page.getBoundingClientRect().top - view.getBoundingClientRect().top;
+      function at(el, fx, fy) {
+        var r = el.getBoundingClientRect();
+        return { x: r.left - o.left - root.clientLeft + r.width * fx, y: r.top - o.top - root.clientTop + r.height * fy - dy };
+      }
+      G.w = root.clientWidth; G.h = root.clientHeight; G.plot = head.parentNode.clientWidth;
+      G.work = Math.max(0, Math.min(page.offsetHeight - view.clientHeight, work.offsetTop - 8));
+      G.rest = view.offsetTop + 52;
+      G.play = at(play, 0.55, 0.6);
+      G.jump = at(jump, 0.5, 0.6);
     }
-    function render(ms, still) {
-      var t = ms % TOTAL, sec, cap = 0, i;
-      if (root.clientWidth !== width) measure();
-      sec = still ? AT[0] : secAt(t);
-      if (sec > 0) for (i = 0; i < AT.length; i++) if (sec >= AT[i]) cap = i + 1;
-      var playing = !still && ((t >= PLAY[0] && t < PLAY[1]) || (t >= AGAIN[0] && t < AGAIN[1]));
-      setClass(root, 'is-playing', playing);
-      setClass(root, 'is-reset', !still && t >= FADE);
-      put('head', head, 'left', (sec / LEN * 100).toFixed(2) + '%');
-      var s = Math.floor(sec), txt = Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2);
+    function o(ms) { return ms / TOTAL; }
+    function build() {
+      var now = anims.length ? anims[0].currentTime || 0 : 0, X, t, p, frames, rf, last;
+      anims.forEach(function (a) { a.cancel(); });
+      anims = [];
+      measure();
+      function loop(el, kf) { anims.push(el.animate(kf, { duration: TOTAL, iterations: Infinity })); }
+      X = function (s) { return 'translateX(' + (s / LEN * G.plot).toFixed(1) + 'px)'; };
+      head.style.left = '0';
+      loop(head, [
+        { offset: 0, transform: X(0) }, { offset: o(PLAY[0]), transform: X(0) }, { offset: o(PLAY[1]), transform: X(LEN) },
+        { offset: o(CLICK), transform: X(LEN) }, { offset: o(CLICK + 1), transform: X(AT[0]) },
+        { offset: o(AGAIN[0]), transform: X(AT[0]) }, { offset: o(AGAIN[1]), transform: X(AT[0] + 6) }, { offset: 1, transform: X(AT[0] + 6) }
+      ]);
+      loop(page, [
+        { offset: 0, transform: 'translateY(0px)' }, { offset: o(DOWN[0]), transform: 'translateY(0px)', easing: EASE },
+        { offset: o(DOWN[1]), transform: 'translateY(' + -G.work + 'px)' }, { offset: o(UP[0]), transform: 'translateY(' + -G.work + 'px)', easing: EASE },
+        { offset: o(UP[1]), transform: 'translateY(0px)' }, { offset: 1, transform: 'translateY(0px)' }
+      ]);
+      fills.forEach(function (el) {
+        loop(el, [
+          { offset: 0, transform: 'scaleX(0)' }, { offset: o(FILL[0]), transform: 'scaleX(0)', easing: OUT },
+          { offset: o(FILL[1]), transform: 'scaleX(1)' }, { offset: 1, transform: 'scaleX(1)' }
+        ]);
+      });
+      // The pointer's glide, sampled from the same path the other films use
+      frames = [];
+      for (t = 0; t <= TOTAL; t += 50) {
+        y = scrollAt(t);
+        p = cur.at(t, PATH);
+        frames.push({ offset: o(t), opacity: t >= 400 && t < 13600 ? 1 : 0, transform: 'translate(' + (p.x - 3).toFixed(1) + 'px,' + (p.y - 2.2).toFixed(1) + 'px)' });
+      }
+      loop(cursorEl, frames);
+      rf = [];
+      [PLAY[0], CLICK].forEach(function (c) {
+        y = scrollAt(c);
+        p = cur.at(c, PATH);
+        last = 'translate(' + p.x.toFixed(1) + 'px,' + p.y.toFixed(1) + 'px) ';
+        if (!rf.length) rf.push({ offset: 0, opacity: 0, transform: last + 'scale(.4)' });
+        rf.push({ offset: o(c), opacity: 0, transform: last + 'scale(.4)' }, { offset: o(c + 1), opacity: 0.8, transform: last + 'scale(.4)' }, { offset: o(c + 450), opacity: 0, transform: last + 'scale(1.4)' });
+      });
+      rf.push({ offset: 1, opacity: 0, transform: last + 'scale(1.4)' });
+      loop(ringEl, rf);
+      y = 0;
+      anims.forEach(function (a) { a.currentTime = now; if (!seen) a.pause(); });
+      tick();
+    }
+    // Clock, score, feedback and button presses: a few times a second, and only what changed
+    function tick() {
+      var t = (anims[0].currentTime || 0) % TOTAL, sec = secAt(t), cap = 0, i, k, s, txt;
+      for (i = 0; i < AT.length; i++) if (sec > 0 && sec >= AT[i]) cap = i + 1;
+      setClass(root, 'is-playing', (t >= PLAY[0] && t < PLAY[1]) || (t >= AGAIN[0] && t < AGAIN[1]));
+      setClass(root, 'is-reset', t >= FADE);
+      setClass(root, 'is-zero', t < COUNT[0]);
+      s = Math.floor(sec); txt = Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2);
       if (clock.textContent !== txt) clock.textContent = txt;
-      marks.forEach(function (m, k) { setClass(m, 'on', k === cap - 1); });
-      caps.forEach(function (c, k) { setClass(c, 'on', k === cap); });
-      var k = still ? 1 : easeOut(clamp01((t - COUNT[0]) / (COUNT[1] - COUNT[0])));
-      put('ring', ring, 'strokeDashoffset', (RING * (1 - SCORE / 100 * k)).toFixed(2));
-      if (num.textContent !== String(Math.round(SCORE * k))) num.textContent = Math.round(SCORE * k);
-      var f = still ? 1 : easeOut(clamp01((t - FILL[0]) / (FILL[1] - FILL[0])));
-      fills.forEach(function (el, j) { put('f' + j, el, 'transform', 'scaleX(' + f.toFixed(3) + ')'); });
-      put('page', page, 'transform', 'translateY(' + (-scrollAt(still ? 0 : t)).toFixed(1) + 'px)');
-      setClass(play, 'is-press', !still && t >= PLAY[0] && t < PLAY[0] + 170);
-      setClass(jump, 'is-press', !still && t >= CLICK && t < CLICK + 170);
-      if (still) return;
-      var p = cur.at(t, PATH), ringK = -1;
-      [PLAY[0], CLICK].forEach(function (c) { if (t >= c && t < c + 450) ringK = (t - c) / 450; });
-      cur.draw(p, t >= 400 && t < 13600);
-      cur.click(p, ringK);
+      k = String(Math.round(SCORE * easeOut(clamp01((t - COUNT[0]) / (COUNT[1] - COUNT[0])))));
+      if (num.textContent !== k) num.textContent = k;
+      marks.forEach(function (m, j) { setClass(m, 'on', j === cap - 1); });
+      caps.forEach(function (c, j) { setClass(c, 'on', j === cap); });
+      setClass(play, 'is-press', t >= PLAY[0] && t < PLAY[0] + 240);
+      setClass(jump, 'is-press', t >= CLICK && t < CLICK + 240);
     }
-    if (reduce) { render(0, true); return; }
-    playInView(root, render);
+    function start() {
+      if (timer || !seen || document.hidden) return;
+      anims.forEach(function (a) { a.play(); });
+      timer = setInterval(tick, 120);
+    }
+    function stop() {
+      anims.forEach(function (a) { a.pause(); });
+      clearInterval(timer); timer = 0;
+    }
+    build();
+    var width = G.w;
+    if ('ResizeObserver' in window) new ResizeObserver(function () { if (root.clientWidth !== width) { width = root.clientWidth; build(); } }).observe(root);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+    if (!('IntersectionObserver' in window)) { seen = true; start(); return; }
+    new IntersectionObserver(function (en) { seen = en[en.length - 1].isIntersecting; if (seen) start(); else stop(); }, { threshold: 0.25 }).observe(root);
+    document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
   })();
 
   /* 4. The team dashboard is a still. Only the progress chart answers the mouse, as it does in the app */
