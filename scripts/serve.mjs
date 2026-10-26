@@ -1,6 +1,7 @@
 /* Lokale server voor public/ (`npm run dev`), zonder dependencies.
    Serveert met dezelfde headers als vercel.json, zodat een CSP-fout ook lokaal opvalt
    (zonder HSTS en upgrade-insecure-requests, die op http://localhost niet werken).
+   Zoals op Vercel krijgt een pad alleen de headers van de blokken waarvan de source matcht.
    Onbekende paden krijgen 404.html, zoals op Vercel. Redirects uit vercel.json doet hij niet. */
 import { createServer } from 'node:http';
 import { existsSync, readFileSync, statSync } from 'node:fs';
@@ -23,15 +24,18 @@ const TYPES = {
   '.jpg': 'image/jpeg',
   '.ico': 'image/x-icon',
   '.mp3': 'audio/mpeg',
+  '.woff2': 'font/woff2',
 };
 
 const vercel = JSON.parse(readFileSync(join(ROOT, 'vercel.json'), 'utf8'));
-const headers = Object.fromEntries(
-  vercel.headers
-    .flatMap((h) => h.headers)
-    .filter((h) => h.key !== 'Strict-Transport-Security')
-    .map((h) => [h.key, h.value.replace(/;\s*upgrade-insecure-requests/, '')]),
-);
+// source is een patroon van Vercel; voor die in vercel.json (/(.*), /fonts/(.*)) volstaat een gewone regex
+const rules = vercel.headers.map((h) => ({
+  source: new RegExp(`^${h.source}$`),
+  headers: h.headers
+    .filter((x) => x.key !== 'Strict-Transport-Security')
+    .map((x) => [x.key, x.value.replace(/;\s*upgrade-insecure-requests/, '')]),
+}));
+const headersFor = (path) => Object.fromEntries(rules.filter((r) => r.source.test(path)).flatMap((r) => r.headers));
 
 function resolve(urlPath) {
   const p = join(PUBLIC, normalize(decodeURIComponent(urlPath)).replace(/^(\.\.[/\\])+/, ''));
@@ -46,6 +50,6 @@ createServer((req, res) => {
   const file = resolve(path);
   const status = file ? 200 : 404;
   const body = readFileSync(file || join(PUBLIC, '404.html'));
-  res.writeHead(status, { ...headers, 'Content-Type': TYPES[extname(file || '404.html')] || 'application/octet-stream' });
+  res.writeHead(status, { ...headersFor(path), 'Content-Type': TYPES[extname(file || '404.html')] || 'application/octet-stream' });
   res.end(body);
 }).listen(PORT, () => console.log(`Cello Business draait op http://localhost:${PORT}`));
