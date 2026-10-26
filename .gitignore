@@ -5,6 +5,7 @@ dist
 
 # Claude Code lokale config (niet publiek)
 .claude/
+CLAUDE.md
 
 # design-sync
 .ds-sync/
