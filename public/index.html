@@ -71,13 +71,13 @@
       "mainEntity": [
         { "@type": "Question", "name": "Waarom niet gewoon een rollenspel met een collega?", "acceptedAnswer": { "@type": "Answer", "text": "Omdat daar zelden tijd voor is, en een collega speelt geen echt lastige klant. Met Cello Business oefent een medewerker wanneer het hem past en zo vaak als nodig, zonder dat iemand moet meespelen. Na elk gesprek krijgt hij meteen feedback." } },
         { "@type": "Question", "name": "Hoe echt klinken de AI-klanten?", "acceptedAnswer": { "@type": "Answer", "text": "Ze praten terug, twijfelen, spreken tegen en geven niet zomaar toe. In het Nederlands klinken ze Vlaams, en ze spreken ook Frans en Engels. Luister hierboven zelf naar Sofie, Marc, Els en Julie." } },
-        { "@type": "Question", "name": "Wat krijgt een medewerker na een gesprek?", "acceptedAnswer": { "@type": "Answer", "text": "Een belrapport. Hij luistert zijn gesprek terug, met feedback op de juiste momenten. Hij ziet een score per vaardigheid, zoals zijn doel bereiken, de kwaliteit van zijn vragen en omgaan met weerstand, en maximaal twee werkpunten met een concrete tip. Tijdens het gesprek krijgt hij geen hulp, net zoals bij een echte klant." } },
+        { "@type": "Question", "name": "Wat krijgt een medewerker na een gesprek?", "acceptedAnswer": { "@type": "Answer", "text": "Een belrapport. Staat de opname aan, zoals standaard, dan luistert hij zijn gesprek terug, met feedback op de juiste momenten. Hij ziet een score per vaardigheid, zoals zijn doel bereiken, de kwaliteit van zijn vragen en omgaan met weerstand, en maximaal twee werkpunten met een concrete tip. Tijdens het gesprek krijgt hij geen hulp, net zoals bij een echte klant." } },
         { "@type": "Question", "name": "Wat ziet de teamleider?", "acceptedAnswer": { "@type": "Answer", "text": "Hoeveel elke medewerker oefent en of hij vooruitgaat, ook per vaardigheid. Voor het hele team ziet hij per maand de scores en waar het team het moeilijkst mee heeft, als minstens drie medewerkers die maand oefenden. In zijn overzichten staat geen score per medewerker en geen ranglijst. Het verslag van een gesprek (met de score van dat gesprek), het transcript en de opname opent hij alleen als jullie dat aanzetten, en dan enkel van gesprekken van daarna. Elke keer dat hij dat doet, wordt bijgehouden en ziet de medewerker het." } },
         { "@type": "Question", "name": "Kunnen we onze eigen gesprekken nabootsen?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. De boze klant met een vraag over zijn factuur, de prospect die “geen interesse” zegt, of de klant die wil opzeggen. We bouwen de scenario's samen met jullie, we maken ze automatisch uit een belscript, transcript of document, of je bouwt ze zelf, stap voor stap." } },
         { "@type": "Question", "name": "Is Cello Business alleen voor nieuwe medewerkers?", "acceptedAnswer": { "@type": "Answer", "text": "Nee. Ook ervaren mensen gebruiken het om een nieuwe campagne, een nieuw product of een moeilijk gesprek te oefenen voor ze ermee naar de klant gaan." } },
         { "@type": "Question", "name": "Hoeveel werk is het om te starten?", "acceptedAnswer": { "@type": "Answer", "text": "Weinig. Na een kort opstartgesprek bouwen we je eerste scenario's, en daarna kan je team meteen oefenen. Je hoeft niets te installeren: Cello Business werkt in de browser, met een microfoon of headset." } },
         { "@type": "Question", "name": "Wat is het addertje aan de gratis pilot?", "acceptedAnswer": { "@type": "Answer", "text": "Er is er geen. Je test 4 weken gratis met maximaal 5 gebruikers, zonder verplichting. We vragen alleen je eerlijke feedback, en als het goed werkt, of we je als referentie mogen noemen. Na 4 weken beslis jij of je doorgaat." } },
-        { "@type": "Question", "name": "Wat gebeurt er met onze gegevens?", "acceptedAnswer": { "@type": "Answer", "text": "Elke klant krijgt een eigen, afgeschermde omgeving, dus jullie gesprekken en rapporten zijn nooit zichtbaar voor andere klanten. Heb je vragen over privacy? We beantwoorden ze graag." } }
+        { "@type": "Question", "name": "Wat gebeurt er met onze gegevens?", "acceptedAnswer": { "@type": "Answer", "text": "Jullie gegevens zijn afgeschermd van die van andere klanten: andere klanten zien nooit jullie gesprekken of verslagen. Cello Business-support opent een gesprek alleen bij een supportvraag, en de medewerker ziet dat. Opnames en transcripten worden gewist na de bewaartermijn die jullie kiezen. Heb je vragen over privacy? We beantwoorden ze graag." } }
       ]
     }
   ]
@@ -491,8 +491,6 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 .dash-title em{font-style:normal;color:var(--green)}
 .dash-stats{display:flex;flex-wrap:wrap;gap:2px 14px;margin-top:6px;font-size:12.5px;color:var(--muted)}
 .dash-stats b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
-.dash-filter{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 10px 0 12px;border:1px solid var(--line-2);border-radius:8px;background:var(--paper);font-size:12.5px;font-weight:600;white-space:nowrap}
-.dash-filter svg{width:14px;height:14px;color:var(--muted)}
 .dash-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:12px;margin-top:16px}
 .dash-panel{min-width:0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
 .dp-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2px 10px}
@@ -538,26 +536,22 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 .chart-xl span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
 .dash-team{grid-column:1/-1;padding-bottom:6px}
 .dt{width:100%;margin-top:8px;border-collapse:collapse;font-size:12.5px;line-height:1.3}
-.dt th{padding:7px 10px 7px 0;border-bottom:1px solid var(--line);font-size:11.5px;font-weight:600;color:var(--muted);text-align:left;white-space:nowrap}
+.dt th{padding:7px 10px 7px 0;border-bottom:1px solid var(--line);font-size:11.5px;font-weight:600;color:var(--muted);text-align:left;white-space:nowrap;vertical-align:bottom}
 .dt td{height:38px;padding:0 10px 0 0;border-bottom:1px solid var(--line);white-space:nowrap;font-variant-numeric:tabular-nums;transition:background-color .2s}
 .dt tr:last-child td{border-bottom:0}
 .dt th:first-child,.dt td:first-child{padding-left:8px}
-.dt td:first-child,.dt td b{font-weight:600}
+.dt td:first-child{font-weight:600}
 .dt .num{padding-right:14px;text-align:right}
 .dt .sort{margin-left:3px;color:var(--ink-2)}
-.sbar{display:inline-block;width:44px;height:5px;margin-right:8px;overflow:hidden;border-radius:3px;background:var(--track);vertical-align:middle}
-.sbar i{display:block;height:100%;border-radius:3px;background:var(--green);transform-origin:0 50%}
-.spark{display:block;width:52px;height:20px;overflow:visible}
-.spark path{fill:none;stroke:var(--green);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 @container (max-width:640px){
   .dash-grid{grid-template-columns:minmax(0,1fr)}
-  .c-spark{display:none}
+  .c-weak{display:none}
 }
 @container (max-width:470px){
   .dash-main{padding:16px 14px}
   .dash-head{display:block}
   .dash-title{font-size:19px}
-  .dash-filter,.dash-stats>span:last-child,.c-weak,.c-calls{display:none}
+  .dash-stats>span:last-child,.c-calls,.c-last{display:none}
   .dash-panel{padding:12px 13px}
   .dash-kpi b{font-size:22px}
   .chart-plot{flex-basis:110px;min-height:110px}
@@ -953,7 +947,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
           </div>
           <div class="why-text">
             <h3 class="why-label">Oefenen met AI-klanten</h3>
-            <p class="why-desc">Je team oefent met AI-klanten die reageren zoals echte klanten. Zo vaak als ze willen.</p>
+            <p class="why-desc">Je team oefent met AI-klanten die reageren zoals echte klanten. Wanneer ze willen.</p>
           </div>
         </article>
         <article class="why-card why-report">
@@ -1131,7 +1125,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
           <p>Je team belt de AI-klant vanuit de browser en praat gewoon, zoals aan de telefoon. De AI-klant luistert, denkt na en reageert op wat ze zeggen.</p>
           <ul class="f-list">
             <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Geen twee gesprekken zijn hetzelfde</li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Elk gesprek telt mee in het dashboard</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Elk gesprek van minstens een minuut telt mee in het dashboard</li>
           </ul>
         </div>
         <div class="f-visual light" role="img" aria-label="Animatie: een oefengesprek met AI-klant Marc. Jij praat, Marc denkt na en praat terug.">
@@ -1163,11 +1157,11 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
       <div class="feature wide flip">
         <div class="f-copy">
           <h3><span class="f-n">3</span>Feedback na elk gesprek.</h3>
-          <p>Na elk gesprek luistert je team het terug, met feedback op de juiste momenten. Ze zien hun score per vaardigheid, wat goed ging en wat het meeste verschil maakt.</p>
+          <p>Na elk gesprek luistert je team het terug, met feedback op de juiste momenten, zolang de opname aanstaat. Ze zien hun score per vaardigheid, wat goed ging en wat het meeste verschil maakt.</p>
           <ul class="f-list">
             <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Maximaal twee werkpunten met een tip</li>
             <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Gemeten tempo, stopwoorden en stiltes</li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Het transcript van elk gesprek</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Het transcript van elk gesprek, zo lang als jullie het willen bewaren</li>
           </ul>
         </div>
         <div class="f-visual light" role="img" aria-label="Animatie: het belrapport na het gesprek met Marc. Het gesprek speelt af en op drie momenten verschijnt feedback. Daarna je score, wat goed ging, de twee werkpunten, je score per vaardigheid en de gemeten cijfers. Een klik op een werkpunt speelt dat moment opnieuw af.">
@@ -1206,7 +1200,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
                 <div class="rp-row">
                   <div class="rp-score">
                     <div class="rp-ring"><div><svg viewBox="0 0 76 76"><circle class="trk" cx="38" cy="38" r="34"/><circle class="val" cx="38" cy="38" r="34" stroke-dasharray="213.63" stroke-dashoffset="68.36"/></svg><b>68</b></div><small>Je score</small></div>
-                    <p>Je bleef rustig en toonde begrip, maar je stelde te snel een oplossing voor.</p>
+                    <p>Je erkende het probleem van de klant, maar je stelde te snel een oplossing voor.</p>
                   </div>
                   <div class="rp-card rp-good">
                     <b class="rp-h">Wat goed ging</b>
@@ -1238,7 +1232,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
                   <div class="rp-tiles">
                     <div class="rp-tile"><small>Spreektijd</small><b>46%<span>jij</span></b><span class="rp-split"><i style="width:46%"></i><i style="flex:1"></i></span></div>
                     <div class="rp-tile"><small>Tempo</small><b>152</b><em>woorden per minuut</em></div>
-                    <div class="rp-tile"><small>Twijfelwoorden</small><b>4</b><em>1,7 per minuut</em></div>
+                    <div class="rp-tile"><small>Voorbehoudwoorden</small><b>4</b><em>1,7 per minuut</em></div>
                     <div class="rp-tile"><small>Vragen</small><b>5</b><em>2 open, 3 gesloten</em></div>
                     <div class="rp-tile"><small>Langste stilte</small><b>3,1<span>s</span></b><em>voor een antwoord</em></div>
                     <div class="rp-tile"><small>Duur</small><b>2:24</b><em>van max. 8:00</em></div>
@@ -1257,12 +1251,12 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
           <h3><span class="f-n">4</span>Zie wie nog extra oefening nodig heeft.</h3>
           <p>In je dashboard zie je in één oogopslag hoe je team ervoor staat, zonder zelf mee te luisteren.</p>
           <ul class="f-list">
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Voortgang van het team, week na week</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Voortgang van het team, maand na maand</li>
             <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Waar het team het moeilijkst mee heeft</li>
-            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Het zwakste punt van elke medewerker</li>
+            <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Het punt dat bij een medewerker steeds terugkomt</li>
           </ul>
         </div>
-        <div class="f-visual light" role="img" aria-label="Het teamdashboard met de voortgang van het team, het teamgemiddelde, waar het team het moeilijkst mee heeft en een overzicht per medewerker.">
+        <div class="f-visual light" role="img" aria-label="Het teamdashboard met de teamscore per maand, waar het team het moeilijkst mee heeft en een overzicht per medewerker.">
           <div class="mock dash" id="dash">
             <div class="dash-rail">
               <svg class="dash-mark"><use href="#mark"/></svg>
@@ -1280,13 +1274,12 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
                   <b class="dash-title">Overzicht van je <em>team</em></b>
                   <span class="dash-stats"><span><b>9 van 12</b> oefenden mee</span><span><b>90</b> gesprekken</span><span><b>6,2 uur</b> geoefend</span></span>
                 </div>
-                <span class="dash-filter">Laatste 8 weken<svg><use href="#i-chevron"/></svg></span>
               </div>
               <div class="dash-grid">
                 <div class="dash-panel dash-chart">
                   <div class="chart-head">
-                    <div><b>Voortgang van het team</b><small>Gemiddelde score per week</small></div>
-                    <div class="chart-kpi"><span class="dash-kpi"><b>74</b><span class="up">↑ 6</span></span><small>Teamgemiddelde</small></div>
+                    <div><b>Voortgang van het team</b><small>Teamscore per maand</small></div>
+                    <div class="chart-kpi"><span class="dash-kpi"><b>79</b></span><small>Teamscore september</small></div>
                   </div>
                   <div class="chart-plot">
                     <svg viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -1301,9 +1294,9 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
                     <span class="chart-dot chart-dot-end" style="left:97%;top:29.12%"></span>
                     <span class="chart-end" style="left:97%;top:29.12%">79</span>
                     <span class="chart-dot chart-dot-hov"></span>
-                    <span class="chart-tip"><small>wk 40</small><b>79</b></span>
+                    <span class="chart-tip"><small>sep</small><b>79</b></span>
                   </div>
-                  <div class="chart-xl"><span style="left:3%">wk 33</span><span style="left:16.43%">wk 34</span><span style="left:29.86%">wk 35</span><span style="left:43.29%">wk 36</span><span style="left:56.71%">wk 37</span><span style="left:70.14%">wk 38</span><span style="left:83.57%">wk 39</span><span style="left:97%">wk 40</span></div>
+                  <div class="chart-xl"><span style="left:3%">feb</span><span style="left:16.43%">mrt</span><span style="left:29.86%">apr</span><span style="left:43.29%">mei</span><span style="left:56.71%">jun</span><span style="left:70.14%">jul</span><span style="left:83.57%">aug</span><span style="left:97%">sep</span></div>
                 </div>
                 <div class="dash-side">
                   <div class="dash-panel">
@@ -1319,11 +1312,11 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
                 <div class="dash-panel dash-team">
                   <div class="dp-head"><b>Medewerkers</b><small>9 medewerkers</small></div>
                   <table class="dt">
-                    <thead><tr><th>Medewerker</th><th class="num c-calls">Gesprekken<span class="sort">↓</span></th><th>Gemiddelde</th><th class="num c-delta">Verschil</th><th class="c-spark">Verloop</th><th class="c-weak">Zwakste punt</th></tr></thead>
+                    <thead><tr><th>Medewerker</th><th class="num c-calls">Gesprekken<br>(30 dagen)</th><th class="c-last">Laatst geoefend<span class="sort">↓</span></th><th>Vooruitgang</th><th class="c-weak">Punt dat terugkomt</th></tr></thead>
                     <tbody>
-                      <tr><td>Lotte V.</td><td class="num c-calls">18</td><td><span class="sbar"><i style="width:84%"></i></span><b>84</b></td><td class="num c-delta"><span class="up">↑ 5</span></td><td class="c-spark"><svg class="spark" viewBox="0 0 64 22"><path pathLength="1" d="M2 19 C6 17.75 10 16.5 14 15.25 C18 14 22 11.5 26 11.5 C30 11.5 34 13.38 38 13.38 C42 13.38 46 9.25 50 7.75 C54 6.25 58 5.25 62 4"/></svg></td><td class="c-weak">Overtuigingskracht</td></tr>
-                      <tr><td>Jonas D.</td><td class="num c-calls">15</td><td><span class="sbar"><i style="width:76%"></i></span><b>76</b></td><td class="num c-delta"><span class="up">↑ 8</span></td><td class="c-spark"><svg class="spark" viewBox="0 0 64 22"><path pathLength="1" d="M2 19 C6 18.17 10 17.61 14 16.5 C18 15.39 22 12.17 26 11.5 C30 10.83 34 10.88 38 10.25 C42 9.63 46 7.5 50 6.5 C54 5.5 58 4.83 62 4"/></svg></td><td class="c-weak">Kwaliteit van je vragen</td></tr>
-                      <tr><td>Amira B.</td><td class="num c-calls">11</td><td><span class="sbar"><i style="width:68%"></i></span><b>68</b></td><td class="num c-delta"><span class="down">↓ 2</span></td><td class="c-spark"><svg class="spark" viewBox="0 0 64 22"><path pathLength="1" d="M2 7.75 C6 6.5 10 4 14 4 C18 4 22 9.83 26 11.5 C30 13.17 34 15.25 38 15.25 C42 15.25 46 11.5 50 11.5 C54 11.5 58 16.5 62 19"/></svg></td><td class="c-weak">Omgaan met weerstand</td></tr>
+                      <tr><td>Lotte V.</td><td class="num c-calls">18</td><td class="c-last">gisteren</td><td><span class="up">↑ stijgt</span></td><td class="c-weak">Overtuigingskracht</td></tr>
+                      <tr><td>Jonas D.</td><td class="num c-calls">15</td><td class="c-last">2 dagen geleden</td><td><span class="up">↑ stijgt</span></td><td class="c-weak">Kwaliteit van je vragen</td></tr>
+                      <tr><td>Amira B.</td><td class="num c-calls">11</td><td class="c-last">5 dagen geleden</td><td><span class="down">↓ daalt</span></td><td class="c-weak">Omgaan met weerstand</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -1372,7 +1365,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
         </details>
         <details class="q">
           <summary>Wat krijgt een medewerker na een gesprek?</summary>
-          <p class="a">Een belrapport. Hij luistert zijn gesprek terug, met feedback op de juiste momenten. Hij ziet een score per vaardigheid, zoals zijn doel bereiken, de kwaliteit van zijn vragen en omgaan met weerstand, en maximaal twee werkpunten met een concrete tip. Tijdens het gesprek krijgt hij geen hulp, net zoals bij een echte klant.</p>
+          <p class="a">Een belrapport. Staat de opname aan, zoals standaard, dan luistert hij zijn gesprek terug, met feedback op de juiste momenten. Hij ziet een score per vaardigheid, zoals zijn doel bereiken, de kwaliteit van zijn vragen en omgaan met weerstand, en maximaal twee werkpunten met een concrete tip. Tijdens het gesprek krijgt hij geen hulp, net zoals bij een echte klant.</p>
         </details>
         <details class="q">
           <summary>Wat ziet de teamleider?</summary>
@@ -1396,7 +1389,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
         </details>
         <details class="q">
           <summary>Wat gebeurt er met onze gegevens?</summary>
-          <p class="a">Elke klant krijgt een eigen, afgeschermde omgeving, dus jullie gesprekken en rapporten zijn nooit zichtbaar voor andere klanten. Heb je vragen over privacy? We beantwoorden ze graag.</p>
+          <p class="a">Jullie gegevens zijn afgeschermd van die van andere klanten: andere klanten zien nooit jullie gesprekken of verslagen. Cello Business-support opent een gesprek alleen bij een supportvraag, en de medewerker ziet dat. Opnames en transcripten worden gewist na de bewaartermijn die jullie kiezen. Heb je vragen over privacy? We beantwoorden ze graag.</p>
         </details>
       </div>
     </div>
@@ -1953,7 +1946,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
     var panel = $('.dash-chart', root), plot = $('.chart-plot', root), endLbl = $('.chart-end', root);
     var hov = $('.chart-dot-hov', root), xline = $('.chart-x', root), tip = $('.chart-tip', root), tipW = $('small', tip), tipV = $('b', tip);
     var X = [3, 16.43, 29.86, 43.29, 56.71, 70.14, 83.57, 97], Y = [67.84, 60.8, 57.28, 50.24, 46.72, 39.68, 36.16, 29.12];
-    var V = [68, 70, 71, 73, 74, 76, 77, 79], WK = 33, shown = -1;
+    var V = [68, 70, 71, 73, 74, 76, 77, 79], M = ['feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep'], shown = -1;
     function point(i) {
       if (i === shown) return;
       shown = i;
@@ -1963,7 +1956,7 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
       if (!on) return;
       hov.style.left = xline.style.left = X[i] + '%';
       hov.style.top = Y[i] + '%';
-      tipW.textContent = 'wk ' + (WK + i);
+      tipW.textContent = M[i];
       tipV.textContent = V[i];
       // Keep the label inside the plot at both ends
       tip.style.left = Math.min(Math.max(X[i], 9), 91) + '%';

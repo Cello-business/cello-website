@@ -16,7 +16,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'sha256-UK2jH5sfk3/WcCJmmTiVAR2PKnVX1ISNoWCl/ZZEPoU=' 'sha256-w41zHuxssv1zfrb85N1HT4ZZXg4aYj03XawaaDNPv2Q=' 'sha256-HXevM+JO7UpcEV042dmnhtYR7mOlomL1A4JnSnrDJnY='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://*.vercel-insights.com; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self' 'sha256-UK2jH5sfk3/WcCJmmTiVAR2PKnVX1ISNoWCl/ZZEPoU=' 'sha256-0EEQ6BxGvzFuO1Fw5xpKTVwzg5AuDEk+76ipX1Kj+DU=' 'sha256-HXevM+JO7UpcEV042dmnhtYR7mOlomL1A4JnSnrDJnY='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://*.vercel-insights.com; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
         },
         {
           "key": "Strict-Transport-Security",
