@@ -13,6 +13,7 @@ public/
   blog/piloten-oefenen-in-een-simulator/         artikel
   404.html                                       pagina voor onbekende links
   img/  audio/                                   foto's en de stemmen van de AI-klanten
+  fonts/                                         lettertypes (Hanken Grotesk, Montserrat) met hun licentie
   favicon.ico  favicon.svg  apple-touch-icon.png  icon-*.png  site.webmanifest
   sitemap.xml  robots.txt
 scripts/sitemap.mjs                              maakt sitemap.xml bij elke deploy
@@ -35,6 +36,7 @@ Er zijn geen dependencies; `npm install` is niet nodig.
 - **Demo en contact**: de knoppen "Plan een demo" gaan naar de Google Agenda-boekingspagina; het e-mailadres is `contact@cellobusiness.com`.
 - **CSP**: `vercel.json` laat alleen inline scripts toe waarvan de hash in `script-src` staat. Pas je een inline `<script>` aan, dan faalt `npm run check` en toont het de nieuwe hash die je in `vercel.json` zet. Zo gaat er nooit een versie live waarin de browser de scripts weigert. JSON-LD (`type="application/ld+json"`) valt daarbuiten.
 - **Vindbaarheid en delen**: elke pagina heeft een canonical URL, een description, Open Graph-tags met een deelbeeld van 1200×630 en gestructureerde gegevens (JSON-LD) voor Google. Een nieuwe pagina krijgt die ook. De check controleert dat elk lokaal pad en elke URL naar de eigen site bestaat, en dat de FAQ in de JSON-LD woord voor woord gelijk is aan de zichtbare FAQ. Pas je een FAQ-antwoord aan, doe het dan op beide plaatsen.
+- **Lettertypes**: Hanken Grotesk en Montserrat staan als variabele woff2-bestanden (latin en latin-ext) in `public/fonts/`, met de SIL Open Font License ernaast, en worden met `@font-face` bovenaan de inline `<style>` van elke pagina geladen. Ze komen bewust niet van Google Fonts: dan krijgt Google het IP-adres van elke bezoeker. `npm run check` faalt als een pagina toch naar `fonts.googleapis.com` of `fonts.gstatic.com` verwijst. De bestanden worden een jaar gecachet (`immutable` in `vercel.json`); vervang je er een, geef het dan een nieuwe naam en pas de verwijzingen in elke pagina aan (`@font-face` en preload), anders blijven bezoekers het oude bestand zien.
 - **Foto's**: elke foto heeft een alt-tekst. Puur decoratieve foto's hebben daarnaast `aria-hidden="true"`, zodat een schermlezer ze overslaat.
 - **Sitemap**: `sitemap.xml` wordt bij elke deploy automatisch gemaakt uit alle `index.html`-pagina's in `public/` (behalve pagina's met `noindex`). De `lastmod` komt uit de pagina zelf: `article:modified_time` of `article:published_time` voor een artikel, `og:updated_time` voor de homepage (zet die datum bij een inhoudelijke wijziging), en voor het blogoverzicht de datum van het nieuwste artikel.
 - **Nieuw blogartikel**: kopieer de map van een bestaand artikel naar `public/blog/<slug>/`, pas de tekst, de `<head>` (titel, description, canonical, og-tags, `article:published_time`) en de JSON-LD aan, voeg het artikel toe aan `public/blog/index.html` en maak een deelbeeld van 1200×630 in `public/img/`. Het komt vanzelf in de sitemap; zonder `article:published_time` stopt de deploy met een duidelijke melding.

@@ -3,9 +3,12 @@
    als er iets is dat in productie stil zou falen:
    1. een inline <script> waarvan de hash niet in de CSP van vercel.json staat
       (de browser weigert het script dan, en menu, tabs en audio werken niet meer);
-   2. een lokaal pad (src, href, og:image, sitemap ...) dat naar een bestand verwijst dat niet bestaat;
+   2. een lokaal pad (src, href, url() in de inline CSS, og:image, sitemap ...) dat naar een bestand
+      verwijst dat niet bestaat;
    3. een pagina uit sitemap.xml met noindex (dan verdwijnt ze uit Google);
-   4. een FAQ in de JSON-LD die afwijkt van de zichtbare FAQ (Google wil dezelfde tekst).
+   4. een FAQ in de JSON-LD die afwijkt van de zichtbare FAQ (Google wil dezelfde tekst);
+   5. een pagina die naar fonts.googleapis.com of fonts.gstatic.com verwijst (dan krijgt Google
+      het IP-adres van elke bezoeker; de lettertypes staan zelf in public/fonts/).
    De sitemap zelf maakt scripts/sitemap.mjs, dat vlak voor deze controle draait. */
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
@@ -58,6 +61,18 @@ for (const file of pages) {
   for (const m of html.matchAll(/\b(?:src|href|data-audio)="(\/(?!\/)[^"]*)"/g)) {
     if (!exists(m[1])) errors.push(`${name}: ${m[1]} bestaat niet in public/.`);
   }
+
+  // 2. Lokale paden in de inline CSS (<style> en style-attributen), zoals de lettertypes in @font-face
+  const css = [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>|\bstyle="([^"]*)"/g)].map((m) => m[1] ?? m[2]).join('\n');
+  for (const m of css.matchAll(/url\(\s*(['"]?)(\/(?!\/)[^'")\s]*)\1\s*\)/g)) {
+    if (!exists(m[2])) errors.push(`${name}: url(${m[2]}) in de CSS bestaat niet in public/.`);
+  }
+
+  // 5. Geen Google Fonts: anders krijgt Google het IP-adres van elke bezoeker
+  for (const m of html.matchAll(/fonts\.(?:googleapis|gstatic)\.com/g)) {
+    const line = html.slice(0, m.index).split('\n').length;
+    errors.push(`${name}:${line} verwijst naar ${m[0]}. Dat mag niet om privacyredenen: Google krijgt dan het IP-adres van elke bezoeker. Zet het lettertype in public/fonts/ (zie README).`);
+  }
 }
 
 // 2. Absolute URL's naar de eigen site (canonical, og:image, JSON-LD, sitemap, robots)
@@ -104,4 +119,4 @@ if (errors.length) {
   console.error('');
   process.exit(1);
 }
-console.log(`OK: ${pages.length} pagina's, CSP-hashes, lokale paden, sitemap en FAQ kloppen.`);
+console.log(`OK: ${pages.length} pagina's, CSP-hashes, lokale paden, sitemap en FAQ kloppen, geen Google Fonts.`);
