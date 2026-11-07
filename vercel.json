@@ -5,6 +5,7 @@
   "outputDirectory": "public",
   "redirects": [
     { "source": "/blog", "destination": "/blog/", "permanent": true },
+    { "source": "/privacy", "destination": "/privacy/", "permanent": true },
     { "source": "/blog/piloten-oefenen-in-een-simulator", "destination": "/blog/piloten-oefenen-in-een-simulator/", "permanent": true },
     { "source": "/blog/nieuwe-bellers-oefenen-op-je-klanten", "destination": "/blog/piloten-oefenen-in-een-simulator/", "permanent": true },
     { "source": "/blog/nieuwe-bellers-oefenen-op-je-klanten/", "destination": "/blog/piloten-oefenen-in-een-simulator/", "permanent": true },
