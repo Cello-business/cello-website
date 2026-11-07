@@ -253,6 +253,21 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 .post-body th,.post-body td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 .post-body th{font-weight:600;color:var(--ink);background:var(--sand)}
 .post-body td{min-width:8em}
+/* Inhoud: hoofdstukken links naast de tekst, op een gsm een lijst boven de tekst */
+.privacy-layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "toc" "body";row-gap:clamp(28px,4vw,40px)}
+.privacy-layout .post-head{grid-area:head;max-width:none;margin:0}
+.privacy-layout .post-title{font-size:clamp(34px,4.6vw,54px)}
+.privacy-layout .post-body{grid-area:body;max-width:680px;margin:0}
+.toc{grid-area:toc;font-size:15px;line-height:1.4}
+.toc-title{margin:0 0 10px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.toc ol{display:grid;gap:2px;margin:0;padding:0;list-style:none}
+.toc ol ol{margin:2px 0 8px 2px;padding-left:12px;border-left:1px solid var(--line)}
+.toc a{display:block;padding:5px 0;color:var(--ink-2);text-decoration:none}
+.toc a:hover{color:var(--green)}
+.post-body h2,.post-body h3{scroll-margin-top:96px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media (max-width:1023px){.toc{padding:18px 22px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--paper)}.toc ol ol{display:none}}
+@media (min-width:1024px){.privacy-layout{grid-template-columns:240px minmax(0,680px);grid-template-areas:"toc head" "toc body";column-gap:72px;justify-content:center}.toc{position:sticky;top:96px;align-self:start;max-height:calc(100vh - 120px);overflow-y:auto;padding-right:8px}}
 </style>
 </head>
 <body>
@@ -312,11 +327,39 @@ h1,h2,h3,h4{margin:0;text-wrap:balance}
 
 <main id="main">
   <article class="post">
-    <div class="wrap">
+    <div class="wrap privacy-layout">
       <header class="post-head">
         <h1 class="post-title">Privacyverklaring Cello Business</h1>
         <p class="meta"><span>Laatst bijgewerkt: <time datetime="2026-11-07">7 november 2026</time></span></p>
       </header>
+      <nav class="toc" aria-label="Inhoud">
+        <p class="toc-title">Inhoud</p>
+        <ol>
+          <li><a href="#wie-wij-zijn">Wie wij zijn</a></li>
+          <li><a href="#wanneer-wij-verantwoordelijk-zijn-en-wanneer-je-werkgever">Wanneer wij verantwoordelijk zijn en wanneer je werkgever</a></li>
+          <li><a href="#websitebezoekers">Websitebezoekers</a></li>
+          <li><a href="#contact-en-een-kennismaking-plannen">Contact en een kennismaking plannen</a></li>
+          <li><a href="#prospects-en-zakelijke-contacten">Prospects en zakelijke contacten</a></li>
+          <li><a href="#demos">Demo's</a></li>
+          <li><a href="#klanten-en-hun-contactpersonen">Klanten en hun contactpersonen</a></li>
+          <li><a href="#oefen-je-via-je-werkgever">Oefen je via je werkgever?</a>
+            <ol>
+              <li><a href="#wat-we-verwerken">Wat we verwerken</a></li>
+              <li><a href="#welke-diensten-wat-krijgen">Welke diensten wat krijgen</a></li>
+              <li><a href="#wie-wat-ziet">Wie wat ziet</a></li>
+              <li><a href="#hoe-lang">Hoe lang</a></li>
+              <li><a href="#wat-cello-business-zelf-bijhoudt">Wat Cello Business zelf bijhoudt</a></li>
+              <li><a href="#je-rechten">Je rechten</a></li>
+            </ol>
+          </li>
+          <li><a href="#cookies-en-lokale-opslag">Cookies en lokale opslag</a></li>
+          <li><a href="#wie-je-gegevens-ontvangt">Wie je gegevens ontvangt</a></li>
+          <li><a href="#beveiliging">Beveiliging</a></li>
+          <li><a href="#ai-en-automatische-beslissingen">AI en automatische beslissingen</a></li>
+          <li><a href="#je-rechten_1">Je rechten</a></li>
+          <li><a href="#wijzigingen">Wijzigingen</a></li>
+        </ol>
+      </nav>
       <div class="post-body">
 <h2 id="wie-wij-zijn">Wie wij zijn</h2>
 <p>Cello Business is een platform waarop medewerkers van contactcenters en salesteams telefoongesprekken oefenen met een AI die een rol speelt. In deze verklaring lees je welke persoonsgegevens we verwerken, waarom, hoe lang, en welke rechten je hebt.</p>
